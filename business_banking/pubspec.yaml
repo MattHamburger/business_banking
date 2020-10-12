@@ -1,24 +1,26 @@
 name: business_banking
 description: A demo app to showcase the clean framework for a business banking app.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+    sdk: '>=2.7.0 <3.0.0'
 dependencies:
-  flutter:
-    sdk: flutter
-  clean_framework: ^0.1.6+1
-  cupertino_icons: ^0.1.3
-  auto_size_text: ^2.1.0
-  url_launcher: ^5.6.0
+    flutter:
+        sdk: flutter
+    clean_framework: ^0.1.6+1
+    cupertino_icons: ^0.1.3
+    auto_size_text: ^2.1.0
+    url_launcher: ^5.6.0
+    lcov: ^5.3.0
 
 dev_dependencies:
-  test:
-  flutter_test:
-    sdk: flutter
-  mockito: 4.1.1 # Apache 2.0
-  flutter_driver:
-    sdk: flutter
+    test:
+    flutter_test:
+        sdk: flutter
+    mockito: 4.1.1 # Apache 2.0
+    test_coverage: ^0.4.2
+    flutter_driver:
+        sdk: flutter
 
 flutter:
-  uses-material-design: true
+    uses-material-design: true

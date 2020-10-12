@@ -13,10 +13,9 @@ void main() {
           'balance': 3545.54
         }));
 
-    expect(entity, CashAccountsEntity(
-      name: 'Employee Checking',
-      lastFour: '6542',
-      balance: 3545.54
-    ));
+    expect(
+        entity,
+        CashAccountsEntity(
+            name: 'Employee Checking', lastFour: '6542', balance: 3545.54));
   });
 }

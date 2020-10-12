@@ -47,7 +47,6 @@ class LoginUseCase extends UseCase {
 
   void updatePassword(String password) async {
     final entity = ExampleLocator().repository.get<LoginEntity>(_scope);
-
     final updatedEntity = entity.merge(password: password);
     ExampleLocator().repository.update<LoginEntity>(_scope, updatedEntity);
     _viewModelCallBack(buildViewModelForLocalUpdate(updatedEntity));

@@ -8,6 +8,10 @@
 .buildlog/
 .history
 .svn/
+**/golden/failures/**
+**/.project
+**/.classpath
+**/org.eclipse.*
 
 # IntelliJ related
 *.iml

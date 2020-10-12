@@ -18,7 +18,8 @@ class ExampleLocator implements Locator {
 
   @override
   Logger logger = ConsoleLogger(LogLevel.verbose);
-  SimpleRestApi api = SimpleRestApi(baseUrl: 'http://localhost:3001/'); // Points to Mockoon instance
+  SimpleRestApi api = SimpleRestApi(
+      baseUrl: 'http://localhost:3000/'); // Points to Mockoon instance
 
   Repository repository = Repository();
 }

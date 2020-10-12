@@ -1,4 +1,195 @@
 {
+	"source": "mockoon:1.10.0",
+	"data": [
+		{
+			"type": "environment",
+			"item": {
+				"uuid": "",
+				"lastMigration": 12,
+				"name": "Business Banking Env",
+				"endpointPrefix": "",
+				"latency": 0,
+				"port": 3000,
+				"routes": [
+					{
+						"uuid": "",
+						"documentation": "Gets info for CashAccounts screen",
+						"method": "get",
+						"endpoint": "accounts",
+						"responses": [
+							{
+								"uuid": "",
+								"body": "{\n  \"type\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+								"latency": 0,
+								"statusCode": 200,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [],
+								"disableTemplating": false,
+								"rulesOperator": "OR"
+							}
+						],
+						"enabled": true
+					},
+					{
+						"uuid": "",
+						"documentation": "Gets info for AccountDetail screen",
+						"method": "get",
+						"endpoint": "account-details",
+						"responses": [
+							{
+								"uuid": "",
+								"body": "{\n  \"name\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"accountType\": \"Employee Checking\",\n  \"routingNum\": 746395735,\n  \"balance\": 3545.54,\n  \"begBalance\": 3674.43,\n  \"penTrans\": -128.89,\n  \"depHolds\": 0.00\n}",
+								"latency": 0,
+								"statusCode": 200,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [],
+								"disableTemplating": false,
+								"rulesOperator": "OR"
+							}
+						],
+						"enabled": true
+					},
+					{
+						"uuid": "",
+						"documentation": "",
+						"method": "get",
+						"endpoint": "promos/:cid",
+						"responses": [
+							{
+								"uuid": "",
+								"body": "",
+								"latency": 0,
+								"statusCode": 400,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [],
+								"rulesOperator": "OR",
+								"disableTemplating": false
+							},
+							{
+								"uuid": "",
+								"body": "{\n  \n  \"imageUrl\":\"https://via.placeholder.com/300\",\n  \"externalUrl\": \"http://google.com/\"\n}",
+								"latency": 0,
+								"statusCode": 200,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [
+									{
+										"target": "params",
+										"modifier": "cid",
+										"value": "123",
+										"isRegex": false
+									}
+								],
+								"rulesOperator": "OR",
+								"disableTemplating": false
+							}
+						],
+						"enabled": true
+					},
+					{
+						"uuid": "",
+						"documentation": "",
+						"method": "get",
+						"endpoint": "bill-pay",
+						"responses": [
+							{
+								"uuid": "",
+								"body": "{\"succeeded\":true}",
+								"latency": 0,
+								"statusCode": 200,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [],
+								"rulesOperator": "OR",
+								"disableTemplating": false
+							},
+							{
+								"uuid": "",
+								"body": "",
+								"latency": 0,
+								"statusCode": 400,
+								"label": "",
+								"headers": [
+									{
+										"key": "",
+										"value": ""
+									}
+								],
+								"filePath": "",
+								"sendFileAsBody": false,
+								"rules": [],
+								"rulesOperator": "OR",
+								"disableTemplating": false
+							}
+						],
+						"enabled": true
+					}
+				],
+				"proxyMode": false,
+				"proxyHost": "",
+				"https": false,
+				"cors": true,
+				"headers": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"proxyReqHeaders": [
+					{
+						"key": "",
+						"value": ""
+					}
+				],
+				"proxyResHeaders": [
+					{
+						"key": "",
+						"value": ""
+					}
+				]
+			}
+		}
+	]
+}
+=======
     "source": "mockoon:1.10.0",
     "data": [
         {
