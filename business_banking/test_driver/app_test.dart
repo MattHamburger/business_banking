@@ -20,7 +20,16 @@ void main() {
     final customerDetailWeather = find.byValueKey('HCDweather');
     final customerDetailAddress = find.byValueKey('HCDaddress');
     final customerBackButton = find.pageBack();
-    
+
+    // mortgage feature widgets
+    final mortgageDetailButton = find.byValueKey('mortgageDetailButtonKey');
+    final mortgageDetailsAppBar = find.byValueKey('mortgageDetailsAppBar');
+    final mortgageInfoCardTitle = find.byValueKey('mortgageInfoCardTitle');
+    final mortgageInfoCardSubtitle =
+        find.byValueKey('mortgageInfoCardSubtitle');
+    final mortgageInfoCardMonthlyAmountDue =
+        find.byValueKey('mortgageInfoCardMonthlyAmountDue');
+
     // transfer funds widgets
     // transfer funds screen widgets
     final transferFundsButton = find.byValueKey('transfer_funds_button');
@@ -35,23 +44,38 @@ void main() {
     final dateTextField = find.byValueKey('date_text_field');
     final submitTransferButton = find.byValueKey('submit_transfer_button');
     // transfer confirmation screen widgets
-    final transferConfirmationBarTitle = find.byValueKey('transfer_confirmation_bar_title');
-    final transferConfirmationTitle = find.byValueKey('transaction_confirmation_title');
-    final transferConfirmationIdLabel = find.byValueKey('transfer_confirmation_id_label');
-    final transferConfirmationIdField = find.byValueKey('transfer_confirmation_id_field');
-    final transferConfirmationDateLabel = find.byValueKey('transfer_confirmation_date_label');
-    final transferConfirmationDateField = find.byValueKey('transfer_confirmation_date_field');
-    final transferConfirmationFromAccountLabel = find.byValueKey('transfer_confirmation_from_account_label');
-    final transferConfirmationFromAccountField = find.byValueKey('transfer_confirmation_from_account_field');
-    final transferConfirmationToAccountLabel = find.byValueKey('transfer_confirmation_to_account_label');
-    final transferConfirmationToAccountField = find.byValueKey('transfer_confirmation_to_account_field');
-    final transferConfirmationAmountLabel = find.byValueKey('transfer_confirmation_amount_label');
-    final transferConfirmationAmountField = find.byValueKey('transfer_confirmation_amount_field');
-    final transferConfirmationTypeLabel = find.byValueKey('transfer_confirmation_type_label');
-    final transferConfirmationTypeField = find.byValueKey('transfer_confirmation_type_field');
-    final anotherTransferButton = find.byValueKey('make_another_transfer_button');
+    final transferConfirmationBarTitle =
+        find.byValueKey('transfer_confirmation_bar_title');
+    final transferConfirmationTitle =
+        find.byValueKey('transaction_confirmation_title');
+    final transferConfirmationIdLabel =
+        find.byValueKey('transfer_confirmation_id_label');
+    final transferConfirmationIdField =
+        find.byValueKey('transfer_confirmation_id_field');
+    final transferConfirmationDateLabel =
+        find.byValueKey('transfer_confirmation_date_label');
+    final transferConfirmationDateField =
+        find.byValueKey('transfer_confirmation_date_field');
+    final transferConfirmationFromAccountLabel =
+        find.byValueKey('transfer_confirmation_from_account_label');
+    final transferConfirmationFromAccountField =
+        find.byValueKey('transfer_confirmation_from_account_field');
+    final transferConfirmationToAccountLabel =
+        find.byValueKey('transfer_confirmation_to_account_label');
+    final transferConfirmationToAccountField =
+        find.byValueKey('transfer_confirmation_to_account_field');
+    final transferConfirmationAmountLabel =
+        find.byValueKey('transfer_confirmation_amount_label');
+    final transferConfirmationAmountField =
+        find.byValueKey('transfer_confirmation_amount_field');
+    final transferConfirmationTypeLabel =
+        find.byValueKey('transfer_confirmation_type_label');
+    final transferConfirmationTypeField =
+        find.byValueKey('transfer_confirmation_type_field');
+    final anotherTransferButton =
+        find.byValueKey('make_another_transfer_button');
     FlutterDriver driver;
-    
+
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
@@ -61,36 +85,37 @@ void main() {
         driver.close();
       }
     });
-    
+
     // These will only pass with the specific JSON included in the Mockoon folder
-    
+
     test('LoginScreen, screen is displayed', () async {
       expect(await driver.getText(signInText), 'Sign In');
     });
-    
+
     test('CashAccountsScreen, navigated to and app bar is displayed', () async {
       await driver.tap(loginButton);
       await driver.waitForAbsent(loginButton);
       expect(await driver.getText(cashAccountAppBar), 'Business Banking');
     });
-    
+
     test('CashAccountsScreen, account balance is displayed on card', () async {
       expect(await driver.getText(cashAccountBalance), '\$3545.54');
     });
-    
+
     test('AccountDetailScreen, app bar is displayed', () async {
       await driver.tap(accountCard);
       expect(await driver.getText(accountDetailAppBar), '*6542');
     });
-    
+
     test('AccountDetailScreen, account balance is displayed', () async {
       expect(await driver.getText(bigBalance), '\$3545.54');
     });
-    
-    test('AccountDetailScreen, deposit hold ammount is displayed on card', () async {
+
+    test('AccountDetailScreen, deposit hold ammount is displayed on card',
+        () async {
       expect(await driver.getText(depHold), '\$0.00');
     });
-    
+
     test('CashAccountScreen, check to find correct app bar', () async {
       await driver.tap(backButton);
       await driver.waitForAbsent(accountDetailAppBar);
@@ -101,18 +126,21 @@ void main() {
       expect(await driver.getText(customerTileText), 'Hello Mr. Joe A');
     });
 
-    test('CustomerDetailScreen, navigate to and app bar is displayed', () async {
+    test('CustomerDetailScreen, navigate to and app bar is displayed',
+        () async {
       await driver.tap(customerTileButton);
       await driver.waitForAbsent(customerTileButton);
       expect(await driver.getText(customerDetailAppBar), 'Hello Customer');
     });
 
-    test('CustomerDetailScreen, name weather address is displayed on screen', () async {
+    test('CustomerDetailScreen, name weather address is displayed on screen',
+        () async {
       expect(await driver.getText(customerDetailName), 'Hello Mr. Joe A');
       expect(await driver.getText(customerDetailWeather), 'sunny');
-      expect(await driver.getText(customerDetailAddress), '1234 ABCD Rd, City, State 00000');
+      expect(await driver.getText(customerDetailAddress),
+          '1234 ABCD Rd, City, State 00000');
     });
-    
+
     test('CustomerScreen, check to find correct app bar', () async {
       await driver.tap(customerBackButton);
       await driver.waitForAbsent(customerDetailAppBar);
@@ -120,7 +148,8 @@ void main() {
     });
 
     // transfer funds feature
-    test('TransferFundsScreen, navigated to and app bar is displayed', () async {
+    test('TransferFundsScreen, navigated to and app bar is displayed',
+        () async {
       await driver.tap(transferFundsButton);
       await driver.waitForAbsent(transferFundsButton);
       expect(await driver.getText(transferFundsBarTitle), 'Transfer Funds');
@@ -147,10 +176,13 @@ void main() {
     });
 
     test('TransferFundsScreen, check date field is displayed', () async {
-      expect(await driver.getText(dateTextField), DateFormat('MM/dd/yyyy').format(DateTime.now()));
+      expect(await driver.getText(dateTextField),
+          DateFormat('MM/dd/yyyy').format(DateTime.now()));
     });
 
-    test('TransferFundsScreen, fill transfer form and navigate to confirmation screen', () async {
+    test(
+        'TransferFundsScreen, fill transfer form and navigate to confirmation screen',
+        () async {
       // select from account
       await driver.tap(fromAccountDropdown);
       await driver.tap(find.text('1111111111'));
@@ -169,33 +201,44 @@ void main() {
       await driver.waitFor(find.text('10.5'));
     });
 
-    test('TransferConfirmationScreen, navigated to and app bar is displayed', () async {
+    test('TransferConfirmationScreen, navigated to and app bar is displayed',
+        () async {
       await driver.tap(submitTransferButton);
       await driver.waitForAbsent(submitTransferButton);
-      expect(await driver.getText(transferConfirmationBarTitle), 'Transfer Confirmation');
+      expect(await driver.getText(transferConfirmationBarTitle),
+          'Transfer Confirmation');
     });
 
-    test('TransferConfirmationScreen, check all transfer confirmation data displayed', () async {
+    test(
+        'TransferConfirmationScreen, check all transfer confirmation data displayed',
+        () async {
       DateTime now = DateTime.now();
       int month = now.month;
       int year = now.year;
       String date = '$month/16/$year';
       expect(await driver.getText(transferConfirmationTitle), 'Transaction');
-      expect(await driver.getText(transferConfirmationIdLabel), 'Confirmation #:');
+      expect(
+          await driver.getText(transferConfirmationIdLabel), 'Confirmation #:');
       expect(await driver.getText(transferConfirmationIdField), '123456789');
-      expect(await driver.getText(transferConfirmationDateLabel), 'Transfer Date');
+      expect(
+          await driver.getText(transferConfirmationDateLabel), 'Transfer Date');
       expect(await driver.getText(transferConfirmationDateField), date);
-      expect(await driver.getText(transferConfirmationFromAccountLabel), 'From');
-      expect(await driver.getText(transferConfirmationFromAccountField), '1111111111');
+      expect(
+          await driver.getText(transferConfirmationFromAccountLabel), 'From');
+      expect(await driver.getText(transferConfirmationFromAccountField),
+          '1111111111');
       expect(await driver.getText(transferConfirmationToAccountLabel), 'To');
-      expect(await driver.getText(transferConfirmationToAccountField), '5555555555');
+      expect(await driver.getText(transferConfirmationToAccountField),
+          '5555555555');
       expect(await driver.getText(transferConfirmationAmountLabel), 'Amount');
       expect(await driver.getText(transferConfirmationAmountField), '\$10.5');
       expect(await driver.getText(transferConfirmationTypeLabel), 'Type');
       expect(await driver.getText(transferConfirmationTypeField), 'Transfer');
     });
 
-    test('TransferFundsScreen, navigating back from TransferConfirmation screen by pushing Make another transfer button', () async {
+    test(
+        'TransferFundsScreen, navigating back from TransferConfirmation screen by pushing Make another transfer button',
+        () async {
       await driver.tap(anotherTransferButton);
       await driver.waitForAbsent(anotherTransferButton);
       expect(await driver.getText(transferFundsBarTitle), 'Transfer Funds');
@@ -210,10 +253,35 @@ void main() {
       expect(await driver.getText(dateTextField), date);
     });
 
-    test('CashAccountScreen, navigating back from TransferFundsScreen, check to find correct app bar', () async {
+    test(
+        'CashAccountScreen, navigating back from TransferFundsScreen, check to find correct app bar',
+        () async {
       await driver.tap(find.pageBack());
       await driver.waitForAbsent(transferFundsBarTitle);
       expect(await driver.getText(cashAccountAppBar), 'Business Banking');
+    });
+
+    // mortgage widget tests
+    test('Mortgage info card title reads: MORTGAGE INFO', () async {
+      expect(await driver.getText(mortgageInfoCardTitle), 'MORTGAGE INFO');
+    });
+
+    test('Mortgage info card subtitle reads: Next payment amout due:',
+        () async {
+      expect(await driver.getText(mortgageInfoCardSubtitle),
+          'Next payment amout due:');
+    });
+
+    test('Mortgage info card monthly amout due reads: \$1,234.00', () async {
+      expect(
+          await driver.getText(mortgageInfoCardMonthlyAmountDue), '\$1,234.00');
+    });
+
+    test('Mortgage Details Screen navigated to and app bar is displayed',
+        () async {
+      await driver.tap(mortgageDetailButton);
+      await driver.waitForAbsent(mortgageDetailButton);
+      expect(await driver.getText(mortgageDetailsAppBar), 'Mortgage Details');
     });
   });
 }

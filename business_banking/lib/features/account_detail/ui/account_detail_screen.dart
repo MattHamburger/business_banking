@@ -1,13 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:business_banking/features/account_detail/model/account_detail_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
+
 import 'package:flutter/material.dart';
 
 class AccountDetailScreen extends Screen {
   final AccountDetailViewModel viewModel;
   final VoidCallback navigateToCashAccounts;
 
-  AccountDetailScreen({@required this.viewModel, @required this.navigateToCashAccounts})
+  AccountDetailScreen(
+      {@required this.viewModel, @required this.navigateToCashAccounts})
       : assert(() {
           return viewModel != null;
         }());
@@ -57,14 +59,19 @@ class AccountDetailScreen extends Screen {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Beginning Balance:', style: TextStyle(fontSize: 15.0)),
-                  Text('\$' + viewModel.beginningBalance.toStringAsFixed(2), style: TextStyle(fontSize: 15.0))
+                  Text('\$' + viewModel.beginningBalance.toStringAsFixed(2),
+                      style: TextStyle(fontSize: 15.0))
                 ],
               ),
               const SizedBox(height: 10.0),
               // Pending Transactions Row
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Pending Transactions:', style: TextStyle(fontSize: 15.0)), pendingCheck(viewModel.pendingTransactions)],
+                children: [
+                  Text('Pending Transactions:',
+                      style: TextStyle(fontSize: 15.0)),
+                  pendingCheck(viewModel.pendingTransactions)
+                ],
               ),
               const SizedBox(height: 10.0),
               // Deposit Holds Row
@@ -72,7 +79,8 @@ class AccountDetailScreen extends Screen {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Deposit Holds:', style: TextStyle(fontSize: 15.0)),
-                  Text('\$' + viewModel.depositHolds.toStringAsFixed(2), style: TextStyle(fontSize: 15.0), key: Key('depHold'))
+                  Text('\$' + viewModel.depositHolds.toStringAsFixed(2),
+                      style: TextStyle(fontSize: 15.0), key: Key('depHold'))
                 ],
               ),
               const SizedBox(height: 10.0),
@@ -81,7 +89,8 @@ class AccountDetailScreen extends Screen {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Account Balance:', style: TextStyle(fontSize: 15.0)),
-                  Text('\$' + viewModel.balance.toStringAsFixed(2), style: TextStyle(fontSize: 15.0))
+                  Text('\$' + viewModel.balance.toStringAsFixed(2),
+                      style: TextStyle(fontSize: 15.0))
                 ],
               ),
               const SizedBox(height: 10.0),
@@ -93,24 +102,28 @@ class AccountDetailScreen extends Screen {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Account Type: ' + viewModel.accountType, style: TextStyle(fontSize: 15.0)),
+                  Text('Account Type: ' + viewModel.accountType,
+                      style: TextStyle(fontSize: 15.0)),
                 ],
               ),
               const SizedBox(height: 10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Routing Number: ' + viewModel.routingNumber.toString(), style: TextStyle(fontSize: 15.0)),
+                  Text('Routing Number: ' + viewModel.routingNumber.toString(),
+                      style: TextStyle(fontSize: 15.0)),
                 ],
               ),
               const SizedBox(height: 10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Account Number: ••••••' + viewModel.lastFour, style: TextStyle(fontSize: 15.0)),
+                  Text('Account Number: ••••••' + viewModel.lastFour,
+                      style: TextStyle(fontSize: 15.0)),
                   Text(
                     'Show',
-                    style: TextStyle(decoration: TextDecoration.underline, fontSize: 15.0),
+                    style: TextStyle(
+                        decoration: TextDecoration.underline, fontSize: 15.0),
                   )
                 ],
               )
@@ -124,9 +137,11 @@ class AccountDetailScreen extends Screen {
 
 Text pendingCheck(double pendingTransactions) {
   if (pendingTransactions >= 0.00) {
-    return Text('\$' + pendingTransactions.toStringAsFixed(2), style: TextStyle(fontSize: 15.0));
+    return Text('\$' + pendingTransactions.toStringAsFixed(2),
+        style: TextStyle(fontSize: 15.0));
   } else {
     return Text('-\$' + pendingTransactions.toStringAsFixed(2).substring(1),
-        style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.red));
+        style: TextStyle(
+            fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.red));
   }
 }
