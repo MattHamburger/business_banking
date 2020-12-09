@@ -13,9 +13,9 @@ A JSON export from Mockoon of the environment can be found in the mockoon folder
 
 ### CashAccounts Screen
 
-| route | method | response |
-| --- | --- | --- |
-| /accounts | GET | 200 |
+\| route | method | response |
+\| --- | --- | --- |
+\| /accounts | GET | 200 |
 
 #### JSON
 ```json
@@ -28,9 +28,9 @@ A JSON export from Mockoon of the environment can be found in the mockoon folder
 
 ### AccountDetail Screen
 
-| route | method | response |
-| --- | --- | --- |
-| /account-details | GET | 200 |
+\| route | method | response |
+\| --- | --- | --- |
+\| /account-details | GET | 200 |
 
 #### JSON
 ```json

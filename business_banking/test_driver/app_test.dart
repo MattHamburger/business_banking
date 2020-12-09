@@ -50,6 +50,22 @@ void main() {
     final transferConfirmationTypeLabel = find.byValueKey('transfer_confirmation_type_label');
     final transferConfirmationTypeField = find.byValueKey('transfer_confirmation_type_field');
     final anotherTransferButton = find.byValueKey('make_another_transfer_button');
+
+    /// Bill Pay Info Keys
+    final billPayInfoScreenTitle = find.byValueKey('bill_pay_info_screen_title');
+    final toBillerTitle = find.byValueKey("to_biller_title");
+    final gasCompanyLabel = find.byValueKey("biller: Gas Company");
+    final gasCompanyAccountNumberLabel = find.byValueKey("billerAccountNumber: 9582");
+    final internetCompanyLabel = find.byValueKey("biller: Internet Company");
+    final internetCompanyAccountNumberLabel = find.byValueKey("billerAccountNumber: 6237");
+    final waterCompanyLabel = find.byValueKey("biller: Water Company");
+    final waterCompanyAccountNumberLabel = find.byValueKey("billerAccountNumber: 6092");
+    final electricCompanyLabel = find.byValueKey("biller: Electric Company");
+    final electricCompanyAccountNumberLabel = find.byValueKey("billerAccountNumber: 6129");
+    final submitBillPayButtonFinder = find.byValueKey("submit_bill_pay");
+    final submitBillPayLabel = find.byValueKey("submit_bill_pay_label");
+    /// End Bill Pay Info Keys
+
     FlutterDriver driver;
     
     setUpAll(() async {
@@ -63,34 +79,82 @@ void main() {
     });
     
     // These will only pass with the specific JSON included in the Mockoon folder
-    
+
+
     test('LoginScreen, screen is displayed', () async {
       expect(await driver.getText(signInText), 'Sign In');
     });
-    
+
     test('CashAccountsScreen, navigated to and app bar is displayed', () async {
       await driver.tap(loginButton);
       await driver.waitForAbsent(loginButton);
       expect(await driver.getText(cashAccountAppBar), 'Business Banking');
     });
-    
+
+
+    /// Begin Bill Pay Info Tests
+
+    test("BillPayInfoScreen title is displayed", () async {
+      expect(await driver.getText(billPayInfoScreenTitle), "Bill Pay");
+    });
+
+    test("To Biller title is displayed", () async {
+      expect(await driver.getText(toBillerTitle), "To Biller: ");
+    });
+
+    test("Gas company info is displayed", () async {
+      expect(await driver.getText(gasCompanyLabel), "Gas Company");
+      expect(await driver.getText(gasCompanyAccountNumberLabel), "9582");
+    });
+
+    test("Internet company info is displayed", () async {
+      expect(await driver.getText(internetCompanyLabel), "Internet Company");
+      expect(await driver.getText(internetCompanyAccountNumberLabel), "6237");
+    });
+
+    test("Water company info is displayed", () async {
+      expect(await driver.getText(waterCompanyLabel), "Water Company");
+      expect(await driver.getText(waterCompanyAccountNumberLabel), "6092");
+    });
+
+    test("Electric company info is displayed", () async {
+      expect(await driver.getText(electricCompanyLabel), "Electric Company");
+      expect(await driver.getText(electricCompanyAccountNumberLabel), "6129");
+    });
+
+    test("Submit button text is displayed", () async {
+
+      final scrollViewFinder = find.byValueKey("scroll_view");
+
+      await driver.scrollUntilVisible(
+        scrollViewFinder,
+        submitBillPayButtonFinder,
+        dyScroll: -100.0,
+      );
+
+      print("scrolling complete");
+      expect(await driver.getText(submitBillPayLabel), "Submit");
+    });
+    /// End Bill Pay Info Tests
+
+
     test('CashAccountsScreen, account balance is displayed on card', () async {
       expect(await driver.getText(cashAccountBalance), '\$3545.54');
     });
-    
+
     test('AccountDetailScreen, app bar is displayed', () async {
       await driver.tap(accountCard);
       expect(await driver.getText(accountDetailAppBar), '*6542');
     });
-    
+
     test('AccountDetailScreen, account balance is displayed', () async {
       expect(await driver.getText(bigBalance), '\$3545.54');
     });
-    
+
     test('AccountDetailScreen, deposit hold ammount is displayed on card', () async {
       expect(await driver.getText(depHold), '\$0.00');
     });
-    
+
     test('CashAccountScreen, check to find correct app bar', () async {
       await driver.tap(backButton);
       await driver.waitForAbsent(accountDetailAppBar);
@@ -112,7 +176,7 @@ void main() {
       expect(await driver.getText(customerDetailWeather), 'sunny');
       expect(await driver.getText(customerDetailAddress), '1234 ABCD Rd, City, State 00000');
     });
-    
+
     test('CustomerScreen, check to find correct app bar', () async {
       await driver.tap(customerBackButton);
       await driver.waitForAbsent(customerDetailAppBar);

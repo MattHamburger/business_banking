@@ -1,5 +1,5 @@
 {
-    "source": "mockoon:1.10.0",
+    "source": "mockoon:1.11.0",
     "data": [
         {
             "type": "environment",
@@ -242,6 +242,34 @@
                             }
                         ],
                         "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Fetches relevant information for user to submit a payment to a biller",
+                        "method": "get",
+                        "endpoint": "bill-pay-info",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"accounts\": [\n    {\n      \"account_title\": \"Checking Account\",\n      \"account_number\": \"6542\",\n      \"account_balance\": 3545.54,\n      \"account_status\": \"Active\"\n    },\n    {\n      \"account_title\": \"Savings Account\",\n      \"account_number\": \"6543\",\n      \"account_balance\": 0.02,\n      \"account_status\": \"Active\"\n    }\n  ],\n  \"billers\": [\n    {\n      \"biller_name\": \"Gas Company\",\n      \"account_number\": \"9582\"\n    },\n    {\n      \"biller_name\": \"Internet Company\",\n      \"account_number\": \"6237\"\n    },\n    {\n      \"biller_name\": \"Water Company\",\n      \"account_number\": \"6092\"\n    },\n    {\n      \"biller_name\": \"Electric Company\",\n      \"account_number\": \"6129\"\n    }\n  ],\n  \"rules\": {\n    \"memo_limit\": 256,\n    \"payment_min\": 1.00,\n    \"payment_max\": 100000.00\n  }\n}\n",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
                     }
                 ],
                 "proxyMode": false,
