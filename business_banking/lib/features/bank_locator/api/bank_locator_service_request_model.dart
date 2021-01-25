@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 class BankLocatorServiceRequestModel extends Equatable
     implements JsonRequestModel {
-  final String latitude;
-  final String longitude;
+  final double latitude;
+  final double longitude;
 
   const BankLocatorServiceRequestModel({this.latitude, this.longitude});
 
