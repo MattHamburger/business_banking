@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:business_banking/features/mobile_check_deposit/model/check_deposit_view_model.dart';
-import 'package:camera/camera.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
