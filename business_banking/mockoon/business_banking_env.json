@@ -1,11 +1,11 @@
 {
-    "source": "mockoon:1.10.0",
+    "source": "mockoon:1.11.0",
     "data": [
         {
             "type": "environment",
             "item": {
                 "uuid": "",
-                "lastMigration": 12,
+                "lastMigration": 13,
                 "name": "Business Banking Env",
                 "endpointPrefix": "",
                 "latency": 0,
@@ -36,7 +36,8 @@
                                 "rulesOperator": "OR"
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -63,7 +64,8 @@
                                 "rulesOperator": "OR"
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -115,7 +117,8 @@
                                 "disableTemplating": false
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -142,7 +145,8 @@
                                 "disableTemplating": false
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -169,7 +173,8 @@
                                 "disableTemplating": false
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -196,7 +201,8 @@
                                 "disableTemplating": false
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
                     },
                     {
                         "uuid": "",
@@ -241,11 +247,58 @@
                                 "disableTemplating": false
                             }
                         ],
-                        "enabled": true
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Sends a transfer and gets confirmation",
+                        "method": "post",
+                        "endpoint": "submit-deposit",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"1122334455\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"Bad Request\"\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
                     }
                 ],
-                "proxyMode": false,
-                "proxyHost": "",
+                "proxyMode": true,
+                "proxyHost": "http://10.0.2.2:80",
                 "https": false,
                 "cors": true,
                 "headers": [
