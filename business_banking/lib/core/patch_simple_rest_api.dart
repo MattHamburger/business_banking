@@ -16,6 +16,7 @@ class PatchSimpleRestApi extends RestApi {
   IOClient _ioClient;
 
   PatchSimpleRestApi({this.baseUrl = 'http://127.0.0.1:8080/service/'}) {
+    print(baseUrl);
     _httpClient = new HttpClient()
       //@TODO should we remove this? Not sure if its safe for release
       ..badCertificateCallback =
@@ -59,6 +60,7 @@ class PatchSimpleRestApi extends RestApi {
     Map<String, dynamic> requestJSON = requestBody;
 
     Response response;
+    print("request:"+baseUrl+path);
     Uri uri = Uri.parse(baseUrl + path);
 
     final variablesInPath = _getVariablesFromPath();
@@ -127,5 +129,11 @@ class PatchSimpleRestApi extends RestApi {
         content: '',
       );
     }
+  }
+
+  @override
+  Future<RestResponse> requestBinary({RestMethod method, String path, Map<String, dynamic> requestBody = const {}}) {
+    // TODO: implement requestBinary
+    throw UnimplementedError();
   }
 }
