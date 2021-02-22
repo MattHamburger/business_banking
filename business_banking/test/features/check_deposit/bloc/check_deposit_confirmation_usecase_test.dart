@@ -1,4 +1,6 @@
-import 'package:business_banking/features/transfer_funds/bloc/transfer_confirmation_usecase.dart';
+import 'package:business_banking/features/mobile_check_deposit/bloc/check_deposit_confirmation_usecase.dart';
+import 'package:business_banking/features/mobile_check_deposit/model/check_deposit_entity.dart';
+import 'package:business_banking/features/mobile_check_deposit/model/check_deposit_view_model.dart';
 import 'package:business_banking/features/transfer_funds/model/transfer_confirmation_view_model.dart';
 import 'package:business_banking/features/transfer_funds/model/transfer_entity.dart';
 import 'package:business_banking/locator.dart';
@@ -9,19 +11,17 @@ void main() {
 
     TransferConfirmationViewModel model;
     DateTime date = DateTime.now();
-    TransferFundsEntity entity = TransferFundsEntity(
-        fromAccount: '1111111111',
+    CheckDepositEntity entity = CheckDepositEntity(
         toAccount: '4444444444',
         amount: '25.6',
         date: date,
-        fromAccounts: ['1111111111', '2222222222', '3333333333'],
         toAccounts: ['4444444444', '5555555555', '6666666666'],
         id: '123456789');
 
-    ExampleLocator().repository.create<TransferFundsEntity>(entity, null);
+    ExampleLocator().repository.create<CheckDepositEntity>(entity, null);
 
-    TransferConfirmationUseCase useCase =
-        TransferConfirmationUseCase((viewModel) {
+    CheckDepositConfirmationUseCase useCase =
+    CheckDepositConfirmationUseCase((viewModel) {
       model = viewModel;
     });
 
@@ -29,9 +29,10 @@ void main() {
     useCase.create();
     expect(
         model,
-        TransferConfirmationViewModel(
-            fromAccount: '1111111111',
+        CheckDepositViewModel(
             toAccount: '4444444444',
+            checkFrontImage: 'checkFrontImage',
+            checkBackImage: 'checkBackImage',
             amount: '25.6',
             date: date,
             id: '123456789'));
@@ -39,6 +40,6 @@ void main() {
     useCase.clearTransferData();
     final _scope = ExampleLocator().repository.containsScope<TransferFundsEntity>();
     var clearEntity = ExampleLocator().repository.get<TransferFundsEntity>(_scope);
-    expect(clearEntity, TransferFundsEntity(fromAccounts: entity.fromAccounts));
+    expect(clearEntity, CheckDepositEntity(toAccounts: entity.toAccounts));
   });
 }

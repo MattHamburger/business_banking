@@ -9,13 +9,14 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('CheckDepositServiceTest success', () async {
     final service = CheckDepositService();
-    final requestModel = new CheckDepositRequestModel(toAccount: '5555555555', amount: "1", date: DateTime.now());
+    final requestModel = new CheckDepositRequestModel(toAccount: '5555555555', checkFrontImage: "", checkBackImage: "",
+        amount: "1", date: DateTime.now());
     final eitherResponse = await service.request(requestModel: requestModel);
 
     expect(eitherResponse.isRight, isTrue);
     expect(
         eitherResponse.fold((_) {}, (m) => m),
-        CheckDepositResponseModel.fromJson({"confirmation" : "123456789"})
+        CheckDepositResponseModel.fromJson({"confirmation" : "1122334455"})
     );
   });
 }
