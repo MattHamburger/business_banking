@@ -33,29 +33,6 @@ class CheckDepositCard extends StatelessWidget {
                 style: TextStyle(color: Colors.lightGreen, fontSize: 30.0),
           ),
         ),
-        // child: Padding(
-        //   padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-        //   child: Column(
-        //       mainAxisSize: MainAxisSize.max,
-        //     children: <Widget>[
-        //       Expanded(
-        //         child: AutoSizeText('Mobile Check Deposit',
-        //             style: TextStyle(color: Colors.lightGreen, fontSize: 30.0),
-        //         ),
-        //       ),
-        //       OutlineButton(
-        //         color: Colors.transparent,
-        //         onPressed: () => Navigator.push(
-        //             context,
-        //             new MaterialPageRoute(
-        //                 builder: (BuildContext context) =>
-        //                     new TransferFundsWidget(),
-        //                 maintainState: false)),
-        //       )
-        //     ],
-        //
-        //   ),
-        // ),
       ),
     ));
   }
