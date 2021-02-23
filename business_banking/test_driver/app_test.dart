@@ -1,5 +1,12 @@
+
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:flutter/services.dart';
+import 'package:flutter_driver/driver_extension.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -50,6 +57,39 @@ void main() {
     final transferConfirmationTypeLabel = find.byValueKey('transfer_confirmation_type_label');
     final transferConfirmationTypeField = find.byValueKey('transfer_confirmation_type_field');
     final anotherTransferButton = find.byValueKey('make_another_transfer_button');
+
+
+    // check deposit widgets
+    // check deposit screen widgets
+    final checkDepositButton = find.byValueKey('check_deposit_button');
+    final checkDepositBarTitle = find.byValueKey('check_deposit_bar_title');
+    final checkDepositToAccountLabel = find.byValueKey('check_deposit_to_label');
+    final checkDepositToAccountDropdown = find.byType('CDToAccountsDropDown');
+    final checkDepositAmountLabel = find.byValueKey('cd_amount_label');
+    final checkDepositamountTextField = find.byValueKey('cd_amount_text_field');
+    final checkDepositdateLabel = find.byValueKey('cd_date_label');
+    final checkDepositdateTextField = find.byValueKey('cd_date_text_field');
+    final frontOfCheckPlaceHolder = find.byValueKey('front_of_check_place_holder');
+    final backOfCheckPlaceHolder = find.byValueKey('back_of_check_place_holder');
+    final iconFrontCheckCapture = find.byValueKey('icon_front_check_capture');
+    final iconBackCheckCapture = find.byValueKey('icon_back_check_capture');
+    final submitDepositButton = find.byValueKey('submit_deposit_button');
+
+   // check deposit confirmation screen widgets
+    final checkDepositConfirmationBarTitle = find.byValueKey('check_deposit_confirmation_bar_title');
+    final checkDepositConfirmationTitle = find.byValueKey('check_deposit_confirmation_title');
+    final checkDepositConfirmationIdLabel = find.byValueKey('check_deposit_confirmation_id_label');
+    final checkDepositConfirmationIdField = find.byValueKey('check_deposit_confirmation_id_field');
+    final checkDepositConfirmationDateLabel = find.byValueKey('check_deposit_confirmation_date_label');
+    final checkDepositConfirmationDateField = find.byValueKey('check_deposit_confirmation_date_field');
+    final checkDepositConfirmationToAccountLabel = find.byValueKey('check_deposit_confirmation_to_account_label');
+    final checkDepositConfirmationToAccountField = find.byValueKey('check_deposit_confirmation_to_account_field');
+    final checkDepositConfirmationAmountLabel = find.byValueKey('check_deposit_confirmation_amount_label');
+    final checkDepositConfirmationAmountField = find.byValueKey('check_deposit_confirmation_amount_field');
+    final checkDepositConfirmationTypeLabel = find.byValueKey('check_deposit_confirmation_type_label');
+    final checkDepositConfirmationTypeField = find.byValueKey('check_deposit_confirmation_type_field');
+    final anotherSubmitDepositButton = find.byValueKey('make_another_check_deposit_button');
+
     FlutterDriver driver;
     
     setUpAll(() async {
@@ -215,5 +255,79 @@ void main() {
       await driver.waitForAbsent(transferFundsBarTitle);
       expect(await driver.getText(cashAccountAppBar), 'Business Banking');
     });
+
+
+    // check deposit feature
+    test('CheckDepositScreen, navigated to and app bar is displayed', () async {
+      await driver.tap(checkDepositButton);
+      await driver.waitForAbsent(checkDepositButton);
+      expect(await driver.getText(checkDepositBarTitle), 'Mobile Check Deposit');
+    });
+
+    test('CheckDepositScreen, check to label is displayed', () async {
+      expect(await driver.getText(checkDepositToAccountLabel), 'To');
+    });
+
+    test('CheckDepositScreen, check amount label is displayed', () async {
+      expect(await driver.getText(checkDepositAmountLabel), 'Amount');
+    });
+
+    test('CheckDepositScreen, check amount field is displayed', () async {
+      expect(await driver.getText(checkDepositamountTextField), '');
+    });
+
+    test('CheckDepositScreen, check date label is displayed', () async {
+      expect(await driver.getText(checkDepositdateLabel), 'Check Deposit date');
+    });
+
+    test('CheckDepositScreen, check date field is displayed', () async {
+      expect(await driver.getText(checkDepositdateTextField), DateFormat('MM/dd/yyyy').format(DateTime.now()));
+    });
+
+    test('CheckDepositScreen, check front of check place holder is displayed', () async {
+      expect(await driver.getText(frontOfCheckPlaceHolder),'');
+    });
+
+    test('CheckDepositScreen, check back of check place holder is displayed', () async {
+      expect(await driver.getText(backOfCheckPlaceHolder), '');
+    });
+
+
+    test('CheckDepositScreen, fill check deposit form and navigate to confirmation screen', () async {
+      // select from account
+      // select data
+      await driver.tap(checkDepositdateTextField);
+      await driver.tap(find.text('16'));
+      await driver.tap(find.text('OK'));
+      // enter amount 10.5
+      await driver.tap(checkDepositamountTextField);
+      await driver.enterText('10.5');
+      // choose to account
+      await driver.tap(checkDepositToAccountDropdown);
+      await driver.tap(find.text('5555555555'));
+      await driver.waitFor(find.text('5555555555'));
+      await driver.waitFor(find.text('10.5'));
+
+      await driver.tap(iconFrontCheckCapture);
+      await driver.tap(iconBackCheckCapture);
+
+      enableFlutterDriverExtension();
+
+      const MethodChannel channel =
+      MethodChannel('plugins.flutter.io/image_picker');
+
+      channel.setMockMethodCallHandler((MethodCall methodCall) async {
+        ByteData data = await rootBundle.load('images/sample.png');
+        Uint8List bytes = data.buffer.asUint8List();
+        Directory tempDir = await getTemporaryDirectory();
+        File file = await File('${tempDir.path}/tmp.tmp', ).writeAsBytes(bytes);
+        print(file.path);
+        return file.path;
+      });
+
+      await driver.tap(submitDepositButton);
+
+    });
   });
+
 }

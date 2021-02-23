@@ -97,7 +97,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
           Container(
             child: Text(
               'To',
-              key: Key('to_label'),
+              key: Key('check_deposit_to_label'),
             ),
             width: double.infinity,
           ),
@@ -107,10 +107,10 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
               onChangeSelectedToAccount: widget.onChangeSelectedToAccount),
           SizedBox(height: 15.0),
           SizedBox(height: 5.0),
-          Text('Amount', key: Key('amount_label')),
+          Text('Amount', key: Key('cd_amount_label')),
           SizedBox(height: 15.0),
           TextField(
-            key: Key('amount_text_field'),
+            key: Key('cd_amount_text_field'),
             onChanged: (String value) {
               widget.onChangeAmount(value);
             },
@@ -126,12 +126,12 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
             ),
           ),
           SizedBox(height: 20.0),
-          Text('Transfer date', key: Key('date_label')),
+          Text('Check Deposit date', key: Key('cd_date_label')),
           SizedBox(
             height: 15.0,
           ),
           TextField(
-            key: Key('date_text_field'),
+            key: Key('cd_date_text_field'),
             controller: TextEditingController()
               ..text = DateFormat('MM/dd/yyyy').format(widget.viewModel.date),
             onTap: () {
@@ -157,6 +157,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     IconButton(
+                      key: Key('icon_front_check_capture'),
                       icon: Icon(Icons.add_a_photo),
                       onPressed: () {
                         // Navigator.replace(context);
@@ -164,7 +165,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
                       },
                     ),
 
-                    CheckPreviewWidget(
+                    CheckPreviewWidget(key: Key('front_of_check_place_holder'),
                         file: _fileForFront, type: "Front Of Check", viewModel: widget.viewModel),
                     // widget.checkFrontImage(getBase64OfCheck(_fileForFront))
                   ],
@@ -176,6 +177,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     IconButton(
+                      key: Key('icon_back_check_capture'),
                       icon: Icon(Icons.add_a_photo),
                       onPressed: () {
                         _onClickCamera("Back");
@@ -184,6 +186,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
                     // widget.checkBackImage(getFileBase64(_fileForBack).toString()),
                     // widget.checkBackImage(getBase64OfCheck(_fileForBack)),
                     CheckPreviewWidget(
+                        key: Key('back_of_check_place_holder'),
                         file: _fileForBack, type: "Back Of Check", viewModel: widget.viewModel),
                   ],
                 ),
@@ -191,7 +194,7 @@ class CheckDepositState extends State<CheckDepositTransactionWidget> {
             ],
           ),
           RaisedButton(
-            key: Key('submit_transfer_button'),
+            key: Key('submit_deposit_button'),
             textColor: Colors.white,
             color: Colors.black54,
             child: Text('Submit'),

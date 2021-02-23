@@ -58,7 +58,7 @@ class CheckDepositConfirmationScreen extends Screen {
                     'To',
                     viewModel.toAccount,
                     'check_deposit_confirmation_to_account_label',
-                    'transfer_confirmation_to_account_field'),
+                    'check_deposit_confirmation_to_account_field'),
                 SizedBox(
                   height: 15.0,
                 ),
@@ -73,8 +73,8 @@ class CheckDepositConfirmationScreen extends Screen {
                 TransactionLane(
                     'Type',
                     'Check Deposit',
-                    'transfer_confirmation_type_label',
-                    'transfer_confirmation_type_field'),
+                    'check_deposit_confirmation_type_label',
+                    'check_deposit_confirmation_type_field'),
                 SizedBox(
                   height: 15.0,
                 ),
