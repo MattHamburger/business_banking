@@ -1,6 +1,322 @@
 {
-    "source": "mockoon:1.11.0",
+    "source": "mockoon:1.12.0",
     "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 13,
+                "name": "Demo API",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 30,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Use multiple responses with rules",
+                        "method": "post",
+                        "endpoint": "content/:param1",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"Rules example\": \"Default response. Served if route param 'param1' is not present.\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Default response",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"Rules example\": \"Content XYZ. Served if route param 'param1' equals 'xyz'. (See in 'Rules' tab)\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Content XYZ",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "param1",
+                                        "value": "xyz",
+                                        "isRegex": false
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"Rules example\": \"Content not found. Served if route param 'param1' is not equal to 'xyz'. (See in 'Rules' tab)\"\n}\n",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "Content not found",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "param1",
+                                        "value": "^(?!.*xyz).*$",
+                                        "isRegex": true
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Generate random body (JSON, text, CSV, etc) with templating",
+                        "method": "get",
+                        "endpoint": "users",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"Templating example\": \"For more information about templating, click the blue 'i' above this editor\",\n  \"users\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"userId\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n        \"firstname\": \"{{ faker 'name.firstName' }}\",\n        \"lastname\": \"{{ faker 'name.lastName' }}\",\n        \"friends\": [\n          {{# repeat (faker 'random.number' 5) }}\n            {\n              \"id\": \"{{ faker 'random.uuid' }}\"\n            }\n          {{/ repeat }}\n        ]\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Creates 10 random users, or the amount specified in the 'total' query param",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Serve a file dynamically depending on the path param 'pageName'.",
+                        "method": "get",
+                        "endpoint": "file/:pageName",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Templating is also supported in file path",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "text/html"
+                                    }
+                                ],
+                                "filePath": "./page{{urlParam 'pageName'}}.html",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Path supports various patterns",
+                        "method": "put",
+                        "endpoint": "path/with/pattern(s)?/*",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "The current path will match the following routes: \nhttp://localhost:3000/path/with/pattern/\nhttp://localhost:3000/path/with/patterns/\nhttp://localhost:3000/path/with/patterns/anything-else\n\nLearn more about Mockoon's routing: https://mockoon.com/docs/latest/routing",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "text/plain"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Can Mockoon forward or record entering requests?",
+                        "method": "get",
+                        "endpoint": "forward-and-record",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "Mockoon can also act as a proxy and forward all entering requests that are not caught by declared routes. \nYou can activate this option in the environment settings ('cog' icon in the upper right corner). \nTo learn more: https://mockoon.com/docs/latest/proxy-mode\n\nAs always, all entering requests, and responses from the proxied server will be recorded ('clock' icon in the upper right corner).\nTo learn more: https://mockoon.com/docs/latest/requests-logging",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "text/plain"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        },
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 13,
+                "name": "New environment",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 300,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        },
         {
             "type": "environment",
             "item": {
@@ -259,6 +575,392 @@
                             {
                                 "uuid": "",
                                 "body": "{\n  \"type\": \"Employee Checking\", \n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "investment-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"accountBalance\" : 1169.02,\n  \"totalGainValue\" : -47.16,\n  \"totalGainPercent\" : 3.88\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        },
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 13,
+                "name": "Business Banking Env",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 3001,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Gets info for CashAccounts screen",
+                        "method": "get",
+                        "endpoint": "cash_accounts",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"type\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "disableTemplating": false,
+                                "rulesOperator": "OR"
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets info for AccountDetail screen",
+                        "method": "get",
+                        "endpoint": "account-details",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"name\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"accountType\": \"Employee Checking\",\n  \"routingNum\": 746395735,\n  \"balance\": 3545.54,\n  \"begBalance\": 3674.43,\n  \"penTrans\": -128.89,\n  \"depHolds\": 0.00\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "disableTemplating": false,
+                                "rulesOperator": "OR"
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "promos/:cid",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \n  \"imageUrl\":\"https://via.placeholder.com/300\",\n  \"externalUrl\": \"https://www.huntington.com/\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "cid",
+                                        "value": "123",
+                                        "isRegex": false
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets name for Customer screen",
+                        "method": "get",
+                        "endpoint": "customer",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"honorific\": \"Mr.\",\n  \"firstName\": \"Joe\",\n  \"lastName\": \"A\",\n  \"accountType\": \"private\",\n  \"nickName\": \"\",\n  \"address\": \"1234 ABCD Rd, City, State 00000\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets accounts from for transfer funds",
+                        "method": "get",
+                        "endpoint": "transfer-accounts-from",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"fromAccounts\": [\"1111111111\", \"2222222222\", \"3333333333\" ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets accounts to for transfer funds",
+                        "method": "post",
+                        "endpoint": "transfer-accounts-to",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"toAccounts\": [\"4444444444\", \"5555555555\", \"6666666666\" ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Sends a transfer and gets confirmation",
+                        "method": "post",
+                        "endpoint": "transfer-send",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"123456789\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"Bad Request\"\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "cash-accounts",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"type\": \"Employee Checking\", \n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "investment-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"accountBalance\" : 166996.5,\n  \"totalGainValue\" : -6557.0,\n  \"totalGainPercent\" : -36.07\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "investment-details-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n     \"accountBalance\" : 166996.50,\n  \"totalGainValue\" : -6557.00,\n  \"totalGainPercent\" : -26.07,\n  \"investments\" : [\n    {\n      \"symbol\" : \"CRSP\",\n      \"dayGainValue\" : 76.00,\n      \"dayGainPercent\" : 0.33,\n      \"price\" : 114.00,\n      \"marketValue\" : 22800.00,\n      \"count\" : 200\n    },\n        {\n      \"symbol\" : \"TXG\",\n      \"dayGainValue\" : -4347.00,\n      \"dayGainPercent\" : -9.31,\n      \"price\" : 114.00,\n      \"marketValue\" : 42303.00,\n      \"count\" : 300\n    },\n        {\n      \"symbol\" : \"JMIA\",\n      \"dayGainValue\" : -1050.00,\n      \"dayGainPercent\" : -9.38,\n      \"price\" : 34.00,\n      \"marketValue\" : 10200.00,\n      \"count\" : 300\n    },\n        {\n      \"symbol\" : \"BABA\",\n      \"dayGainValue\" : -360.00,\n      \"dayGainPercent\" : -3.08,\n      \"price\" : 226.69,\n      \"marketValue\" : 11334.5,\n      \"count\" : 50\n    },\n        {\n      \"symbol\" : \"FCEL\",\n      \"dayGainValue\" : -172.00,\n      \"dayGainPercent\" : -3.3,\n      \"price\" : 12.8,\n      \"marketValue\" : 5120.00,\n      \"count\" : 400\n    },\n        {\n      \"symbol\" : \"AAPL\",\n      \"dayGainValue\" : -253.00,\n      \"dayGainPercent\" : -5.2,\n      \"price\" : 116.84,\n      \"marketValue\" : 5842.00,\n      \"count\" : 50\n    },\n        {\n      \"symbol\" : \"TSLA\",\n      \"dayGainValue\" : -699.00,\n      \"dayGainPercent\" : -5.84,\n      \"price\" : 567.00,\n      \"marketValue\" : 11340.00,\n      \"count\" : 20\n    },\n        {\n      \"symbol\" : \"PLUG\",\n      \"dayGainValue\" : -476.00 ,\n      \"dayGainPercent\" : -3.03,\n      \"price\" : 38.9,\n      \"marketValue\" : 15560.00,\n      \"count\" : 400\n    },\n        {\n      \"symbol\" : \"NNDM\",\n      \"dayGainValue\" : 680.00,\n      \"dayGainPercent\" : 4.47,\n      \"price\" : 8.13,\n      \"marketValue\" : 16260.00,\n      \"count\" : 2000\n    },\n        {\n      \"symbol\" : \"COTY\",\n      \"dayGainValue\" : 120.00,\n      \"dayGainPercent\" : 0.51,\n      \"price\" : 7.85,\n      \"marketValue\" : 23550.00,\n      \"count\" : 3000\n    },\n        {\n      \"symbol\" : \"SPCE\",\n      \"dayGainValue\" : -76.00,\n      \"dayGainPercent\" : 2.78,\n      \"price\" : 26.87,\n      \"marketValue\" : 2687.00,\n      \"count\" : 100\n    }\n    \n    ]\n}",
                                 "latency": 0,
                                 "statusCode": 200,
                                 "label": "",
