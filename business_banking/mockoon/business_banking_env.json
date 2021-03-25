@@ -277,6 +277,33 @@
                         ],
                         "enabled": true,
                         "randomResponse": false
+                    },
+                    {
+                      "uuid": "",
+                      "documentation": "/top-headlines endpoint from newsapi.org",
+                      "method": "get",
+                      "endpoint": "news",
+                      "responses": [
+                        {
+                          "uuid": "",
+                          "body": "{\n  \"status\": \"ok\",\n  \"totalResults\": 5,\n  \"articles\": [\n    {\n      \"source\": {\n        \"id\": null,\n        \"name\": \"New York Post\"\n      },\n      \"author\": \"Natalie O'Neill\",\n      \"title\": \"Texas governor fires back at Biden: Releasing migrants with COVID is 'Neanderthal thinking' - New York Post \",\n      \"description\": \"Texas Gov. Greg Abbott fired back at President Biden on Thursday for accusing him and other red-state leaders of “Neanderthal thinking” for lifting COVID-19 mask mandates — insisting it…\",\n      \"url\": \"https://nypost.com/2021/03/04/texas-gov-greg-abbott-fires-back-at-biden-for-neanderthal-remark/\",\n      \"urlToImage\": \"https://nypost.com/wp-content/uploads/sites/2/2021/03/greg-abbott-joe-biden-32.jpg?quality=90&strip=all&w=1200\",\n      \"publishedAt\": \"2021-03-04T19:26:00Z\",\n      \"content\": \"Texas Gov. Greg Abbott fired back at President Biden on Thursday for accusing him and other red-state leaders of “Neanderthal thinking” for lifting COVID-19 mask mandates insisting it is the presiden.\"\n    },\n    {\n      \"source\": {\n        \"id\": null,\n        \"name\": \"New York Times\"\n      },\n      \"author\": \"Hannah Beech\",\n      \"title\": \"In Myanmar Protests, Women Are on the Front Lines - The New York Times\",\n      \"description\": \"Despite the danger, women have been at the forefront of the movement, rebuking the generals who ousted a female civilian leader.\",\n      \"url\": \"https://www.nytimes.com/2021/03/04/world/asia/myanmar-protests-women.html\",\n      \"urlToImage\": \"https://static01.nyt.com/images/2021/03/04/world/04myanmar-women-promo/04myanmar-women-promo-facebookJumbo.jpg\",\n      \"publishedAt\": \"2021-03-04T19:08:18Z\",\n      \"content\": \"Even though these are dark days and my heart breaks with all these images of bloodshed, Im more optimistic because I see women on the street, said Dr. Miemie Winn Byrd, a Burmese-American who served.\"\n    },\n    {\n      \"source\": {\n        \"id\": null,\n        \"name\": \"CNET\"\n      },\n      \"author\": \"Jackson Ryan\",\n      \"title\": \"A super-Earth just discovered in our cosmic backyard might contain an atmosphere - CNET\",\n      \"description\": \"Gliese 486 b is an interesting candidate when it comes to studying exoplanet atmospheres.\",\n      \"url\": \"https://www.cnet.com/news/a-super-earth-just-discovered-in-our-cosmic-backyard-might-contain-an-atmosphere/\",\n      \"urlToImage\": \"https://cnet1.cbsistatic.com/img/Z2jhb3WnzSJsMcAbj0fIZNS_yQI=/1200x630/2021/03/04/545fbd76-6b11-4cb8-8c80-3a15dedbac54/gliese1.jpg\",\n      \"publishedAt\": \"2021-03-04T19:00:03Z\",\n      \"content\": \"Gliese 486 b is incredibly close to its host star, with an orbital period of just 1.5 days.\\r\\nRenderArea\\r\\nAbout 26 light-years from Earth lies Gliese 486, a red dwarf star. These types of stars litter.\"\n    },\n    {\n      \"source\": {\n        \"id\": \"nbc-news\",\n        \"name\": \"NBC News\"\n      },\n      \"author\": \"Minyvonne Burke\",\n      \"title\": \"Alabama governor extends mask order but says mandate will end in April - NBC News\",\n      \"description\": \"The governor of Alabama said she will extend the state's mask mandate through April 9 and then lift the order.\",\n      \"url\": \"https://www.nbcnews.com/news/us-news/alabama-governor-extends-mask-order-says-mandate-will-end-april-n1259638\",\n      \"urlToImage\": \"https://media4.s-nbcnews.com/j/newscms/2021_09/3454444/f_mo_al_gov_210304-00_00_03_13-still001_09119c1ad05704ccda229417178c3808.nbcnews-fp-1200-630.jpg\",\n      \"publishedAt\": \"2021-03-04T18:43:00Z\",\n      \"content\": \"The governor of Alabama said Thursday that she will extend the state's mask mandate through April 9 and then lift the order.\\r\\nGov. Kay Ivey said the extension would give businesses time to implement.\"\n    },\n    {\n      \"source\": {\n        \"id\": null,\n        \"name\": \"CBS Sports\"\n      },\n      \"author\": \"Doha Madani\",\n      \"title\": \"Overtime set to launch professional high school basketball league that pays players $100K - CBS Sports\",\n      \"description\": \"The league is hoping to become an alternative to college for young basketball stars\",\n      \"url\": \"https://www.cbssports.com/nba/news/overtime-set-to-launch-professional-high-school-basketball-league-that-pays-players-100k/\",\n      \"urlToImage\": \"https://sportshub.cbsistatic.com/i/r/2021/02/12/68a8d2d0-fce0-4638-bcf6-b8bf44ca80f2/thumbnail/1200x675/d008f1f214bdb955144a2fbc3691b549/gettyimages-1227756687.jpg\",\n      \"publishedAt\": \"2021-03-04T18:27:17Z\",\n      \"content\": \"While a majority of NBA players make quite a good living through their contracts, college and high school basketball stars playing for free has been a hot button issue for years. Multimedia sports.\"\n    }\n  ]\n}",
+                          "latency": 0,
+                          "statusCode": 200,
+                          "label": "",
+                          "headers": [
+                            
+                          ],
+                          "filePath": "",
+                          "sendFileAsBody": false,
+                          "rules": [
+                            
+                          ],
+                          "rulesOperator": "OR",
+                          "disableTemplating": false
+                        }
+                      ],
+                      "enabled": true,
+                      "randomResponse": false
                     }
                 ],
                 "proxyMode": false,

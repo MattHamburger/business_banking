@@ -86,6 +86,16 @@ void main() {
         find.byValueKey('transfer_confirmation_type_field');
     final anotherTransferButton =
         find.byValueKey('make_another_transfer_button');
+
+    final containerListView = find.byValueKey('containerListView');
+    final builderListView = find.byValueKey('builderListView');
+    final disclosureAction = find.byValueKey('disclosureAction0');
+    final newsDetailsScreenAppBar = find.byValueKey('NewsDetailsScreenAppBar');
+    final newsDetailsTitle = find.byValueKey('NewsDetailsTitle');
+    final newsDetailsAuthor = find.byValueKey('NewsDetailsAuthor');
+    final newsDetailsDate = find.byValueKey('NewsDetailsDate');
+    final newsDetailsDesc = find.byValueKey('NewsDetailsDesc');
+
     FlutterDriver driver;
 
     setUpAll(() async {
@@ -96,6 +106,25 @@ void main() {
       if (driver != null) {
         driver.close();
       }
+    });
+
+    /// These will only pass with the specific JSON included in the Mockoon folder
+    test('Hub is displayed with news widget', () async {
+      expect(await driver.getText(signInText), 'Sign In');
+
+      await driver.tap(loginButton);
+      await driver.waitForAbsent(loginButton);
+      expect(await driver.getText(cashAccountAppBar), 'Business Banking');
+
+      await driver.waitForAbsent(containerListView);
+      await driver.waitForAbsent(builderListView);
+      await driver.tap(disclosureAction);
+
+      await driver.waitForAbsent(newsDetailsScreenAppBar);
+      await driver.waitForAbsent(newsDetailsTitle);
+      await driver.waitForAbsent(newsDetailsAuthor);
+      await driver.waitForAbsent(newsDetailsDate);
+      await driver.waitForAbsent(newsDetailsDesc);
     });
 
     /// These will only pass with the specific JSON included in the Mockoon folder
