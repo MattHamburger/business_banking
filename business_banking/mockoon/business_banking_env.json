@@ -1,5 +1,5 @@
 {
-    "source": "mockoon:1.11.0",
+    "source": "mockoon:1.12.0",
     "data": [
         {
             "type": "environment",
@@ -268,6 +268,29 @@
                                         "value": ""
                                     }
                                 ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get list of todos",
+                        "method": "get",
+                        "endpoint": "todos",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "[\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 1,\r\n    \"title\": \"delectus aut autem\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 2,\r\n    \"title\": \"quis ut nam facilis et officia qui\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 3,\r\n    \"title\": \"fugiat veniam minus\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 4,\r\n    \"title\": \"et porro tempora\",\r\n    \"completed\": true\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 5,\r\n    \"title\": \"laboriosam mollitia et enim quasi adipisci quia provident illum\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 6,\r\n    \"title\": \"qui ullam ratione quibusdam voluptatem quia omnis\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 7,\r\n    \"title\": \"illo expedita consequatur quia in\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 8,\r\n    \"title\": \"quo adipisci enim quam ut ab\",\r\n    \"completed\": true\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 9,\r\n    \"title\": \"molestiae perspiciatis ipsa\",\r\n    \"completed\": false\r\n  },\r\n  {\r\n    \"userId\": 1,\r\n    \"id\": 10,\r\n    \"title\": \"illo est ratione doloremque quia maiores aut\",\r\n    \"completed\": true\r\n  }\r\n]",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
                                 "filePath": "",
                                 "sendFileAsBody": false,
                                 "rules": [],

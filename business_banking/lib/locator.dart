@@ -1,7 +1,9 @@
 import 'package:business_banking/dependency/url_launcher.dart';
+import 'package:business_banking/features/todo/model/item/todo_item_entity.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_defaults.dart';
 import 'core/patch_simple_rest_api.dart';
+import 'duplicationRepository.dart';
 
 ExampleLocator locator() => ExampleLocator();
 
@@ -26,7 +28,7 @@ class ExampleLocator implements Locator {
   UrlLauncher urlLauncher = UrlLauncher();
 
   PatchSimpleRestApi api = PatchSimpleRestApi(
-      baseUrl: 'http://localhost:3001/'); // Points to Mockoon instance
+      baseUrl: 'http://10.0.2.2:3001/'); // Points to Mockoon instance
 
-  Repository repository = Repository();
+  DuplicationRepository repository = DuplicationRepository();
 }
