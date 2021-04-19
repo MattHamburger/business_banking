@@ -15,7 +15,7 @@ class LoginPresenter extends Presenter<LoginBloc, LoginViewModel, LoginScreen> {
         return;
       } else if (viewModel.serviceStatus == ServiceStatus.fail) {
         _showErrorDialog(context);
-      } else if (viewModel.serviceStatus == ServiceStatus.unknown) {
+      } else if (viewModel.dataStatus == DataStatus.invalid) {
         _showInvalidDataDialog(context);
       }
     });

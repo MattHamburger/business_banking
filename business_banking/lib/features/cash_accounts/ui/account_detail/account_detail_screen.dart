@@ -50,22 +50,22 @@ class AccountDetailScreen extends Screen {
 
               /// Account Transaction Details Card(s)
               Container(
-                child: createTransactionDetailsSections(),
+                child: createTransactionSections(),
               ),
 
               /// Account Transaction Details Card(s)
               Container(
-                child: createTransactionDetailsSections(),
+                child: createTransactionSections(),
               ),
 
               /// Account Transaction Details Card(s)
               Container(
-                child: createTransactionDetailsSections(),
+                child: createTransactionSections(),
               ),
 
               /// Account Transaction Details Card(s)
               Container(
-                child: createTransactionDetailsSections(),
+                child: createTransactionSections(),
               ),
 
               /// View More Transactions Button
@@ -131,7 +131,7 @@ Column createAccountBalanceSection() {
 
 /// This method creates each Column Object for the most recent
 /// 5 Transaction Details.
-Card createTransactionDetailsSections() {
+Card createTransactionSections() {
   return Card(
     color: Colors.white,
     shadowColor: Colors.grey[500],

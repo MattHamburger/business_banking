@@ -9,7 +9,7 @@
 //   final String transactionNumber;
 //   final String transactionAmount;
 //   final String transactionId;
-//   final List<AccountDetailTransactionDetailsModel> transactionDetails;
+//   final List<AccountDetailTransactionModel> transactionDetails;
 //   final List<AccountDetailsTransactionHoldsModel> transactionHolds;
 //
 //   AccountDetailServiceResponseModel.fromJson(Map<String, dynamic> json)
@@ -17,9 +17,9 @@
 //         transactionNumber = json['transactionNumber'] ?? '0',
 //         transactionAmount = json['transactionAmount'],
 //         transactionId = json['transactionId'] ?? '000000000',
-//         transactionDetails = List<AccountDetailTransactionDetailsModel>.from(
+//         transactionDetails = List<AccountDetailTransactionModel>.from(
 //               json['transactionDetails']?.map((transactionDetailJSONObject) =>
-//                   AccountDetailTransactionDetailsModel.fromJson(
+//                   AccountDetailTransactionModel.fromJson(
 //                       transactionDetailJSONObject)),
 //             ) ??
 //             [],
