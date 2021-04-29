@@ -20,6 +20,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: 4.1.4 # Apache 2.0
+  test_coverage: ^0.5.0
   flutter_driver:
     sdk: flutter
 

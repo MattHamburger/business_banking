@@ -3,6 +3,7 @@ import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart
 import 'package:business_banking/features/customer/ui/customer_detail_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
+import 'package:business_banking/features/todo_list/ui/todo_list_widget.dart';
 import 'package:business_banking/features/transfer_funds/ui/confirmation/transfer_confirmation_widget.dart';
 import 'package:business_banking/features/transfer_funds/ui/transfer_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ abstract class BusinessBankingRouter {
   static const String customerDetailRoute = '/customerDetail';
   static const String viewBudgetChartRoute = '/viewBudgetChartRoute';
   static const String investmentDetailRoute = '/investmentDetail';
+  static const String todoListRoute = '/todoList';
+
 
   static Widget generate(String name) {
     switch (name) {
@@ -44,6 +47,9 @@ abstract class BusinessBankingRouter {
 
       case investmentDetailRoute:
         return InvestmentDetailWidget();
+
+      case todoListRoute:
+        return TodoListWidget();
 
       default:
         return const PageNotFound();

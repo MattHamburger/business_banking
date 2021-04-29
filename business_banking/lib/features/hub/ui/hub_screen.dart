@@ -2,6 +2,7 @@ import 'package:business_banking/features/budget/ui/first_card/budget_widget.dar
 import 'package:business_banking/features/cash_accounts/ui/cash_accounts_widget.dart';
 import 'package:business_banking/features/customer/ui/customer_widget.dart';
 import 'package:business_banking/features/investment/ui/investment_feature.dart';
+import 'package:business_banking/features/todo_list/ui/todo_hub/todo_hub_widget.dart';
 import 'package:business_banking/features/transfer_funds/ui/transfer_card.dart';
 import 'package:business_banking/features/quickpay/ui/quickpay_widget.dart';
 import 'package:clean_framework/clean_framework.dart';
@@ -28,10 +29,11 @@ class HubScreen extends Screen {
               padding:
                   const EdgeInsets.symmetric(vertical: 18.0, horizontal: 20.0),
               child: Center(
-                  child: Text(
-                'Welcome John Doe',
-                style: TextStyle(fontSize: 18),
-              )),
+                child: Text(
+                  'Welcome John Doe',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
             ),
             CashAccountsWidget(),
             InvestmentFeatureWidget(),
@@ -40,6 +42,7 @@ class HubScreen extends Screen {
             BudgetWidget(),
             QuickPayWidget(),
             BudgetWidget(),
+            TodoHubWidget(),
           ],
         ),
       ),
