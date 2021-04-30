@@ -300,6 +300,29 @@
                         ],
                         "enabled": true,
                         "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets stocks for Stocks screen",
+                        "method": "get",
+                        "endpoint": "stocks",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"stocks\": [ \n  {\n \"company\": \"Amazon.com\",\n \"symbol\": \"AMZN\",\n \"at_close\": 89.38,\n \"shares\": 100,\n \"value\": 8938.00\n  },\n{\n \"company\": \"Disney\",\n \"symbol\": \"DIS\",\n \"at_close\": 40.65,\n \"shares\": 100,\n \"value\": 4065\n},\n{\n \"company\": \"PepsiCo\",\n \"symbol\": \"PEP\",\n \"at_close\": 38.02,\n \"shares\": 100,\n \"value\": 3802.00\n},\n{\n \"company\": \"Apple\",\n \"symbol\": \"AAPL\",\n \"at_close\": 134.22,\n \"shares\": 100,\n \"value\": 13422.00\n},\n{\n \"company\": \"Home Depot\",\n \"symbol\": \"HD\",\n \"at_close\": 323.60,\n \"shares\": 100,\n \"value\": 32360.00\n},\n{\n \"company\": \"Nike\",\n \"symbol\": \"NIKE\",\n \"at_close\": 130.19,\n \"shares\": 100,\n \"value\": 13019.00\n}\n]  \n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
                     }
                 ],
                 "proxyMode": false,
