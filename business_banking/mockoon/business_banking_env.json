@@ -6,231 +6,6 @@
             "item": {
                 "uuid": "",
                 "lastMigration": 13,
-                "name": "Demo API",
-                "endpointPrefix": "",
-                "latency": 0,
-                "port": 30,
-                "routes": [
-                    {
-                        "uuid": "",
-                        "documentation": "Use multiple responses with rules",
-                        "method": "post",
-                        "endpoint": "content/:param1",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Default response. Served if route param 'param1' is not present.\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Default response",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            },
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Content XYZ. Served if route param 'param1' equals 'xyz'. (See in 'Rules' tab)\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Content XYZ",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [
-                                    {
-                                        "target": "params",
-                                        "modifier": "param1",
-                                        "value": "xyz",
-                                        "isRegex": false
-                                    }
-                                ],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            },
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Content not found. Served if route param 'param1' is not equal to 'xyz'. (See in 'Rules' tab)\"\n}\n",
-                                "latency": 0,
-                                "statusCode": 404,
-                                "label": "Content not found",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [
-                                    {
-                                        "target": "params",
-                                        "modifier": "param1",
-                                        "value": "^(?!.*xyz).*$",
-                                        "isRegex": true
-                                    }
-                                ],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Generate random body (JSON, text, CSV, etc) with templating",
-                        "method": "get",
-                        "endpoint": "users",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Templating example\": \"For more information about templating, click the blue 'i' above this editor\",\n  \"users\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"userId\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n        \"firstname\": \"{{ faker 'name.firstName' }}\",\n        \"lastname\": \"{{ faker 'name.lastName' }}\",\n        \"friends\": [\n          {{# repeat (faker 'random.number' 5) }}\n            {\n              \"id\": \"{{ faker 'random.uuid' }}\"\n            }\n          {{/ repeat }}\n        ]\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Creates 10 random users, or the amount specified in the 'total' query param",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Serve a file dynamically depending on the path param 'pageName'.",
-                        "method": "get",
-                        "endpoint": "file/:pageName",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Templating is also supported in file path",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/html"
-                                    }
-                                ],
-                                "filePath": "./page{{urlParam 'pageName'}}.html",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Path supports various patterns",
-                        "method": "put",
-                        "endpoint": "path/with/pattern(s)?/*",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "The current path will match the following routes: \nhttp://localhost:3000/path/with/pattern/\nhttp://localhost:3000/path/with/patterns/\nhttp://localhost:3000/path/with/patterns/anything-else\n\nLearn more about Mockoon's routing: https://mockoon.com/docs/latest/routing",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/plain"
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Can Mockoon forward or record entering requests?",
-                        "method": "get",
-                        "endpoint": "forward-and-record",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "Mockoon can also act as a proxy and forward all entering requests that are not caught by declared routes. \nYou can activate this option in the environment settings ('cog' icon in the upper right corner). \nTo learn more: https://mockoon.com/docs/latest/proxy-mode\n\nAs always, all entering requests, and responses from the proxied server will be recorded ('clock' icon in the upper right corner).\nTo learn more: https://mockoon.com/docs/latest/requests-logging",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/plain"
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    }
-                ],
-                "proxyMode": false,
-                "proxyHost": "",
-                "https": false,
-                "cors": true,
-                "headers": [
-                    {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                    }
-                ],
-                "proxyReqHeaders": [
-                    {
-                        "key": "",
-                        "value": ""
-                    }
-                ],
-                "proxyResHeaders": [
-                    {
-                        "key": "",
-                        "value": ""
-                    }
-                ]
-            }
-        },
-        {
-            "type": "environment",
-            "item": {
-                "uuid": "",
-                "lastMigration": 13,
                 "name": "Business Banking Env",
                 "endpointPrefix": "",
                 "latency": 0,
@@ -664,6 +439,29 @@
                                         "value": "application/json"
                                     }
                                 ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "stock-prices",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"stockPrices\":[\n    {\n      \"id\": \"1\",\n      \"companyName\": \"Apple\",\n      \"last\": 127.45,\n      \"high\": 127.89,\n      \"low\": 125.85,\n      \"change\": 2.48,\n      \"volume\": \"81.92M\"\n    },\n    {\n      \"id\": \"2\",\n      \"companyName\": \"Tesla\",\n      \"last\": 589.74,\n      \"high\": 592.87,\n      \"low\": 570.46,\n      \"change\": 18.05,\n      \"volume\": \"33.37M\"\n    },\n    {\n      \"id\": \"3\",\n      \"companyName\": \"Walt Disney\",\n      \"last\": 173.70,\n      \"high\": 174.91,\n      \"low\": 168.78,\n      \"change\": -4.64,\n      \"volume\": \"33.15M\"\n    },\n    {\n      \"id\": \"4\",\n      \"companyName\": \"Intel\",\n      \"last\": 55.35,\n      \"high\": 55.85,\n      \"low\": 54.26,\n      \"change\": 1.34,\n      \"volume\": \"28.16M\"\n    },\n    {\n      \"id\": \"5\",\n      \"companyName\": \"3M\",\n      \"last\": 204.38,\n      \"high\": 205.12,\n      \"low\": 203.01,\n      \"change\": 0.97,\n      \"volume\": \"1.48M\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
                                 "filePath": "",
                                 "sendFileAsBody": false,
                                 "rules": [],
