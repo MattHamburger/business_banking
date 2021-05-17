@@ -6,8 +6,10 @@ import 'package:business_banking/features/credit_card/model/payment_request/cred
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class CreditCardUseCaseMock extends Mock implements CreditCardUseCase{}
-class CreditCardPaymentRequestUseCaseMock extends Mock implements CreditCardPaymentRequestUseCase{}
+class CreditCardUseCaseMock extends Mock implements CreditCardUseCase {}
+
+class CreditCardPaymentRequestUseCaseMock extends Mock
+    implements CreditCardPaymentRequestUseCase {}
 
 void main() {
   test('CreditCardBloc initialize', () async {
@@ -37,9 +39,13 @@ void main() {
 
   test('CreditCardBloc creditCardViewEventsPipeHandler', () async {
     CreditCardUseCaseMock creditCardUseCaseMock = CreditCardUseCaseMock();
-    CreditCardPaymentRequestUseCaseMock creditCardPaymentRequestUseCaseMock = CreditCardPaymentRequestUseCaseMock();
-    CreditCardBloc bloc = CreditCardBloc(creditCardUseCase: creditCardUseCaseMock, creditCardPaymentRequestUseCase: creditCardPaymentRequestUseCaseMock);
-    var viewModel = CreditCardPaymentRequestViewModel(number: '1111222233334444',
+    CreditCardPaymentRequestUseCaseMock creditCardPaymentRequestUseCaseMock =
+        CreditCardPaymentRequestUseCaseMock();
+    CreditCardBloc bloc = CreditCardBloc(
+        creditCardUseCase: creditCardUseCaseMock,
+        creditCardPaymentRequestUseCase: creditCardPaymentRequestUseCaseMock);
+    var viewModel = CreditCardPaymentRequestViewModel(
+      number: '1111222233334444',
       name: 'My Credit Card',
       lastFour: '4444',
       balance: 1234.56,
@@ -50,14 +56,19 @@ void main() {
     );
     var event = CreditCardViewEventUpdatePaymentValue(viewModel, 0);
     bloc.creditCardViewEventsPipeHandler(event);
-    verify(creditCardPaymentRequestUseCaseMock.updatePaymentValue(any)).called(1);
+    verify(creditCardPaymentRequestUseCaseMock.updatePaymentValue(any))
+        .called(1);
   });
 
   test('CreditCardBloc validatePaymentInformation', () async {
     CreditCardUseCaseMock creditCardUseCaseMock = CreditCardUseCaseMock();
-    CreditCardPaymentRequestUseCaseMock creditCardPaymentRequestUseCaseMock = CreditCardPaymentRequestUseCaseMock();
-    CreditCardBloc bloc = CreditCardBloc(creditCardUseCase: creditCardUseCaseMock, creditCardPaymentRequestUseCase: creditCardPaymentRequestUseCaseMock);
-    var viewModel = CreditCardPaymentRequestViewModel(number: '1111222233334444',
+    CreditCardPaymentRequestUseCaseMock creditCardPaymentRequestUseCaseMock =
+        CreditCardPaymentRequestUseCaseMock();
+    CreditCardBloc bloc = CreditCardBloc(
+        creditCardUseCase: creditCardUseCaseMock,
+        creditCardPaymentRequestUseCase: creditCardPaymentRequestUseCaseMock);
+    var viewModel = CreditCardPaymentRequestViewModel(
+      number: '1111222233334444',
       name: 'My Credit Card',
       lastFour: '4444',
       balance: 1234.56,
@@ -67,11 +78,13 @@ void main() {
       paymentValue: 20.00,
     );
     bloc.validatePaymentInformation(viewModel, 10);
-    verify(creditCardPaymentRequestUseCaseMock.validatePaymentInformation(any)).called(1);
+    verify(creditCardPaymentRequestUseCaseMock.validatePaymentInformation(any))
+        .called(1);
   });
 
   test('CreditCardViewEventUpdatePaymentValue', () async {
-    var viewModel = CreditCardPaymentRequestViewModel(number: '1111222233334444',
+    var viewModel = CreditCardPaymentRequestViewModel(
+      number: '1111222233334444',
       name: 'My Credit Card',
       lastFour: '4444',
       balance: 1234.56,

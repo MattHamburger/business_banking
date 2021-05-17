@@ -9,6 +9,8 @@ import 'features/credit_card/ui/payment_response/credit_card_payment_response_wi
 import 'features/deposit_check/ui/2nd_data_entry/deposit_check_widget.dart';
 import 'features/deposit_check/ui/3rd_request_confirmation/deposit_check_confirm_widget.dart';
 
+import 'package:business_banking/features/hotels/ui/hotels_main/hotels_main_widget.dart';
+
 abstract class BusinessBankingRouter {
   static const String initialRoute = '/';
   static const String hubRoute = '/hub';
@@ -25,6 +27,7 @@ abstract class BusinessBankingRouter {
       '/creditCardPaymentResponse';
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
+  static const String hotelsRoute = '/hotels';
 
   static Widget generate(String name) {
     switch (name) {
@@ -51,6 +54,9 @@ abstract class BusinessBankingRouter {
 
       case depositCheckConfirmRoute:
         return DepositCheckConfirmWidget();
+
+      case hotelsRoute:
+        return HotelsMainWidget();
 
       default:
         return const PageNotFound();

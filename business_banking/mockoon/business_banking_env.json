@@ -673,6 +673,29 @@
                         ],
                         "enabled": true,
                         "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "hotels",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\r\n  \"status\": \"ok\",\r\n  \"totalResults\": 6,\r\n  \"hotels\": [\r\n    {\r\n      \"title\": \"Luxor\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\": \"false\",\r\n      \"star_rating\": 4.5,\r\n      \"price\": 78.06,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/luxor/1024x1024_luxor_new.jpg\"\r\n    },\r\n    {\r\n      \"title\": \"Treasure Island\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\" : \"true\",\r\n      \"star_rating\": 3.2,\r\n      \"price\": 65.41,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/treasure/1024x1024_ti.jpg\"\r\n    },\r\n    {\r\n      \"title\": \"Aria\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\" : \"false\",\r\n      \"star_rating\": 4.7,\r\n      \"price\": 162.06,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/aria/1024x1024_aria.jpg\"\r\n    },\r\n    {\r\n      \"title\": \"Excalibur\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\" : \"true\",\r\n      \"star_rating\": 2.5,\r\n      \"price\": 61.00,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/excalibur/1024x1024_excalibur.jpg\"\r\n    },\r\n    {\r\n      \"title\": \"Flamingo\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\" : \"true\",\r\n      \"star_rating\": 3.8,\r\n      \"price\": 78.06,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/flamingo/1024x1024_flamingo.jpg\"\r\n    },\r\n    {\r\n      \"title\": \"Paris\",\r\n      \"city\": \"Las Vegas\",\r\n      \"state_code\": \"NV\",\r\n      \"is_liked\" : \"false\",\r\n      \"star_rating\": 3.5,\r\n      \"price\": 82.10,\r\n      \"image_url\": \"https://assets.cyllenius.com/resize_230x230/media/vegas/resorts/paris/1024x1024_paris.jpg\"\r\n    }\r\n  ]\r\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
                     }
                 ],
                 "proxyMode": false,
