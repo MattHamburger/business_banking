@@ -111,6 +111,8 @@ class PatchSimpleRestApi extends RestApi {
           break;
       }
 
+      print(response);
+
       return RestResponse<String>(
         type: getResponseTypeFromCode(response.statusCode),
         uri: uri,

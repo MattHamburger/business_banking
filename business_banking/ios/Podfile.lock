@@ -4,6 +4,8 @@ PODS:
     - Flutter
   - integration_test (0.0.1):
     - Flutter
+  - path_provider (0.0.1):
+    - Flutter
   - "permission_handler (5.1.0+2)":
     - Flutter
   - url_launcher (0.0.1):
@@ -13,6 +15,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
@@ -23,6 +26,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_picker/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
   permission_handler:
     :path: ".symlinks/plugins/permission_handler/ios"
   url_launcher:
@@ -32,6 +37,7 @@ SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
   integration_test: 5ed24a436eb7ec17b6a13046e9bf7ca4a404e59e
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
