@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter_test/flutter_test.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:business_banking/core/patch_simple_rest_api.dart';

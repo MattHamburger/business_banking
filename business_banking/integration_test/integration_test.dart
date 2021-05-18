@@ -1,8 +1,11 @@
+// @dart = 2.9
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
-import './integration_test_helpers.dart';
+import 'integration_test_helpers.dart';
+
+//flutter drive --driver=integration_test/integration_test_driver.dart --target=integration_test/integration_test.dart
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -13,18 +16,21 @@ void main() {
     // hub
     final hubAppBar = find.byKey(Key('CAappBarName'));
 
-    // Cash Accounts - Detail
-    final backButton = find.byKey(Key('backButton'));
+    // Bill pay hub card
+    final billPayCardTitle = find.byKey(Key('Bill-Pay-Card-Title'));
+    final billPayCardSubtitle = find.byKey(Key('Bill-Pay-Card-Subtitle'));
+    final payBillButton = 'Bill-Pay-Card-Button';
+    final billPayBackButton = 'Bill-Pay-Back-Button';
 
-    // Customer - Tile
-    final customerTileText = find.byKey(Key('HCTileText'));
-    final customerTileButton = 'HCTileButton';
-
-    // Customer - Detail
-    final customerDetailAppBar = find.byKey(Key('HCDappBarName'));
-    final customerDetailName = find.byKey(Key('HCDname'));
-    final customerDetailAddress = find.byKey(Key('HCDaddress'));
-    final customerBackButton = find.bySemanticsLabel("Back");
+    // Bill pay screen
+    final billPayBillList = find.byKey(Key('Bill-Pay-Bill-List'));
+    getBillPayCard(index) {
+      return 'Bill-Pay-Screen-Card-$index';
+    }
+    final billPayPaymentButton = 'Bill-Pay-Confirm-Button';
+    final billPaySuccessDialog = 'Bill-Pay-Success-Dialog';
+    final billPaySuccessDialogPayAnother = 'Bill-Pay-Success-Dialog-Pay-Another';
+    final billPaySuccessDialogHub = 'Bill-Pay-Success-Dialog-Hub';
 
     /// These will only pass with the specific JSON included in the Mockoon folder
     testWidgets('Integration test', (WidgetTester tester) async {
@@ -38,23 +44,42 @@ void main() {
       await tapWidget(loginButton);
       expect(tester.widget<Text>(hubAppBar).data, 'Business Banking');
 
-      //CashAccountsDetailScreen, back to hub
-      await tapWithFinder(backButton);
+      //Bill Pay, bill pay card showing
+      expect(tester.widget<Text>(billPayCardTitle).data, 'Pay Bills');
+      expect(tester.widget<Text>(billPayCardSubtitle).data, 'You have 4 bill(s) due');
 
-      //CustomerScreen, Hello Joe is displayed on tile
-      expect(tester.widget<Text>(customerTileText).data, 'Hello Mr. Joe A');
+      //Bill Pay, navigate to and display bill pay screen
+      await tapWidget(payBillButton);
+      await didTextAppear('PAY BILLS');
+      await didTextAppear('Pay a bill');
 
-      //CustomerDetailScreen, navigate to and app bar is displayed
-      await tapWidget(customerTileButton);
-      expect(tester.widget<Text>(customerDetailAppBar).data, 'Hello Customer');
+      //Bill Pay, go back to hub with back button
+      await tapWidget(billPayBackButton);
+      await tapWidget(payBillButton);
 
-      //CustomerDetailScreen, name address is displayed on screen
-      expect(tester.widget<Text>(customerDetailName).data, 'Hello Mr. Joe A');
-      expect(tester.widget<Text>(customerDetailAddress).data,
-          '1234 ABCD Rd, City, State 00000');
+      //Bill Pay, select bills
+      await tapWidget(getBillPayCard(0));
+      await tapWidget(getBillPayCard(1));
+      await tapWidget(getBillPayCard(1));
 
-      //CustomerScreen, check to find correct app bar
-      await tapWithFinder(customerBackButton);
+      await tester.drag(billPayBillList, const Offset(0.0, -500));
+      await tester.pump();
+      
+      await tapWidget(getBillPayCard(3));
+      //Bill Pay, pay bill
+      await tapWidget(billPayPaymentButton);
+      await didWidgetAppear(billPaySuccessDialog);
+
+      //Bill Pay, pay another bill
+      // await tapWidget(payBillButton);
+      await tapWidget(billPaySuccessDialogPayAnother);
+      await tester.pumpAndSettle();
+      await tapWidget(getBillPayCard(2));
+      await tapWidget(billPayPaymentButton);
+      await didWidgetAppear(billPaySuccessDialog);
+      //Bill Pay, back to hub
+      await tapWidget(billPaySuccessDialogHub);
+
     });
   });
 }
