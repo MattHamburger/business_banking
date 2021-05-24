@@ -1,11 +1,11 @@
 {
-    "source": "mockoon:1.13.0",
+    "source": "mockoon:1.14.1",
     "data": [
         {
             "type": "environment",
             "item": {
                 "uuid": "",
-                "lastMigration": 13,
+                "lastMigration": 15,
                 "name": "Demo API",
                 "endpointPrefix": "",
                 "latency": 0,
@@ -87,7 +87,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -115,7 +116,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -143,7 +145,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -171,7 +174,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -199,7 +203,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     }
                 ],
                 "proxyMode": false,
@@ -223,14 +228,15 @@
                         "key": "",
                         "value": ""
                     }
-                ]
+                ],
+                "proxyRemovePrefix": false
             }
         },
         {
             "type": "environment",
             "item": {
                 "uuid": "",
-                "lastMigration": 13,
+                "lastMigration": 15,
                 "name": "Business Banking Env",
                 "endpointPrefix": "",
                 "latency": 0,
@@ -262,7 +268,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -290,7 +297,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -343,7 +351,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -371,7 +380,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -399,7 +409,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -427,7 +438,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -473,7 +485,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -501,7 +514,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -529,7 +543,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -552,7 +567,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -575,7 +591,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -598,7 +615,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -621,7 +639,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -644,7 +663,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -672,7 +692,45 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "This is the mock api to fetch the list of cards",
+                        "method": "get",
+                        "endpoint": "hub-cards",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"cards\" : [\n    {\n    \"number\" : \"7948 8504 9458 8550\",\n    \"holder\" : \"User T\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 1\n    },{\n    \"number\" : \"7948 8504 9458 8551\",\n    \"holder\" : \"User K\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 2\n    },{\n    \"number\" : \"7948 8504 9458 8548\",\n    \"holder\" : \"User F\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 3\n    },{\n    \"number\" : \"7948 8504 9458 8547\",\n    \"holder\" : \"User L\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 4\n    },{\n    \"number\" : \"7948 8504 9458 8546\",\n    \"holder\" : \"User M\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 5\n    },{\n    \"number\" : \"7948 8504 9458 8545\",\n    \"holder\" : \"User U\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 6\n    },{\n    \"number\" : \"7948 8504 9458 8544\",\n    \"holder\" : \"User Q\",\n    \"expiry\" : \"9/27\",\n    \"card_id\": 7\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"cards\" : [\n  {\n  \"number\" : \"7948 8504 9458 8570\",\n  \"holder\" : \"User T\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 8\n  },{\n  \"number\" : \"7948 8504 9458 8581\",\n  \"holder\" : \"User Q\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 9\n  },{\n  \"number\" : \"7948 8504 9458 8538\",\n  \"holder\" : \"User A\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 10\n  },{\n  \"number\" : \"7948 8504 9458 8517\",\n  \"holder\" : \"User Z\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 11\n  },{\n  \"number\" : \"7948 8504 9458 8536\",\n  \"holder\" : \"User X\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 12\n  },{\n  \"number\" : \"7948 8504 9458 8245\",\n  \"holder\" : \"User O\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 13\n  },{\n  \"number\" : \"7948 8504 9458 2544\",\n  \"holder\" : \"User E\",\n  \"expiry\" : \"9/27\",\n  \"card_id\": 14\n  }\n]\n}",
+                                "latency": 2000,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": true
                     }
                 ],
                 "proxyMode": false,
@@ -696,7 +754,8 @@
                         "key": "",
                         "value": ""
                     }
-                ]
+                ],
+                "proxyRemovePrefix": false
             }
         }
     ]
