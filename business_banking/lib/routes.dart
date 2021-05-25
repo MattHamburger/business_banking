@@ -4,6 +4,7 @@ import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'features/advertisement/ui/ad_details/ad_details_widget.dart';
 import 'features/credit_card/ui/payment_request/credit_card_payment_request_widget.dart';
 import 'features/credit_card/ui/payment_response/credit_card_payment_response_widget.dart';
 import 'features/deposit_check/ui/2nd_data_entry/deposit_check_widget.dart';
@@ -25,6 +26,7 @@ abstract class BusinessBankingRouter {
       '/creditCardPaymentResponse';
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
+  static const String adDetails = '/adDetails';
 
   static Widget generate(String name) {
     switch (name) {
@@ -51,6 +53,9 @@ abstract class BusinessBankingRouter {
 
       case depositCheckConfirmRoute:
         return DepositCheckConfirmWidget();
+
+      case adDetails:
+        return AdDetailsWidget();
 
       default:
         return const PageNotFound();

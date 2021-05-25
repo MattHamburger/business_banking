@@ -19,15 +19,16 @@ dependencies:
 
   ### https://pub.dev/packages/pdf/versions/2.1.0
   pdf: ^2.1.0
+  network_image_mock: ^2.0.0
 
   ### https://pub.dev/packages/printing/versions/4.1.0
-  printing: ^4.1.0
+  #printing: ^5.2.1
 
 dev_dependencies:
   test: 
   flutter_test:
     sdk: flutter
-  mockito: 4.1.4 # Apache 2.0
+  mockito: 5.0.8 # Apache 2.0
   flutter_driver:
     sdk: flutter
 
