@@ -89,7 +89,7 @@ class PatchSimpleRestApi extends RestApi {
         );
       }
     }
-
+    print('Requesting method ${method.toString()} - path: $path - uri: ${uri.toString()}');
     try {
       switch (method) {
         case RestMethod.get:
@@ -111,6 +111,7 @@ class PatchSimpleRestApi extends RestApi {
           break;
       }
 
+      print('response body: ${response.body}');
       return RestResponse<String>(
         type: getResponseTypeFromCode(response.statusCode),
         uri: uri,
