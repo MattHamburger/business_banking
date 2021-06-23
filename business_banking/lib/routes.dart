@@ -1,3 +1,4 @@
+import 'package:business_banking/features/bills/ui/bill_list/bill_list_widget.dart';
 import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card_details/credit_card_details_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
@@ -30,6 +31,7 @@ abstract class BusinessBankingRouter {
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
   static const String NewSuccessScreen = '/NewSuccessScreen';
+  static const String billListRoute = '/billList';
 
   static Widget generate(String name) {
     switch (name) {
@@ -59,6 +61,9 @@ abstract class BusinessBankingRouter {
 
       case depositCheckConfirmRoute:
         return DepositCheckConfirmWidget();
+        
+      case billListRoute:
+        return BillListWidget();
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();
