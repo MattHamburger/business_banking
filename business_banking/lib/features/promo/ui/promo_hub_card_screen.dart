@@ -56,9 +56,9 @@ class PromoHubCardScreen extends Screen {
                   height: 50,
                   width: double.infinity,
                   child: OutlinedButton(
-                    key: Key('Ad-Card-Learn-More-Button'),
+                    key: Key('Promo-Get-Offers-Button'),
                     child: Text(
-                      'Learn More',
+                      'Get Offers',
                       style: TextStyle(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,
