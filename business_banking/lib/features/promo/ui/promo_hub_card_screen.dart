@@ -47,7 +47,7 @@ class PromoHubCardScreen extends Screen {
                           child: Image.network(
                               //TODO: add promoImage
                               //viewModel!.promoIconImage
-                              'http://www.w3.org/2000/svg',
+                              'https://www.huntington.com/-/media/hcom/fp2/no_money_tout_dark_green_50x50.png?rev=c64f89166c5548a4817f8433fec62177&h=50&w=50&la=en&hash=C35BA903EE8C32BAE6DB9D944EE778EE',
                             ),
                         ))
                   ],
