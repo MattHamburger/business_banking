@@ -33,6 +33,10 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
+dependency_overrides:
+  convert: ^3.0.1
+  crypto: ^3.0.1
+
 flutter:
   uses-material-design: true
 
