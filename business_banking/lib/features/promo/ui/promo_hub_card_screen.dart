@@ -57,7 +57,7 @@ class PromoHubCardScreen extends Screen {
                 ),
                 SizedBox(
                   child: _textFormField(
-                      Key('income_key'), 'Yealy income',
+                      Key('income_key'), 'Yearly income',
                       (){}, TextInputType.number, Icon(Icons.account_balance_wallet)
                   ),
                 ),

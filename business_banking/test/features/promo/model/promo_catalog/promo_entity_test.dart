@@ -1,4 +1,4 @@
-import 'package:business_banking/features/promo/model/promo_entity.dart';
+import 'package:business_banking/features/promo/model/promo_catalog/promo_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
