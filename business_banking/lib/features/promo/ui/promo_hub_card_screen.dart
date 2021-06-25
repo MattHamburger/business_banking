@@ -2,6 +2,8 @@ import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../routes.dart';
+
 class PromoHubCardScreen extends Screen {
   //TODO: implement below classes
   //final PromoHubCardViewModel? viewModel;
@@ -82,7 +84,9 @@ class PromoHubCardScreen extends Screen {
                             borderRadius: BorderRadius.circular(15)),
                         side: BorderSide(width: 2, color: Colors.green)),
                     onPressed: () {
-                      //TODO: add navigation after input has been validated
+                      //TODO: add navigation through presenter action after input has been validated
+                      CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
+
                       //actions!.navigateToPromoCatalog(context);
                     },
                   ),
