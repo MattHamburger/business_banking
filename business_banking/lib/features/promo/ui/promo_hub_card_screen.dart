@@ -7,7 +7,6 @@ class PromoHubCardScreen extends Screen {
   //final PromoHubCardViewModel? viewModel;
   //final PromoHubCardPresenterActions? actions;
 
-
   PromoHubCardScreen();
   //TODO: add to constructor:
   //this.viewModel, this.actions
@@ -32,25 +31,39 @@ class PromoHubCardScreen extends Screen {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
+                      flex: 3,
                         child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                              //TODO: pass viewmodel values:
-                              //viewModel!.promoValue,
-                            'Viewmodel text!',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18)),
-                        )),
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text(
+                          //TODO: pass viewmodel values:
+                          //viewModel!.promoValue,
+                          'Offers crafted just for you!',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18)),
+                    )),
                     Expanded(
+                      flex: 1,
                         child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Image.network(
-                              //TODO: add promoImage
-                              //viewModel!.promoIconImage
-                              'https://www.huntington.com/-/media/hcom/fp2/no_money_tout_dark_green_50x50.png?rev=c64f89166c5548a4817f8433fec62177&h=50&w=50&la=en&hash=C35BA903EE8C32BAE6DB9D944EE778EE',
-                            ),
-                        ))
+                      padding: const EdgeInsets.all(20.0),
+                      child: Image.network(
+                        //TODO: add promoImage
+                        //viewModel!.promoIconImage
+                        'https://www.huntington.com/-/media/hcom/fp2/trophy_tout_dark_green_50x50.png?rev=5435bf87f28642feb4f6f88dc7a2da39&h=50&w=50&la=en&hash=B7BE7E5D43653CFEED77995A76C8A9DB',
+                      ),
+                    ))
                   ],
+                ),
+                SizedBox(
+                  child: _textFormField(
+                      Key('income_key'), 'Yealy income',
+                      (){}, TextInputType.number, Icon(Icons.account_balance_wallet)
+                  ),
+                ),
+                SizedBox(
+                  child: _textFormField(
+                      Key('phone_key'), 'Phone',
+                          (){}, TextInputType.phone, Icon(Icons.phone_android)
+                  ),
                 ),
                 SizedBox(
                   height: 50,
@@ -79,6 +92,29 @@ class PromoHubCardScreen extends Screen {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _textFormField(Key key, String hintText, Function? onChangeTextField,
+      TextInputType textInputType, Icon icon) {
+    return TextFormField(
+      key: key,
+      keyboardType: textInputType,
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: icon,
+        filled: true,
+        hintText: hintText,
+        contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.lightGreen, width: 2.0),
+        ),
+        enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent, width: 2.0)),
+      ),
+      onChanged: (value) {
+
+      },
     );
   }
 }

@@ -24,6 +24,7 @@ dependencies:
 
   ### https://pub.dev/packages/printing/versions/4.1.0
   printing: ^4.1.0
+  network_image_mock: ^2.0.1
 
 dev_dependencies:
   test:
