@@ -2,7 +2,7 @@ import 'package:business_banking/features/promo/model/promo_hub_card_view_model.
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('AdHubCardViewModel initialization', () async {
+  test('PromoHubCardViewModel initialization', () async {
     final viewModel = PromoHubCardViewModel(
         income: '100\$', phone: '3101133310', icon: 'icon_url');
     expect(viewModel.income, '100\$');
