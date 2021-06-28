@@ -8,18 +8,16 @@ class PromoHubCardPresenter
     extends Presenter<PromoBloc, PromoHubCardViewModel, PromoHubCardScreen> {
 
   @override
-  PromoHubCardScreen buildScreen(
-      BuildContext context, PromoBloc bloc, PromoHubCardViewModel viewModel) {
-    return PromoHubCardScreen(
-        viewModel: viewModel,
-        //TODO: implement actions
-        //actions: PromoHubCardPresenterActions()
-    );
+  Stream<PromoHubCardViewModel> getViewModelStream(PromoBloc bloc) {
+    return bloc.promoHubCardViewModelPipe.receive;
   }
 
   @override
-  Stream<PromoHubCardViewModel> getViewModelStream(PromoBloc bloc) {
-    return bloc.promoHubCardViewModelPipe.receive;
+  PromoHubCardScreen buildScreen(
+      BuildContext context, PromoBloc bloc, PromoHubCardViewModel viewModel) {
+    return PromoHubCardScreen(
+        viewModel: viewModel, actions: PromoHubCardPresenterActions()
+    );
   }
 }
 
