@@ -44,10 +44,10 @@ void main() {
   test('PromoEntity merge with missing data success', () async {
     final promoEntA = PromoEntity(
         id: 'new_id_A',
-        title: 'test_titleA',
-        subtitle: 'test_subtitleA',
-        features: 'test_featuresA',
-        icon: 'test_iconA'
+        title: 'test_title_A',
+        subtitle: 'test_subtitle_A',
+        features: 'test_features_A',
+        icon: 'test_icon_A'
     );
 
     final promoEntB = promoEntA.merge(
@@ -57,10 +57,10 @@ void main() {
         features: null,
         icon: null) as PromoEntity;
 
-    expect(promoEntB.id, 'new_id_B');
-    expect(promoEntB.title, 'test_title_B');
-    expect(promoEntB.subtitle, 'test_subtitleA');
-    expect(promoEntB.features, 'test_featuresA');
-    expect(promoEntB.icon, 'test_iconB');
+    expect(promoEntB.id, 'new_id_A');
+    expect(promoEntB.title, 'test_title_A');
+    expect(promoEntB.subtitle, 'test_subtitle_A');
+    expect(promoEntB.features, 'test_features_A');
+    expect(promoEntB.icon, 'test_icon_A');
   });
 }
