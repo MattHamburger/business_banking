@@ -36,15 +36,16 @@ class PromoCatalogScreen extends Screen {
                         child:
                             Text('Promotions for you', style: TextStyle(fontSize: 24))),
                   ),
+                  Divider(),
                   Container(
                     height: MediaQuery.of(context).size.height,
-                    padding: EdgeInsets.all(16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: ListView(
                       children: <Widget>[
                         ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: 10,
+                          itemCount: 20,
                           itemBuilder: (BuildContext context, int index) {
                             return Card(
                               child: ListTile(
