@@ -1,3 +1,4 @@
+import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -5,11 +6,13 @@ import 'package:flutter/widgets.dart';
 import '../../../routes.dart';
 
 class PromoHubCardScreen extends Screen {
+  final PromoHubCardViewModel? viewModel;
   //TODO: implement below classes
-  //final PromoHubCardViewModel? viewModel;
   //final PromoHubCardPresenterActions? actions;
 
-  PromoHubCardScreen();
+  PromoHubCardScreen({
+  this.viewModel
+});
   //TODO: add to constructor:
   //this.viewModel, this.actions
 
