@@ -1,3 +1,4 @@
+import 'package:business_banking/features/promo/bloc/promo_hub_card_service_adapter.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_entity.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/locator.dart';
