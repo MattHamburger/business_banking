@@ -1,3 +1,4 @@
+import 'package:business_banking/features/promo/bloc/promo_hub_card_bloc.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/features/promo/ui/promo_hub_card_screen.dart';
 import 'package:business_banking/routes.dart';
