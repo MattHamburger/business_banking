@@ -22,7 +22,7 @@ class PromoBloc extends Bloc {
     return _useCase.validateIncomeFieldInput(income);
   }
 
-  void validatePhone(String phone) {
+  String validatePhone(String phone) {
     return _useCase.validatePhoneFieldInput(phone);
   }
 
