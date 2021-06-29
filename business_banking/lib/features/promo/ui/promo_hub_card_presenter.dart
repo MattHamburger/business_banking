@@ -1,4 +1,5 @@
 import 'package:business_banking/features/promo/bloc/promo_hub_card_bloc.dart';
+import 'package:business_banking/features/promo/bloc/promo_hub_card_event.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/features/promo/ui/promo_hub_card_screen.dart';
 import 'package:business_banking/routes.dart';
@@ -17,15 +18,28 @@ class PromoHubCardPresenter
   PromoHubCardScreen buildScreen(
       BuildContext context, PromoBloc bloc, PromoHubCardViewModel viewModel) {
     return PromoHubCardScreen(
-        viewModel: viewModel, actions: PromoHubCardPresenterActions()
+        viewModel: viewModel, actions: PromoHubCardPresenterActions(bloc),
     );
   }
 }
 
 class PromoHubCardPresenterActions {
-  PromoHubCardPresenterActions();
+  final PromoBloc bloc;
+  PromoHubCardPresenterActions(this.bloc);
+
+
 
   void navigateToCreditCardDetails(BuildContext context) {
     CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
+  }
+
+  void onUpdateIncome(String income) {
+    final event = UpdateIncomeEvent(income);
+    bloc.promoHubCardEventsPipe.send(event);
+  }
+
+  void onUpdatePhone(String phone) {
+    final event = UpdatePhoneEvent(phone);
+    bloc.promoHubCardEventsPipe.send(event);
   }
 }
