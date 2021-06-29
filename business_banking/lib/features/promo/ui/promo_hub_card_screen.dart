@@ -2,23 +2,30 @@ import 'package:business_banking/features/promo/model/promo_hub_card_view_model.
 import 'package:business_banking/features/promo/ui/promo_hub_card_presenter.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:business_banking/routes.dart';
 
 class PromoHubCardScreen extends Screen {
-  final PromoHubCardViewModel? viewModel;
-  //TODO: implement below classes
+  final PromoHubCardViewModel viewModel;
   final PromoHubCardPresenterActions actions;
 
   PromoHubCardScreen({
   required this.viewModel, required this.actions
 });
-  //TODO: add to constructor:
-  //this.viewModel, this.actions
+
+  final _form = GlobalKey<FormState>();
+  final _incomeTextEditingController = TextEditingController();
+  final _phoneTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
+    _incomeTextEditingController.text = viewModel.income;
+    _phoneTextEditingController.text = viewModel.phone;
+
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
@@ -61,14 +68,24 @@ class PromoHubCardScreen extends Screen {
                 ),
                 SizedBox(
                   child: _textFormField(
-                      Key('income_key'), 'Yearly income',
-                      (){}, TextInputType.number, Icon(Icons.account_balance_wallet)
+                      hintText: 'yearly income',
+                      onChangeTextField: (){},
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))],
+                      icon: Icon(Icons.account_balance_wallet),
+                      key: Key('income_key'),
+                      textInputType: TextInputType.number,
+                      controller: _incomeTextEditingController
                   ),
                 ),
                 SizedBox(
                   child: _textFormField(
-                      Key('phone_key'), 'Phone',
-                          (){}, TextInputType.phone, Icon(Icons.phone_android)
+                    hintText: 'Phone',
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]{10,11}'))],
+                      key: Key('phone_key'),
+                      controller: _phoneTextEditingController,
+                      onChangeTextField: (){},
+                      textInputType: TextInputType.phone,
+                      icon: Icon(Icons.phone_android),
                   ),
                 ),
                 SizedBox(
@@ -103,9 +120,18 @@ class PromoHubCardScreen extends Screen {
     );
   }
 
-  Widget _textFormField(Key key, String hintText, Function? onChangeTextField,
-      TextInputType textInputType, Icon icon) {
+  Widget _textFormField(
+      {
+        required Key key,
+      required TextEditingController controller,
+      required List<TextInputFormatter> inputFormatters,
+        required String hintText,
+      required Function onChangeTextField,
+      required TextInputType textInputType,
+      required Icon icon
+      }) {
     return TextFormField(
+      controller: controller,
       key: key,
       keyboardType: textInputType,
       textInputAction: TextInputAction.next,

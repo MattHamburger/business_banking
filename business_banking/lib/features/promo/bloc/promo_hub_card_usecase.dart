@@ -12,12 +12,12 @@ class PromoHubCardUseCase extends UseCase {
   PromoHubCardUseCase(ViewModelCallback<PromoHubCardViewModel> viewModelCallback)
       : _viewModelCallback = viewModelCallback;
 
-  void validateIncomeFieldInput(){
+  void validateIncomeFieldInput(String income){
     //TODO: implement
     throw UnimplementedError();
   }
 
-  void validatePhoneFieldInput(){
+  void validatePhoneFieldInput(String phone){
     //TODO: implement
     throw UnimplementedError();
   }

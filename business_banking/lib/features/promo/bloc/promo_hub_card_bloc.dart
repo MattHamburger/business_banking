@@ -13,6 +13,14 @@ class PromoBloc extends Bloc {
     promoHubCardViewModelPipe.whenListenedDo(() => _useCase.execute());
   }
 
+  void validateIncome(String income) {
+    return _useCase.validateIncomeFieldInput(income);
+  }
+
+  void validatePhone(String phone) {
+    return _useCase.validatePhoneFieldInput(phone);
+  }
+
   @override
   void dispose() {
     promoHubCardViewModelPipe.dispose();
