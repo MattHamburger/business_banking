@@ -65,7 +65,6 @@ class PromoHubCardScreen extends Screen {
                 SizedBox(
                   child: _textFormField(
                       hintText: 'Yearly income',
-
                       icon: Icon(Icons.account_balance_wallet),
                       key: Key('income_key'),
                       textInputType: TextInputType.number,
@@ -86,7 +85,6 @@ class PromoHubCardScreen extends Screen {
                         actions.onUpdatePhone(value!);
                     }),
                   ),
-                ),
                 SizedBox(
                   height: 50,
                   width: double.infinity,
@@ -126,7 +124,6 @@ class PromoHubCardScreen extends Screen {
       required Key key,
       required TextEditingController controller,
       required String hintText,
-      required Function onChangeTextField,
       required TextInputType textInputType,
       required Icon icon}) {
     return TextFormField(
