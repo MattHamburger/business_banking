@@ -13,7 +13,7 @@ class PromoBloc extends Bloc {
     promoHubCardViewModelPipe.whenListenedDo(() => _useCase.execute());
   }
 
-  void validateIncome(String income) {
+  String validateIncome(String income) {
     return _useCase.validateIncomeFieldInput(income);
   }
 

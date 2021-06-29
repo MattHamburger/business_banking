@@ -11,9 +11,7 @@ class PromoHubCardScreen extends Screen {
   final PromoHubCardViewModel viewModel;
   final PromoHubCardPresenterActions actions;
 
-  PromoHubCardScreen({
-  required this.viewModel, required this.actions
-});
+  PromoHubCardScreen({required this.viewModel, required this.actions});
 
   final _form = GlobalKey<FormState>();
   final _incomeTextEditingController = TextEditingController();
@@ -21,10 +19,8 @@ class PromoHubCardScreen extends Screen {
 
   @override
   Widget build(BuildContext context) {
-
     _incomeTextEditingController.text = viewModel.income;
     _phoneTextEditingController.text = viewModel.phone;
-
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -44,48 +40,51 @@ class PromoHubCardScreen extends Screen {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      flex: 3,
+                        flex: 3,
                         child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                          //TODO: pass viewmodel values:
-                          //viewModel!.promoValue,
-                          'Offers crafted just for you!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18)),
-                    )),
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(
+                              //TODO: pass viewmodel values:
+                              //viewModel!.promoValue,
+                              'Offers crafted just for you!',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18)),
+                        )),
                     Expanded(
-                      flex: 1,
+                        flex: 1,
                         child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Image.network(
-                        //TODO: add promoImage
-                        //viewModel!.promoIconImage
-                        'https://www.huntington.com/-/media/hcom/fp2/trophy_tout_dark_green_50x50.png?rev=5435bf87f28642feb4f6f88dc7a2da39&h=50&w=50&la=en&hash=B7BE7E5D43653CFEED77995A76C8A9DB',
-                      ),
-                    ))
+                          padding: const EdgeInsets.all(20.0),
+                          child: Image.network(
+                            //TODO: add promoImage
+                            //viewModel!.promoIconImage
+                            'https://www.huntington.com/-/media/hcom/fp2/trophy_tout_dark_green_50x50.png?rev=5435bf87f28642feb4f6f88dc7a2da39&h=50&w=50&la=en&hash=B7BE7E5D43653CFEED77995A76C8A9DB',
+                          ),
+                        ))
                   ],
                 ),
                 SizedBox(
                   child: _textFormField(
-                      hintText: 'yearly income',
-                      onChangeTextField: (){},
-                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))],
+                      hintText: 'Yearly income',
+
                       icon: Icon(Icons.account_balance_wallet),
                       key: Key('income_key'),
                       textInputType: TextInputType.number,
-                      controller: _incomeTextEditingController
-                  ),
+                      controller: _incomeTextEditingController,
+                      onSaved: (value) {
+                          actions.onUpdateIncome(value!);
+                      }),
+
                 ),
                 SizedBox(
                   child: _textFormField(
                     hintText: 'Phone',
-                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]{10,11}'))],
-                      key: Key('phone_key'),
-                      controller: _phoneTextEditingController,
-                      onChangeTextField: (){},
-                      textInputType: TextInputType.phone,
-                      icon: Icon(Icons.phone_android),
+                    key: Key('phone_key'),
+                    controller: _phoneTextEditingController,
+                    textInputType: TextInputType.phone,
+                    icon: Icon(Icons.phone_android),
+                      onSaved: (value) {
+                        actions.onUpdatePhone(value!);
+                    }),
                   ),
                 ),
                 SizedBox(
@@ -106,7 +105,8 @@ class PromoHubCardScreen extends Screen {
                         side: BorderSide(width: 2, color: Colors.green)),
                     onPressed: () {
                       //TODO: add navigation through presenter action after input has been validated
-                      CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
+                      CFRouterScope.of(context)
+                          .push(BusinessBankingRouter.promoCatalogRoute);
 
                       //actions!.navigateToPromoCatalog(context);
                     },
@@ -122,19 +122,19 @@ class PromoHubCardScreen extends Screen {
 
   Widget _textFormField(
       {
-        required Key key,
+        required final FormFieldSetter<String>? onSaved,
+      required Key key,
       required TextEditingController controller,
-      required List<TextInputFormatter> inputFormatters,
-        required String hintText,
+      required String hintText,
       required Function onChangeTextField,
       required TextInputType textInputType,
-      required Icon icon
-      }) {
+      required Icon icon}) {
     return TextFormField(
       controller: controller,
       key: key,
       keyboardType: textInputType,
       textInputAction: TextInputAction.next,
+      onSaved: onSaved,
       decoration: InputDecoration(
         prefixIcon: icon,
         filled: true,
@@ -146,9 +146,24 @@ class PromoHubCardScreen extends Screen {
         enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent, width: 2.0)),
       ),
-      onChanged: (value) {
-
-      },
     );
+  }
+
+  Widget checkInputStatus(
+    String? inputStatus,
+  ) {
+    if (inputStatus!.isNotEmpty) {
+      return Padding(
+          padding: EdgeInsets.only(left: 15, bottom: 10),
+          child: Row(children: [
+            Expanded(
+                child: Text(
+              inputStatus,
+              style: TextStyle(color: Colors.red, fontSize: 12),
+            )),
+          ]));
+    } else {
+      return Container();
+    }
   }
 }

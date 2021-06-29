@@ -12,9 +12,20 @@ class PromoHubCardUseCase extends UseCase {
   PromoHubCardUseCase(ViewModelCallback<PromoHubCardViewModel> viewModelCallback)
       : _viewModelCallback = viewModelCallback;
 
-  void validateIncomeFieldInput(String income){
-    //TODO: implement
-    throw UnimplementedError();
+  String validateIncomeFieldInput(String income){
+    final regex = RegExp(r"^[5-8]*$");
+    final match = regex.allMatches(income).first;
+    bool isValidMatch = false;
+
+    if (match.start == 0 && match.end == income.length) {
+      isValidMatch = true;
+    }
+
+    if (income.isNotEmpty && isValidMatch) {
+      return '';
+    } else {
+      return "Please provide yearly income.";
+    }
   }
 
   void validatePhoneFieldInput(String phone){
