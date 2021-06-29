@@ -2,7 +2,6 @@ import 'package:clean_framework/clean_framework_defaults.dart';
 
 class PromoHubCardRequestModel implements JsonRequestModel {
 
-  //TODO: implement fields
   final String income;
   final String phone;
 

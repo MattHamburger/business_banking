@@ -12,13 +12,22 @@ class PromoHubCardUseCase extends UseCase {
   PromoHubCardUseCase(ViewModelCallback<PromoHubCardViewModel> viewModelCallback)
       : _viewModelCallback = viewModelCallback;
 
-  Future<void> create() async {
+  void validateIncomeFieldInput(){
+    //TODO: implement
+    throw UnimplementedError();
+  }
+
+  void validatePhoneFieldInput(){
+    //TODO: implement
+    throw UnimplementedError();
+  }
+
+  Future<void> execute() async {
     if (_scope == null) {
       _scope = ExampleLocator()
           .repository
           .create<PromoHubCardEntity>(PromoHubCardEntity(), _notifySubscribers);
     }
-
     await ExampleLocator()
         .repository
         .runServiceAdapter(_scope!, PromoHubCardServiceAdapter());

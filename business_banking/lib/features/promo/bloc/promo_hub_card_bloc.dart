@@ -10,7 +10,7 @@ class PromoBloc extends Bloc {
   PromoBloc({required PromoHubCardService promoService}) {
     _useCase =
         PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe.send(viewModel));
-    promoHubCardViewModelPipe.whenListenedDo(() => _useCase.create());
+    promoHubCardViewModelPipe.whenListenedDo(() => _useCase.execute());
   }
 
   @override
