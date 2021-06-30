@@ -14,8 +14,11 @@ class PromoBloc extends Bloc {
       handlePromoHubCardEvent(event);
     });
     _useCase =
-        PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe.send(viewModel));
-    promoHubCardViewModelPipe.whenListenedDo(() => _useCase.execute);
+        PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe
+            .send(viewModel));
+
+    promoHubCardViewModelPipe
+        .whenListenedDo(() => _useCase.execute);
   }
 
   String validateIncome(String income) {

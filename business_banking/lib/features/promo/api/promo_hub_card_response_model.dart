@@ -1,25 +1,20 @@
+import 'package:business_banking/features/promo/model/promo_catalog/promo_catalog_viewmodel.dart';
 import 'package:clean_framework/clean_framework_defaults.dart';
 
-class PromoHubCardResponseModel extends JsonResponseModel {
-  final String icon;
-  final String income;
-  final String phone;
+class PromoResponseModel extends JsonResponseModel {
+  final List<PromoCatalogItem> promotions;
 
-  PromoHubCardResponseModel(
-      this.icon,
-      this.income,
-      this.phone
-      );
+  PromoResponseModel(this.promotions);
 
-  PromoHubCardResponseModel.fromJson(Map<String, dynamic> json)
-      : income = json['income'] ?? '',
-        phone = json['phone'] ?? '',
-        icon = json['icon'] ?? '';
+  PromoResponseModel.fromJson(Map<String, dynamic> json)
+      : promotions = (json['promotions'] as List)
+      .map((promotion) => PromoCatalogItem.fromJson(promotion))
+      .toList();
 
   @override
-  List<Object?> get props => [
-    this.income,
-    this.phone,
-    this.icon,
-  ];
+  List<Object?> get props => [promotions];
+
+  @override
+  bool get stringify => true;
+
 }

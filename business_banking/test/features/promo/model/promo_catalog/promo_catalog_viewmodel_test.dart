@@ -5,34 +5,30 @@ void main() {
   test('PromoCatalogViewModel initialization', () async {
     final viewModel = PromoCatalogViewModel(
         promoList: [
-          PromoCatalogItem(id: 'id1', title: 'title1', subtitle: 'subtitle1',
-              features: 'features1', icon: 'icon1'),
-          PromoCatalogItem(id: 'id2', title: 'title2', subtitle: 'subtitle2',
-              features: 'features2', icon: 'icon2'),
-          PromoCatalogItem(id: 'id3', title: 'title3', subtitle: 'subtitle3',
-              features: 'features3', icon: 'icon3'),
-          PromoCatalogItem(id: 'id4', title: 'title4', subtitle: 'subtitle4',
-              features: 'features4', icon: 'icon4')
+          PromoCatalogItem('id1', 'title1', 'subtitle1', 'features1', 'icon1'),
+          PromoCatalogItem('id2', 'title2', 'subtitle2', 'features2', 'icon2'),
+          PromoCatalogItem('id3', 'title3', 'subtitle3', 'features3', 'icon3'),
+          PromoCatalogItem('id4', 'title4', 'subtitle4', 'features4', 'icon4')
         ]);
 
     final promoListMatcher = [
-      PromoCatalogItem(id: 'id1', title: 'title1', subtitle: 'subtitle1',
-          features: 'features1', icon: 'icon1'),
-      PromoCatalogItem(id: 'id2', title: 'title2', subtitle: 'subtitle2',
-          features: 'features2', icon: 'icon2'),
-      PromoCatalogItem(id: 'id3', title: 'title3', subtitle: 'subtitle3',
-          features: 'features3', icon: 'icon3'),
-      PromoCatalogItem(id: 'id4', title: 'title4', subtitle: 'subtitle4',
-          features: 'features4', icon: 'icon4')
+      PromoCatalogItem( 'id1',  'title1', 'subtitle1',
+          'features1', 'icon1'),
+      PromoCatalogItem( 'id2',  'title2', 'subtitle2',
+          'features2', 'icon2'),
+      PromoCatalogItem( 'id3',  'title3', 'subtitle3',
+          'features3', 'icon3'),
+      PromoCatalogItem( 'id4',  'title4', 'subtitle4',
+          'features4', 'icon4')
     ];
     expect(viewModel, PromoCatalogViewModel(promoList: promoListMatcher));
-    expect(viewModel.promoList[0], PromoCatalogItem(id: 'id1', title: 'title1', subtitle: 'subtitle1',
-        features: 'features1', icon: 'icon1'));
-    expect(viewModel.promoList[1], PromoCatalogItem(id: 'id2', title: 'title2', subtitle: 'subtitle2',
-        features: 'features2', icon: 'icon2'));
-    expect(viewModel.promoList[2], PromoCatalogItem(id: 'id3', title: 'title3', subtitle: 'subtitle3',
-        features: 'features3', icon: 'icon3'));
-    expect(viewModel.promoList[3], PromoCatalogItem(id: 'id4', title: 'title4', subtitle: 'subtitle4',
-        features: 'features4', icon: 'icon4'));
+    expect(viewModel.promoList[0], PromoCatalogItem( 'id1',  'title1', 'subtitle1',
+        'features1', 'icon1'));
+    expect(viewModel.promoList[1], PromoCatalogItem( 'id2',  'title2', 'subtitle2',
+        'features2', 'icon2'));
+    expect(viewModel.promoList[2], PromoCatalogItem( 'id3',  'title3', 'subtitle3',
+        'features3', 'icon3'));
+    expect(viewModel.promoList[3], PromoCatalogItem( 'id4',  'title4', 'subtitle4',
+        'features4', 'icon4'));
   });
 }

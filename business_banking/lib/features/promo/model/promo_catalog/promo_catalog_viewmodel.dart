@@ -10,20 +10,22 @@ class PromoCatalogViewModel extends ViewModel {
   List<Object> get props => [this.promoList];
 }
 
-class PromoCatalogItem extends Equatable{
+class PromoCatalogItem extends Equatable {
   final String id;
   final String title;
   final String subtitle;
   final String features;
   final String icon;
 
-  PromoCatalogItem ( {
-    required this.id,
-    required this.title,
-    required this.subtitle,
-    required this.features,
-    required this.icon
-  });
+  PromoCatalogItem(
+      this.id, this.title, this.subtitle, this.features, this.icon);
+
+  PromoCatalogItem.fromJson(Map<String, dynamic> json)
+      : id = json['id'] ?? '',
+        title = json['title'] ?? '',
+        subtitle = json['subtitle'] ?? '',
+        features = json['features'] ?? '',
+        icon = json['icon'] ?? '';
 
   @override
   List<Object?> get props => [id, title, subtitle, features, icon];

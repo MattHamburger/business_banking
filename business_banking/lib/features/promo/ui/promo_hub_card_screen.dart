@@ -63,23 +63,23 @@ class PromoHubCardScreen extends Screen {
                   ],
                 ),
                 SizedBox(
-                  child: _textFormField(
+                  child: customTextField(
                       hintText: 'Yearly income',
                       icon: Icon(Icons.account_balance_wallet),
                       key: Key('income_key'),
-                      textInputType: TextInputType.number,
                       controller: _incomeTextEditingController,
+                      inputStatus: viewModel.incomeFieldStatus,
                       onSaved: (value) {
                           actions.onUpdateIncome(value!);
                       }),
 
                 ),
                 SizedBox(
-                  child: _textFormField(
+                  child: customTextField(
                     hintText: 'Phone',
                     key: Key('phone_key'),
                     controller: _phoneTextEditingController,
-                    textInputType: TextInputType.phone,
+                      inputStatus: viewModel.phoneFieldStatus,
                     icon: Icon(Icons.phone_android),
                       onSaved: (value) {
                         actions.onUpdatePhone(value!);
@@ -103,6 +103,7 @@ class PromoHubCardScreen extends Screen {
                         side: BorderSide(width: 2, color: Colors.green)),
                     onPressed: () {
                       //TODO: add navigation through presenter action after input has been validated
+                      _form.currentState!.save();
                       CFRouterScope.of(context)
                           .push(BusinessBankingRouter.promoCatalogRoute);
 
@@ -118,46 +119,55 @@ class PromoHubCardScreen extends Screen {
     );
   }
 
-  Widget _textFormField(
-      {
-        required final FormFieldSetter<String>? onSaved,
-      required Key key,
-      required TextEditingController controller,
-      required String hintText,
-      required TextInputType textInputType,
-      required Icon icon}) {
-    return TextFormField(
-      controller: controller,
-      key: key,
-      keyboardType: textInputType,
-      textInputAction: TextInputAction.next,
-      onSaved: onSaved,
-      decoration: InputDecoration(
-        prefixIcon: icon,
-        filled: true,
-        hintText: hintText,
-        contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.lightGreen, width: 2.0),
+  Widget customTextField({
+    TextEditingController? controller,
+    String? labelText,
+    String hintText = '',
+    Icon? icon,
+    final FormFieldSetter<String>? onSaved,
+    bool obscureText = false,
+    TextInputType keyboardType = TextInputType.text,
+    final String? inputStatus,
+    List<TextInputFormatter>? inputFormatters,
+    Key? key,
+  }) {
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: TextFormField(
+          key: key,
+          controller: controller,
+          inputFormatters: inputFormatters ?? <TextInputFormatter>[],
+          //viewModel.paymentValueTextEditingController,
+          decoration: InputDecoration(
+              icon: icon,
+              border: OutlineInputBorder(),
+              suffixStyle: TextStyle(color: Colors.orangeAccent),
+              labelText: labelText,
+              hintText: hintText),
+
+          textInputAction: TextInputAction.done,
+          keyboardType: keyboardType,
+          obscureText: obscureText,
+          onSaved: onSaved,
         ),
-        enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent, width: 2.0)),
       ),
-    );
+      checkInputStatus(inputStatus),
+    ]);
   }
 
   Widget checkInputStatus(
-    String? inputStatus,
-  ) {
+      String? inputStatus,
+      ) {
     if (inputStatus!.isNotEmpty) {
       return Padding(
           padding: EdgeInsets.only(left: 15, bottom: 10),
           child: Row(children: [
             Expanded(
                 child: Text(
-              inputStatus,
-              style: TextStyle(color: Colors.red, fontSize: 12),
-            )),
+                  inputStatus,
+                  style: TextStyle(color: Colors.red, fontSize: 12),
+                )),
           ]));
     } else {
       return Container();

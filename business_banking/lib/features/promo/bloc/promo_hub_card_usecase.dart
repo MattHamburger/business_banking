@@ -1,6 +1,6 @@
 import 'package:business_banking/features/promo/bloc/promo_hub_card_service_adapter.dart';
 import 'package:business_banking/features/promo/model/promo_enums.dart';
-import 'package:business_banking/features/promo/model/promo_hub_card_entity.dart';
+import 'package:business_banking/features/promo/model/promo_entity.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/locator.dart';
 import 'package:clean_framework/clean_framework.dart';
@@ -17,12 +17,12 @@ class PromoHubCardUseCase extends UseCase {
     if (_scope == null) {
       _scope = ExampleLocator()
           .repository
-          .create<PromoHubCardEntity>(PromoHubCardEntity(), _notifySubscribers);
+          .create<PromoEntity>(PromoEntity(), _notifySubscribers);
     }
     await ExampleLocator()
         .repository
         .runServiceAdapter(_scope, PromoHubCardServiceAdapter());
-    PromoHubCardEntity entity = ExampleLocator().repository.get<PromoHubCardEntity>(_scope);
+    PromoEntity entity = ExampleLocator().repository.get<PromoEntity>(_scope);
     _notifySubscribers(entity);
   }
 
@@ -59,12 +59,12 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   updateIncome(String income) {
-    final PromoHubCardEntity entity = ExampleLocator()
+    final PromoEntity entity = ExampleLocator()
         .repository
-        .get<PromoHubCardEntity>(_scope);
+        .get<PromoEntity>(_scope);
     final updatedEntity = entity.merge(income: income);
-    ExampleLocator().repository.update<PromoHubCardEntity>(_scope, updatedEntity
-    as PromoHubCardEntity);
+    ExampleLocator().repository.update<PromoEntity>(_scope, updatedEntity
+    as PromoEntity);
     String validationStatus = validateIncomeFieldInput(income);
     if (validationStatus.isNotEmpty) {
       _viewModelCallback(buildViewModel(
@@ -76,12 +76,12 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   updatePhone(String phone) {
-    final PromoHubCardEntity entity = ExampleLocator()
+    final PromoEntity entity = ExampleLocator()
         .repository
-        .get<PromoHubCardEntity>(_scope);
+        .get<PromoEntity>(_scope);
     final updatedEntity = entity.merge(phone: phone);
-    ExampleLocator().repository.update<PromoHubCardEntity>(_scope, updatedEntity
-    as PromoHubCardEntity);
+    ExampleLocator().repository.update<PromoEntity>(_scope, updatedEntity
+    as PromoEntity);
     String validationStatus = validatePhoneFieldInput(phone);
     if (validationStatus.isNotEmpty) {
       _viewModelCallback(buildViewModel(
@@ -98,7 +98,7 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   PromoHubCardViewModel buildViewModel(
-      {PromoHubCardEntity? entity,
+      {PromoEntity? entity,
     inputField = PromoInputField.unknown,
     formState: '',
   }) {
@@ -106,10 +106,10 @@ class PromoHubCardUseCase extends UseCase {
     return PromoHubCardViewModel(
       icon: entity.icon,
       income: entity.income,
-      incomeStatus: inputField == PromoInputField.income ?
+      incomeFieldStatus: inputField == PromoInputField.income ?
       formState : '',
       phone: entity.phone,
-      phoneStatus: inputField == PromoInputField.phone ?
+      phoneFieldStatus: inputField == PromoInputField.phone ?
       formState : '',
       serviceResponseStatus: PromoServiceResponseStatus.failed
     );
@@ -117,10 +117,10 @@ class PromoHubCardUseCase extends UseCase {
       return PromoHubCardViewModel(
           icon: entity.icon,
           income: entity.income,
-          incomeStatus: inputField == PromoInputField.income ?
+          incomeFieldStatus: inputField == PromoInputField.income ?
           formState : '',
           phone: entity.phone,
-          phoneStatus: inputField == PromoInputField.phone ?
+          phoneFieldStatus: inputField == PromoInputField.phone ?
           formState : '',
           serviceResponseStatus: PromoServiceResponseStatus.succeed
       );

@@ -6,13 +6,16 @@ import 'package:clean_framework/clean_framework_defaults.dart';
 import 'promo_hub_card_request_model.dart';
 
 class PromoHubCardService
-    extends EitherService<PromoHubCardRequestModel, PromoHubCardResponseModel> {
+    extends EitherService<PromoRequestModel, PromoResponseModel> {
   PromoHubCardService()
       : super(
-      method: RestMethod.get, restApi: ExampleLocator().api, path: "promo");
+            method: RestMethod.post,
+            restApi: ExampleLocator().api,
+            path: "promo");
 
   @override
-  PromoHubCardResponseModel parseResponse(Map<String, dynamic> jsonResponse) {
-    return PromoHubCardResponseModel.fromJson(jsonResponse);
+  PromoResponseModel parseResponse(
+      Map<String, dynamic> jsonResponse) {
+    return PromoResponseModel.fromJson(jsonResponse);
   }
 }

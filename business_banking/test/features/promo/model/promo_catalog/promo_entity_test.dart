@@ -1,66 +1,62 @@
-import 'package:business_banking/features/promo/model/promo_catalog/promo_entity.dart';
+import 'package:business_banking/features/promo/model/promo_catalog/promo_catalog_viewmodel.dart';
+import 'package:business_banking/features/promo/model/promo_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
   test('PromoEntity initialization', () async {
     final promoEnt = PromoEntity();
-    expect(promoEnt.id, '');
-    expect(promoEnt.title, '');
-    expect(promoEnt.subtitle, '');
+    expect(promoEnt.income, '');
+    expect(promoEnt.phone, '');
     expect(promoEnt.icon, '');
-    expect(promoEnt.features, '');
+    expect(promoEnt.promotions, []);
     expect(promoEnt.props, [
       promoEnt.errors,
-      promoEnt.id,
-      promoEnt.title,
-      promoEnt.subtitle,
-      promoEnt.features,
-      promoEnt.icon
+      promoEnt.income,
+      promoEnt.phone,
+      promoEnt.icon,
+      promoEnt.promotions
     ]);
   });
 
   test('PromoEntity merge success', () async {
     final promoEntA = PromoEntity(
-      id: 'new_id_A',
-      title: 'test_titleA',
-      subtitle: 'test_subtitleA',
-      features: 'test_featuresA',
+      income: '100',
+      phone: '3103105050',
+      promotions: [],
       icon: 'test_iconA'
     );
 
     final promoEntB = promoEntA.merge(
-        id: 'new_id_B',
-        title: 'test_title_B',
+        income: '200',
+        phone: '55055555555',
+        promotions: [PromoCatalogItem('id1', 'title1', 'subtitle1', 'features1', 'icon1')],
         icon: 'test_iconB') as PromoEntity;
 
-    expect(promoEntB.id, 'new_id_B');
-    expect(promoEntB.title, 'test_title_B');
-    expect(promoEntB.subtitle, 'test_subtitleA');
-    expect(promoEntB.features, 'test_featuresA');
+    expect(promoEntB.income, '200');
+    expect(promoEntB.phone, '55055555555');
+    expect(promoEntB.promotions, [PromoCatalogItem('id1', 'title1', 'subtitle1', 'features1', 'icon1')]);
     expect(promoEntB.icon, 'test_iconB');
   });
 
   test('PromoEntity merge with missing data success', () async {
     final promoEntA = PromoEntity(
-        id: 'new_id_A',
-        title: 'test_title_A',
-        subtitle: 'test_subtitle_A',
-        features: 'test_features_A',
+        income: '100',
+        phone: '3103105050',
+        promotions: [PromoCatalogItem('id1', 'title1', 'subtitle1', 'features1', 'icon1')],
         icon: 'test_icon_A'
     );
 
     final promoEntB = promoEntA.merge(
-        id: null,
-        title: null,
-        subtitle: null,
-        features: null,
-        icon: null) as PromoEntity;
+        income: null,
+        phone: null,
+        promotions: null,
+        icon: null
+    ) as PromoEntity;
 
-    expect(promoEntB.id, 'new_id_A');
-    expect(promoEntB.title, 'test_title_A');
-    expect(promoEntB.subtitle, 'test_subtitle_A');
-    expect(promoEntB.features, 'test_features_A');
+    expect(promoEntB.income, '100');
+    expect(promoEntB.phone, '3103105050');
+    expect(promoEntB.promotions, [PromoCatalogItem('id1', 'title1', 'subtitle1', 'features1', 'icon1')]);
     expect(promoEntB.icon, 'test_icon_A');
   });
 }
