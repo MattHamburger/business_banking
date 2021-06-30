@@ -14,6 +14,7 @@ class PromoHubCardServiceAdapter extends ServiceAdapter<
 
   @override
   PromoEntity createEntity(PromoEntity initialEntity, PromoResponseModel responseModel) {
+    print('create entity called');
     return initialEntity.merge(
       errors: <EntityFailure>[],
       promotions: responseModel.promotions,

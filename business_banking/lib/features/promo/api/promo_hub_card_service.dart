@@ -11,11 +11,13 @@ class PromoHubCardService
       : super(
             method: RestMethod.post,
             restApi: ExampleLocator().api,
-            path: "promo");
+            path: 'promo'
+  );
 
   @override
   PromoResponseModel parseResponse(
       Map<String, dynamic> jsonResponse) {
+    print('parsing response in Service class');
     return PromoResponseModel.fromJson(jsonResponse);
   }
 }

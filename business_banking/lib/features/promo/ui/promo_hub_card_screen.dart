@@ -11,7 +11,10 @@ class PromoHubCardScreen extends Screen {
   final PromoHubCardViewModel viewModel;
   final PromoHubCardPresenterActions actions;
 
-  PromoHubCardScreen({required this.viewModel, required this.actions});
+  PromoHubCardScreen({
+    required this.viewModel,
+    required this.actions
+  });
 
   final _form = GlobalKey<FormState>();
   final _incomeTextEditingController = TextEditingController();
@@ -102,12 +105,8 @@ class PromoHubCardScreen extends Screen {
                             borderRadius: BorderRadius.circular(15)),
                         side: BorderSide(width: 2, color: Colors.green)),
                     onPressed: () {
-                      //TODO: add navigation through presenter action after input has been validated
-                      _form.currentState!.save();
-                      CFRouterScope.of(context)
-                          .push(BusinessBankingRouter.promoCatalogRoute);
-
-                      //actions!.navigateToPromoCatalog(context);
+                      //_form.currentState!.save();
+                      actions.navigateToCatalogRoute(context);
                     },
                   ),
                 ),

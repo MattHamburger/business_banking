@@ -9,16 +9,35 @@ class PromoBloc extends Bloc {
   final promoHubCardEventsPipe = Pipe<PromoHubCardEvent>(canSendDuplicateData: true);
   late PromoHubCardUseCase _useCase;
 
-  PromoBloc({required PromoHubCardService promoService}) {
-    promoHubCardEventsPipe.receive.listen((event) {
-      handlePromoHubCardEvent(event);
-    });
+  PromoBloc({PromoHubCardService? promoService}) {
+    print('initializing bloc');
     _useCase =
         PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe
-            .send(viewModel));
+            .send(viewModel as PromoHubCardViewModel));
 
     promoHubCardViewModelPipe
-        .whenListenedDo(() => _useCase.execute);
+        .whenListenedDo(() => _useCase.execute());
+
+    promoHubCardEventsPipe.receive.listen((event) {
+      print(event.toString());
+      print('event?');
+      handlePromoHubCardEvent(event);
+    });
+    print('assiging use case');
+
+
+
+  }
+
+  void handlePromoHubCardEvent(PromoHubCardEvent event) {
+    print('pipeHandlerEvent:' + event.toString());
+    if (event is UpdateIncomeEvent) {
+      _useCase.updateIncome(event.income);
+      return;
+    } else if (event is UpdatePhoneEvent) {
+      _useCase.updatePhone(event.phone);
+      return;
+    }
   }
 
   String validateIncome(String income) {
@@ -29,17 +48,9 @@ class PromoBloc extends Bloc {
     return _useCase.validatePhoneFieldInput(phone);
   }
 
-  void handlePromoHubCardEvent(PromoHubCardEvent event) {
-    if (event is UpdateIncomeEvent) {
-      _useCase.updateIncome(event.income);
-      return;
-    } else if (event is UpdatePhoneEvent) {
-      _useCase.updatePhone(event.phone);
-    }
-  }
-
   @override
   void dispose() {
     promoHubCardViewModelPipe.dispose();
+    promoHubCardEventsPipe.dispose();
   }
 }

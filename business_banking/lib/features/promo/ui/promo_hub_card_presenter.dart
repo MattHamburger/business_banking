@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart';
 
 class PromoHubCardPresenter
     extends Presenter<PromoBloc, PromoHubCardViewModel, PromoHubCardScreen> {
+
   @override
   Stream<PromoHubCardViewModel> getViewModelStream(PromoBloc bloc) {
     return bloc.promoHubCardViewModelPipe.receive;
@@ -27,6 +28,8 @@ class PromoHubCardPresenter
   PromoHubCardScreen buildScreen(
       BuildContext context, PromoBloc bloc, PromoHubCardViewModel viewModel) {
     SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+      print('building');
+
       if (viewModel.serviceResponseStatus ==
           PromoServiceResponseStatus.succeed) {
         return;
