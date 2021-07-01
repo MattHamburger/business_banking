@@ -74,12 +74,15 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   String validateIncomeFieldInput(String income) {
-    final regex = RegExp(r"^[1-9]*$");
-    final match = regex.allMatches(income).first;
+    final regex = RegExp(r"^[8-9]*$");
+    final match;
     bool isValidMatch = false;
 
-    if (match.start == 0 && match.end == income.length) {
-      isValidMatch = true;
+    if (regex.hasMatch(income)) {
+      match = regex.firstMatch(income);
+      if (match.start == 0 && match.end == income.length) {
+        isValidMatch = true;
+      }
     }
 
     if (income.isNotEmpty && isValidMatch) {
@@ -91,11 +94,14 @@ class PromoHubCardUseCase extends UseCase {
 
   String validatePhoneFieldInput(String phone) {
     final regex = RegExp(r"^[1-3]*$");
-    final match = regex.allMatches(phone).first;
+    final match;
     bool isValidMatch = false;
 
-    if (match.start == 0 && match.end == phone.length) {
-      isValidMatch = true;
+    if (regex.hasMatch(phone)) {
+      match = regex.firstMatch(phone);
+      if (match.start == 0 && match.end == phone.length) {
+        isValidMatch = true;
+      }
     }
 
     if (phone.isNotEmpty && isValidMatch) {

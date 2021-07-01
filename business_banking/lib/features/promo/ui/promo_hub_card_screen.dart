@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:business_banking/routes.dart';
-
 class PromoHubCardScreen extends Screen {
   final PromoHubCardViewModel viewModel;
   final PromoHubCardPresenterActions actions;
@@ -16,7 +14,7 @@ class PromoHubCardScreen extends Screen {
     required this.actions
   });
 
-  final _form = GlobalKey<FormState>();
+  //final _form = GlobalKey<FormState>();
   final _incomeTextEditingController = TextEditingController();
   final _phoneTextEditingController = TextEditingController();
 
@@ -105,8 +103,11 @@ class PromoHubCardScreen extends Screen {
                             borderRadius: BorderRadius.circular(15)),
                         side: BorderSide(width: 2, color: Colors.green)),
                     onPressed: () {
-                      //_form.currentState!.save();
-                      actions.navigateToCatalogRoute(context);
+                      //_form.currentState.save();
+                      actions.onGetOffersTap(
+                          context,
+                          phone: _phoneTextEditingController.text,
+                          income: _incomeTextEditingController.text);
                     },
                   ),
                 ),

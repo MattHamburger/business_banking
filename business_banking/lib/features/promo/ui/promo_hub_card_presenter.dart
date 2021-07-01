@@ -51,6 +51,23 @@ class PromoHubCardPresenterActions {
   final PromoBloc bloc;
   PromoHubCardPresenterActions(this.bloc);
 
+  void onGetOffersTap(
+      BuildContext context,
+      {
+    required String phone,
+    required String income,
+  }) {
+    String phoneValidated = bloc.validatePhone(phone);
+    String incomeValidated = bloc.validateIncome(income);
+
+    if (phoneValidated.isNotEmpty || incomeValidated.isNotEmpty) {
+      showDialogWithMessage(context, 'Incorrect input', 'Correct your info');
+      return;
+    } else {
+     navigateToCatalogRoute(context);
+    }
+  }
+
   void navigateToCatalogRoute(BuildContext context) {
     CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
   }
