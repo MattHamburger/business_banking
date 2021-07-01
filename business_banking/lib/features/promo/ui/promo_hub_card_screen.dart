@@ -47,8 +47,6 @@ class PromoHubCardScreen extends Screen {
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Text(
-                                //TODO: pass viewmodel values:
-                                //viewModel!.promoValue,
                                 'Offers crafted just for you!',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18)),
@@ -58,8 +56,6 @@ class PromoHubCardScreen extends Screen {
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Image.network(
-                              //TODO: add promoImage
-                              //viewModel!.promoIconImage
                               'https://www.huntington.com/-/media/hcom/fp2/trophy_tout_dark_green_50x50.png?rev=5435bf87f28642feb4f6f88dc7a2da39&h=50&w=50&la=en&hash=B7BE7E5D43653CFEED77995A76C8A9DB',
                             ),
                           ))
@@ -72,6 +68,7 @@ class PromoHubCardScreen extends Screen {
                         key: Key('income_key'),
                         controller: _incomeTextEditingController,
                         inputStatus: viewModel.incomeFieldStatus,
+                        textInputAction: TextInputAction.next,
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                         ],
@@ -86,6 +83,7 @@ class PromoHubCardScreen extends Screen {
                       key: Key('phone_key'),
                       controller: _phoneTextEditingController,
                         inputStatus: viewModel.phoneFieldStatus,
+                      textInputAction: TextInputAction.done,
                       icon: Icon(Icons.phone_android),
                         inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
                         onSaved: (value) {
@@ -136,6 +134,7 @@ class PromoHubCardScreen extends Screen {
     TextInputType keyboardType = TextInputType.text,
     final String? inputStatus,
     List<TextInputFormatter>? inputFormatters,
+    required TextInputAction textInputAction,
     Key? key,
   }) {
     return Column(children: [
@@ -153,7 +152,7 @@ class PromoHubCardScreen extends Screen {
               labelText: labelText,
               hintText: hintText),
 
-          textInputAction: TextInputAction.done,
+          textInputAction: textInputAction,
           keyboardType: keyboardType,
           obscureText: obscureText,
           onSaved: onSaved,

@@ -2,8 +2,6 @@ import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
 class PromoCatalogScreen extends Screen {
-  //TODO: implement vm below and pass in constructor
-  //final PromoCatalogViewModel? viewModel;
 
   PromoCatalogScreen();
 
