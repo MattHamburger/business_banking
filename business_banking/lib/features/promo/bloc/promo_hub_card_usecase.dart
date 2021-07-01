@@ -13,7 +13,6 @@ class PromoHubCardUseCase extends UseCase {
       : _viewModelCallback = viewModelCallback;
 
   Future<void> execute() async {
-    print('usecase execute called');
     _scope = ExampleLocator()
         .repository
         .create<PromoEntity>(PromoEntity(), _notifySubscribers);
@@ -33,7 +32,6 @@ class PromoHubCardUseCase extends UseCase {
     inputField = PromoInputField.unknown,
     formState: '',
   }) {
-    print('building viewmodel');
     entity = entity ??
         ExampleLocator().repository.get(_scope);
     if (entity.hasErrors()) {
@@ -76,7 +74,6 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   String validateIncomeFieldInput(String income) {
-    print('validating income field');
     final regex = RegExp(r"^[1-9]*$");
     final match = regex.allMatches(income).first;
     bool isValidMatch = false;
@@ -93,8 +90,6 @@ class PromoHubCardUseCase extends UseCase {
   }
 
   String validatePhoneFieldInput(String phone) {
-    print('validating phone field');
-
     final regex = RegExp(r"^[1-3]*$");
     final match = regex.allMatches(phone).first;
     bool isValidMatch = false;

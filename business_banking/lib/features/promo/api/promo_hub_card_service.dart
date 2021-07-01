@@ -17,7 +17,6 @@ class PromoHubCardService
   @override
   PromoResponseModel parseResponse(
       Map<String, dynamic> jsonResponse) {
-    print('parsing response in Service class');
     return PromoResponseModel.fromJson(jsonResponse);
   }
 }

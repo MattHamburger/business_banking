@@ -10,7 +10,6 @@ class PromoBloc extends Bloc {
   late PromoHubCardUseCase _useCase;
 
   PromoBloc({PromoHubCardService? promoService}) {
-    print('initializing bloc');
     _useCase =
         PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe
             .send(viewModel as PromoHubCardViewModel));
@@ -20,17 +19,14 @@ class PromoBloc extends Bloc {
 
     promoHubCardEventsPipe.receive.listen((event) {
       print(event.toString());
-      print('event?');
       handlePromoHubCardEvent(event);
     });
-    print('assiging use case');
 
 
 
   }
 
   void handlePromoHubCardEvent(PromoHubCardEvent event) {
-    print('pipeHandlerEvent:' + event.toString());
     if (event is UpdateIncomeEvent) {
       _useCase.updateIncome(event.income);
       return;
