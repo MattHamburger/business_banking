@@ -13,8 +13,4 @@ class PromoResponseModel extends JsonResponseModel {
 
   @override
   List<Object?> get props => [promotions];
-
-  @override
-  bool get stringify => true;
-
 }
