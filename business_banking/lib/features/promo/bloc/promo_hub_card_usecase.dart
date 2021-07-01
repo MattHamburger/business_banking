@@ -36,24 +36,26 @@ class PromoHubCardUseCase extends UseCase {
         ExampleLocator().repository.get(_scope);
     if (entity.hasErrors()) {
       return PromoHubCardViewModel(
-          icon: 'hbc',//entity.icon,
-          income: '00',//entity.income,
+          icon: entity.icon,//entity.icon,
+          income: entity.income,//entity.income,
           incomeFieldStatus:
           inputField == PromoInputField.income ? formState : '',
-          phone:'99',// entity.phone,
+          phone: entity.phone,// entity.phone,
           phoneFieldStatus:
           inputField == PromoInputField.phone ? formState : '',
-          serviceResponseStatus: PromoServiceResponseStatus.failed);
+          serviceResponseStatus: PromoServiceResponseStatus.failed
+      );
     } else {
       return PromoHubCardViewModel(
-          icon: 'kkk',//entity.icon,
-          income:'90',// entity.income,
+          icon: entity.icon,//entity.icon,
+          income: entity.income,//entity.income,
           incomeFieldStatus:
           inputField == PromoInputField.income ? formState : '',
-          phone: '789', //entity.phone,
+          phone: entity.phone,// entity.phone,
           phoneFieldStatus:
           inputField == PromoInputField.phone ? formState : '',
-          serviceResponseStatus: PromoServiceResponseStatus.succeed);
+          serviceResponseStatus: PromoServiceResponseStatus.succeed
+      );
     }
   }
 
