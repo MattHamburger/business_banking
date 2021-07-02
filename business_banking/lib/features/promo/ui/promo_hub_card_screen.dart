@@ -143,7 +143,7 @@ class PromoHubCardScreen extends Screen {
         child: TextFormField(
           key: key,
           controller: controller,
-          inputFormatters: inputFormatters ?? <TextInputFormatter>[],
+          inputFormatters: inputFormatters,
           //viewModel.paymentValueTextEditingController,
           decoration: InputDecoration(
               icon: icon,
