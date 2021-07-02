@@ -73,7 +73,9 @@ class PromoHubCardScreen extends Screen {
                           FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                         ],
                         onSaved: (value) {
+                          print(value);
                             actions.onUpdateIncome(value!);
+                          print(value + ':  set!');
                         }),
 
                   ),
@@ -151,10 +153,10 @@ class PromoHubCardScreen extends Screen {
               suffixStyle: TextStyle(color: Colors.orangeAccent),
               labelText: labelText,
               hintText: hintText),
-
           textInputAction: textInputAction,
           keyboardType: keyboardType,
           obscureText: obscureText,
+
           onSaved: onSaved,
         ),
       ),

@@ -69,7 +69,7 @@ class PromoHubCardPresenterActions {
   }
 
   void navigateToCatalogRoute(BuildContext context) {
-    CFRouterScope.of(context).replaceWith(BusinessBankingRouter.promoCatalogRoute);
+    CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
   }
 
   void onUpdateIncome(String income) {

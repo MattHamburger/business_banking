@@ -8,9 +8,12 @@ class PromoBloc extends Bloc {
   final promoHubCardViewModelPipe = Pipe<PromoHubCardViewModel>();
   final promoHubCardEventsPipe = Pipe<PromoHubCardEvent>(canSendDuplicateData: true);
   late PromoHubCardUseCase _useCase;
+  var recentUpdate = '';
 
-  PromoBloc({PromoHubCardService? promoService}) {
-    _useCase =
+  PromoBloc({PromoHubCardService? promoService,
+    PromoHubCardUseCase? useCase,
+  }) {
+    _useCase = useCase ??
         PromoHubCardUseCase((viewModel) => promoHubCardViewModelPipe
             .send(viewModel as PromoHubCardViewModel));
 
@@ -18,20 +21,18 @@ class PromoBloc extends Bloc {
         .whenListenedDo(() => _useCase.execute());
 
     promoHubCardEventsPipe.receive.listen((event) {
-      print(event.toString());
       handlePromoHubCardEvent(event);
     });
-
-
-
   }
 
   void handlePromoHubCardEvent(PromoHubCardEvent event) {
     if (event is UpdateIncomeEvent) {
       _useCase.updateIncome(event.income);
+      recentUpdate = 'income';
       return;
     } else if (event is UpdatePhoneEvent) {
       _useCase.updatePhone(event.phone);
+      recentUpdate = 'phone';
       return;
     }
   }
