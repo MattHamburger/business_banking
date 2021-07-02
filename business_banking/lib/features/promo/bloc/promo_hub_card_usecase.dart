@@ -75,6 +75,22 @@ class PromoHubCardUseCase extends UseCase {
     }
   }
 
+  updatePhone(String phone) {
+    final PromoEntity entity =
+    ExampleLocator().repository.get<PromoEntity>(_scope);
+    final updatedEntity = entity.merge(phone: phone);
+    ExampleLocator()
+        .repository
+        .update<PromoEntity>(_scope, updatedEntity as PromoEntity);
+    String validationStatus = validatePhoneFieldInput(phone);
+    if (validationStatus.isNotEmpty) {
+      _viewModelCallback(buildViewModel(
+          formState: validationStatus, inputField: PromoInputField.phone));
+    } else {
+      _viewModelCallback(buildViewModel());
+    }
+  }
+
   String validateIncomeFieldInput(String income) {
     final regex = RegExp(r"^[8-9]*$");
     final match;
@@ -110,22 +126,6 @@ class PromoHubCardUseCase extends UseCase {
       return '';
     } else {
       return "Please provide phone number.";
-    }
-  }
-
-  updatePhone(String phone) {
-    final PromoEntity entity =
-        ExampleLocator().repository.get<PromoEntity>(_scope);
-    final updatedEntity = entity.merge(phone: phone);
-    ExampleLocator()
-        .repository
-        .update<PromoEntity>(_scope, updatedEntity as PromoEntity);
-    String validationStatus = validatePhoneFieldInput(phone);
-    if (validationStatus.isNotEmpty) {
-      _viewModelCallback(buildViewModel(
-          formState: validationStatus, inputField: PromoInputField.phone));
-    } else {
-      _viewModelCallback(buildViewModel());
     }
   }
 }
