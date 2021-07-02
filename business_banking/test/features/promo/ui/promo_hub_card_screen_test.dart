@@ -16,25 +16,110 @@ class MockPromoHubCardPresenterActions extends Mock
 void main() {
   MockPromoHubCardPresenterActions mockPromoHubCardPresenterActions;
   mockPromoHubCardPresenterActions = MockPromoHubCardPresenterActions();
-  Widget testWidget;
 
-  final vm = PromoHubCardViewModel(
-      income: '100',
-      phone: '3101010310',
-      icon: 'url',
-      incomeFieldStatus: '',
-      phoneFieldStatus: '',
-      serviceResponseStatus: PromoServiceResponseStatus.succeed);
+  Widget testWidgetSucceed;
+  Widget testWidgetFailed;
 
-  testWidget = MaterialApp(
-    home: PromoHubCardScreen(
-        viewModel: vm,
-        actions: mockPromoHubCardPresenterActions),
-  );
+  PromoHubCardViewModel viewModelFailed;
+  PromoHubCardViewModel viewModelSucceed;
 
-  testWidgets('PromoHubCardScreen initialization', (tester) async {
-    await mockNetworkImagesFor(() => tester.pumpWidget(testWidget));
-    expect(find.byType(PromoHubCardScreen), findsOneWidget);
+  setUp((){
+    viewModelSucceed = PromoHubCardViewModel(
+        income: '100',
+        phone: '3101010310',
+        icon: 'url',
+        incomeFieldStatus: '',
+        phoneFieldStatus: '',
+        serviceResponseStatus: PromoServiceResponseStatus.succeed);
+
+    viewModelFailed = PromoHubCardViewModel(
+        income: 'fail',
+        phone: 'fail',
+        icon: 'url',
+        incomeFieldStatus: 'Please provide income',
+        phoneFieldStatus: 'Please provide phone number',
+        serviceResponseStatus: PromoServiceResponseStatus.failed);
+
+    testWidgetSucceed = MaterialApp(
+      home: PromoHubCardScreen(
+          viewModel: viewModelSucceed,
+          actions: mockPromoHubCardPresenterActions),
+    );
+
+    testWidgetFailed = MaterialApp(
+      home: PromoHubCardScreen(
+          viewModel: viewModelFailed,
+          actions: mockPromoHubCardPresenterActions),
+    );
   });
 
+  tearDown((){
+    viewModelFailed = null;
+    viewModelSucceed = null;
+  });
+
+  Future<void> pumpGetOffersButton(
+    WidgetTester tester, MaterialApp testWidget) async {
+   await tester.pumpWidget(testWidget);
+   await tester.pumpAndSettle();
+   var widget = find.text('Get Offers');
+   expect(widget, findsOneWidget);
+   await tester.tap(widget);
+   await tester.pumpAndSettle();
+  }
+
+  void verifyPresenterActions() {
+    verify(mockPromoHubCardPresenterActions.onUpdatePhone(any))
+        .called(1);
+    verify(mockPromoHubCardPresenterActions.onUpdateIncome(any))
+        .called(1);
+    verify(mockPromoHubCardPresenterActions
+        .onGetOffersTap(any,
+        phone: anyNamed('phone'),
+        income: anyNamed('income')))
+        .called(1);
+  }
+
+
+  group('PromoHubCardScreen tests',(){
+
+    testWidgets('PromoHubCardScreen built and found', (tester) async {
+      await mockNetworkImagesFor(() => tester.pumpWidget(testWidgetSucceed));
+      expect(find.byType(PromoHubCardScreen), findsOneWidget);
+    });
+
+    testWidgets('Static content widgets found',(tester) async {
+      await tester.pumpWidget(testWidgetSucceed);
+      await tester.pumpAndSettle();
+      final widgetType = find.byType(PromoHubCardScreen);
+      expect(widgetType, findsOneWidget);
+      expect(find.text('Offers crafted just for you!'), findsOneWidget);
+      expect(find.text('Get Offers'), findsOneWidget);
+      expect(find.text('Yearly income'), findsOneWidget);
+      expect(find.text('Phone'), findsOneWidget);
+    });
+
+    testWidgets('User input is being displayed',(tester) async {
+      await tester.pumpWidget(testWidgetSucceed);
+      await tester.pumpAndSettle();
+      expect(find.text(viewModelSucceed.phone), findsOneWidget);
+      expect(find.text(viewModelSucceed.income), findsOneWidget);
+      var incomeField = find.byKey(Key('income_key'));
+      expect(incomeField, findsOneWidget);
+      var phoneField = find.byKey(Key('phone_key'));
+      expect(phoneField, findsOneWidget);
+      await tester.enterText(incomeField, '88888');
+      await tester.enterText(phoneField, '2223332233');
+      await tester.pumpAndSettle();
+      expect(find.text('88888'), findsOneWidget);
+      expect(find.text('2223332233'), findsOneWidget);
+    });
+
+    testWidgets('Validation messages displayed',(tester) async {
+      await pumpGetOffersButton(tester, testWidgetFailed);
+      verifyPresenterActions();
+      expect(find.text('Please provide phone number'), findsOneWidget);
+      expect(find.text('Please provide income'), findsOneWidget);
+    });
+  });
 }
