@@ -1,5 +1,5 @@
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
-import 'package:business_banking/features/promo/ui/promo_hub_card_presenter.dart';
+import 'package:business_banking/features/promo/ui/promo_hub_card_presenter_actions.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
