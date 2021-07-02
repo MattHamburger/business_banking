@@ -17,8 +17,7 @@ class PromoHubCardUseCase extends UseCase {
         .repository
         .create<PromoEntity>(PromoEntity(), _notifySubscribers);
 
-    PromoEntity promoEntity = ExampleLocator()
-    .repository.get(_scope);
+    PromoEntity promoEntity = ExampleLocator().repository.get(_scope);
 
     _notifySubscribers(promoEntity);
   }
@@ -32,36 +31,33 @@ class PromoHubCardUseCase extends UseCase {
     inputField = PromoInputField.unknown,
     formState: '',
   }) {
-    entity = entity ??
-        ExampleLocator().repository.get(_scope);
+    entity = entity ?? ExampleLocator().repository.get(_scope);
     if (entity.hasErrors()) {
       return PromoHubCardViewModel(
           icon: entity.icon,
           income: entity.income,
           incomeFieldStatus:
-          inputField == PromoInputField.income ? formState : '',
+              inputField == PromoInputField.income ? formState : '',
           phone: entity.phone,
           phoneFieldStatus:
-          inputField == PromoInputField.phone ? formState : '',
-          serviceResponseStatus: PromoServiceResponseStatus.failed
-      );
+              inputField == PromoInputField.phone ? formState : '',
+          serviceResponseStatus: PromoServiceResponseStatus.failed);
     } else {
       return PromoHubCardViewModel(
           icon: entity.icon,
           income: entity.income,
           incomeFieldStatus:
-          inputField == PromoInputField.income ? formState : '',
+              inputField == PromoInputField.income ? formState : '',
           phone: entity.phone,
           phoneFieldStatus:
-          inputField == PromoInputField.phone ? formState : '',
-          serviceResponseStatus: PromoServiceResponseStatus.succeed
-      );
+              inputField == PromoInputField.phone ? formState : '',
+          serviceResponseStatus: PromoServiceResponseStatus.succeed);
     }
   }
 
   updateIncome(String income) {
     final PromoEntity entity =
-    ExampleLocator().repository.get<PromoEntity>(_scope);
+        ExampleLocator().repository.get<PromoEntity>(_scope);
     final updatedEntity = entity.merge(income: income);
     ExampleLocator()
         .repository
@@ -77,7 +73,7 @@ class PromoHubCardUseCase extends UseCase {
 
   updatePhone(String phone) {
     final PromoEntity entity =
-    ExampleLocator().repository.get<PromoEntity>(_scope);
+        ExampleLocator().repository.get<PromoEntity>(_scope);
     final updatedEntity = entity.merge(phone: phone);
     ExampleLocator()
         .repository
@@ -93,39 +89,19 @@ class PromoHubCardUseCase extends UseCase {
 
   String validateIncomeFieldInput(String income) {
     final regex = RegExp(r"^[8-9]*$");
-    final match;
-    bool isValidMatch = false;
-
-    if (regex.hasMatch(income)) {
-      match = regex.firstMatch(income);
-      if (match.start == 0 && match.end == income.length) {
-        isValidMatch = true;
-      }
-    }
-
-    if (income.isNotEmpty && isValidMatch) {
+    if (income.isNotEmpty && income.contains(regex)) {
       return '';
     } else {
-      return "Please provide yearly income.";
+      return 'Please provide income';
     }
   }
 
   String validatePhoneFieldInput(String phone) {
     final regex = RegExp(r"^[1-3]*$");
-    final match;
-    bool isValidMatch = false;
-
-    if (regex.hasMatch(phone)) {
-      match = regex.firstMatch(phone);
-      if (match.start == 0 && match.end == phone.length) {
-        isValidMatch = true;
-      }
-    }
-
-    if (phone.isNotEmpty && isValidMatch) {
+    if (phone.isNotEmpty && phone.contains(regex)) {
       return '';
     } else {
-      return "Please provide phone number.";
+      return 'Please provide phone number';
     }
   }
 }

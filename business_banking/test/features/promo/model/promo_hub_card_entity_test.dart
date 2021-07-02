@@ -8,11 +8,13 @@ void main() {
     expect(promoHubCardEnt.income, '');
     expect(promoHubCardEnt.phone, '');
     expect(promoHubCardEnt.icon, '');
+    expect(promoHubCardEnt.promotions, []);
     expect(promoHubCardEnt.props, [
       promoHubCardEnt.errors,
       promoHubCardEnt.income,
       promoHubCardEnt.phone,
       promoHubCardEnt.icon,
+      promoHubCardEnt.promotions
     ]);
   });
 

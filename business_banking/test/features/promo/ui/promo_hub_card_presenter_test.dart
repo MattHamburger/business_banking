@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('AdHubCardPresenter widget test', (tester) async {
+  testWidgets('PromoPresenter widget test', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: BlocProvider<PromoBloc>(
         create: (_) => PromoBloc(promoService: PromoHubCardService()),
@@ -16,7 +16,7 @@ void main() {
     expect(find.byType(PromoHubCardPresenter), findsOneWidget);
   });
 
-  testWidgets('AdHubCardPresenter widget test', (tester) async {
+  testWidgets('PromoPresenter widget test', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: BlocProvider<PromoBloc>(
         create: (_) => PromoBloc(promoService: PromoHubCardService()),
