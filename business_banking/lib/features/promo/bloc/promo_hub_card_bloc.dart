@@ -26,23 +26,13 @@ class PromoBloc extends Bloc {
   }
 
   void handlePromoHubCardEvent(PromoHubCardEvent event) {
-    if (event is UpdateIncomeEvent) {
-      _useCase.updateIncome(event.income);
-      recentUpdate = 'income';
-      return;
-    } else if (event is UpdatePhoneEvent) {
-      _useCase.updatePhone(event.phone);
-      recentUpdate = 'phone';
-      return;
+    if (event is UpdateFormEvent) {
+      _useCase.updateInput(event.income, event.phone);
     }
   }
 
-  String validateIncome(String income) {
-    return _useCase.validateIncomeFieldInput(income);
-  }
-
-  String validatePhone(String phone) {
-    return _useCase.validatePhoneFieldInput(phone);
+  Map<String, String> validateForm(String income, String phone) {
+    return _useCase.validateForm(income, phone);
   }
 
   @override

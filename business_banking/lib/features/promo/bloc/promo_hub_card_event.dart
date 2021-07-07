@@ -2,25 +2,14 @@ import 'package:equatable/equatable.dart';
 
 abstract class PromoHubCardEvent extends Equatable {}
 
-class UpdateIncomeEvent extends PromoHubCardEvent {
+class UpdateFormEvent extends PromoHubCardEvent {
+
+  final String phone;
   final String income;
 
-  UpdateIncomeEvent(this.income);
+  UpdateFormEvent(this.income, this.phone);
 
   @override
-  List<Object> get props => [income];
-
-  @override
-  bool get stringify => true;
-}
-
-class UpdatePhoneEvent extends PromoHubCardEvent {
-  final String phone;
-
-  UpdatePhoneEvent(this.phone);
-
-  @override
-  List<Object> get props => [phone];
-  @override
+  List<Object> get props => [income, phone];
   bool get stringify => true;
 }

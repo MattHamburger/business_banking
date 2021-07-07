@@ -83,8 +83,7 @@ void main() {
 
   testWidgets('Verify error dialog when user input is Invalid',
       (WidgetTester tester) async {
-    when(blocMock.validateIncome(any)).thenReturn('invalid input message');
-    when(blocMock.validatePhone(any)).thenReturn('');
+
     await tester.pumpWidget(MaterialApp(
       home: OnTapButton(
         id: 'errorDialog',
@@ -109,8 +108,7 @@ void main() {
 
   testWidgets('Verify navigation to promo catalog screen',
       (WidgetTester tester) async {
-    when(blocMock.validateIncome(any)).thenReturn('');
-    when(blocMock.validatePhone(any)).thenReturn('');
+
     Widget buildWidget(
         {String initialRoute = '/',
         CFRouteGenerator generator,

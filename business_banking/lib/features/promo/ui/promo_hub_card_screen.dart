@@ -14,7 +14,6 @@ class PromoHubCardScreen extends Screen {
     required this.actions
   });
 
-  final _form = GlobalKey<FormState>();
   final _incomeTextEditingController = TextEditingController();
   final _phoneTextEditingController = TextEditingController();
 
@@ -22,6 +21,11 @@ class PromoHubCardScreen extends Screen {
   Widget build(BuildContext context) {
     _incomeTextEditingController.text = viewModel.income;
     _phoneTextEditingController.text = viewModel.phone;
+    _incomeTextEditingController.selection = TextSelection
+        .fromPosition(TextPosition(offset: _incomeTextEditingController.text.length));
+    _phoneTextEditingController.selection = TextSelection
+        .fromPosition(TextPosition(offset: _phoneTextEditingController.text.length));
+
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -35,7 +39,6 @@ class PromoHubCardScreen extends Screen {
           child: Container(
             color: Colors.white,
             child: Form(
-              key: _form,
               child: Column(
                 children: [
                   Row(
@@ -72,10 +75,10 @@ class PromoHubCardScreen extends Screen {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                         ],
-                        onSaved: (value) {
-                            actions.onUpdateIncome(value!);
-                        }),
-
+                      onChanged: (value) {
+                        actions.onUpdateInput(value, _phoneTextEditingController.text);
+                      }
+                    ),
                   ),
                   SizedBox(
                     child: customTextField(
@@ -86,9 +89,10 @@ class PromoHubCardScreen extends Screen {
                       textInputAction: TextInputAction.done,
                       icon: Icon(Icons.phone_android),
                         inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
-                        onSaved: (value) {
-                          actions.onUpdatePhone(value!);
-                      }),
+                        onChanged: (value) {
+                          actions.onUpdateInput(_incomeTextEditingController.text, value);
+                        }
+                      ),
                     ),
                   SizedBox(
                     height: 50,
@@ -107,7 +111,6 @@ class PromoHubCardScreen extends Screen {
                               borderRadius: BorderRadius.circular(15)),
                           side: BorderSide(width: 2, color: Colors.green)),
                       onPressed: () {
-                        _form.currentState!.save();
                         actions.onGetOffersTap(
                             context,
                             phone: _phoneTextEditingController.text,
@@ -127,9 +130,9 @@ class PromoHubCardScreen extends Screen {
   Widget customTextField({
     TextEditingController? controller,
     String? labelText,
-    String hintText = '',
+    String? hintText,
     Icon? icon,
-    final FormFieldSetter<String>? onSaved,
+    final Function(String)? onChanged,
     bool obscureText = false,
     TextInputType keyboardType = TextInputType.text,
     final String? inputStatus,
@@ -154,8 +157,7 @@ class PromoHubCardScreen extends Screen {
           textInputAction: textInputAction,
           keyboardType: keyboardType,
           obscureText: obscureText,
-
-          onSaved: onSaved,
+          onChanged: onChanged,
         ),
       ),
       checkInputStatus(inputStatus),

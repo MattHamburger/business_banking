@@ -14,11 +14,14 @@ class PromoHubCardPresenterActions {
         required String phone,
         required String income,
       }) {
-    String phoneValidated = bloc.validatePhone(phone);
-    String incomeValidated = bloc.validateIncome(income);
 
-    if (phoneValidated.isNotEmpty || incomeValidated.isNotEmpty) {
-      showDialogWithMessage(context, 'Incorrect input', 'Correct your info');
+    Map<String, String> formValidated = bloc.validateForm(income, phone);
+
+
+    if (formValidated['income']!.isNotEmpty
+        || formValidated['phone']!.isNotEmpty) {
+      showDialogWithMessage(context, 'Incorrect input',
+          'Please correct entries');
       return;
     } else {
       navigateToCatalogRoute(context);
@@ -29,13 +32,8 @@ class PromoHubCardPresenterActions {
     CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
   }
 
-  void onUpdateIncome(String income) {
-    final event = UpdateIncomeEvent(income);
-    bloc.promoHubCardEventsPipe.send(event);
-  }
-
-  void onUpdatePhone(String phone) {
-    final event = UpdatePhoneEvent(phone);
+  void onUpdateInput(String income, String phone) {
+    final event = UpdateFormEvent(income, phone);
     bloc.promoHubCardEventsPipe.send(event);
   }
 

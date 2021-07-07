@@ -75,14 +75,6 @@ void main() {
       bloc.handlePromoHubCardEvent(updateIncomeEvent);
       expect(bloc.recentUpdate, 'income');
     });
-    test('validateIncome method test', () {
-      bloc.validateIncome(income);
-      verify(mockUseCase.validateIncomeFieldInput(income)).called(1);
-    });
-    test('validatePhone method test', () {
-      bloc.validatePhone(phone);
-      verify(mockUseCase.validatePhoneFieldInput(phone)).called(1);
-    });
 
     test('verify phone number after sending UpdatePhoneEvent func',
             () async {
