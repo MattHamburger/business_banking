@@ -64,8 +64,6 @@ class PromoHubCardUseCase extends UseCase {
             .repository
             .get<PromoEntity>(_scope);
     final updatedEntity = entity.merge(income: income, phone: phone);
-    print(validationMessages['income']! + 'VADLVADL');
-    print(validationMessages['phone']! + 'VADLVADL');
 
     ExampleLocator()
       .repository
