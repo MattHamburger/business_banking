@@ -1,7 +1,6 @@
 // @dart=2.9
 
 import 'package:business_banking/features/promo/bloc/promo_hub_card_bloc.dart';
-import 'package:business_banking/features/promo/bloc/promo_hub_card_event.dart';
 import 'package:business_banking/features/promo/model/promo_enums.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/features/promo/ui/promo_hub_card_presenter.dart';
@@ -150,15 +149,7 @@ void main() {
   });
 
   test('Verify event type dispatch on UpdateIncomeEvent receipt', () async {
-    actions.onUpdateIncome('200');
-
-    blocMock.promoHubCardViewModelPipe.receive.listen((event) {
-      expect(event, isA<PromoHubCardViewModel>());
-    });
-  });
-
-  test('Verify event type dispatch on UpdatePhoneEvent receipt', () async {
-    actions.onUpdatePhone('4884888888');
+    actions.onUpdateInput('200', '4884888888');
 
     blocMock.promoHubCardViewModelPipe.receive.listen((event) {
       expect(event, isA<PromoHubCardViewModel>());

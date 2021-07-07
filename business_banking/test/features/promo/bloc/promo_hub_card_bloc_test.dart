@@ -30,8 +30,7 @@ void main() {
   group('PromoBloc tests',(){
     String income = '100';
     String phone = '3103103030';
-    PromoHubCardEvent updatePhoneEvent = UpdatePhoneEvent(phone);
-    PromoHubCardEvent updateIncomeEvent = UpdateIncomeEvent(income);
+    PromoHubCardEvent updateFormEvent = UpdateFormEvent(income, phone);
 
     PromoHubCardViewModel promoViewModel =
     PromoHubCardViewModel(
@@ -52,36 +51,22 @@ void main() {
 
     test('verify handler is called on receipt of event',(){
       bloc.promoHubCardEventsPipe.receive.listen((event) {
-        if (event is UpdatePhoneEvent) {
+        if (event is UpdateFormEvent) {
           verify(mockUseCase
-          .updatePhone(phone))
-              .called(1);
-        }
-        if (event is UpdateIncomeEvent) {
-          verify(mockUseCase
-              .updateIncome(income))
+          .updateInput(income, phone))
               .called(1);
         }
       });
-      bloc.handlePromoHubCardEvent(UpdatePhoneEvent(phone));
-      bloc.handlePromoHubCardEvent(UpdateIncomeEvent(income));
+      bloc.handlePromoHubCardEvent(UpdateFormEvent(income, phone));
     });
 
-    test('handlePromoHubCardEvent updatePhone logic branch verification', () {
-      bloc.handlePromoHubCardEvent(updatePhoneEvent);
-      expect(bloc.recentUpdate, 'phone');
-    });
-    test('handlePromoHubCardEvent updateIncome logic branch verification', () {
-      bloc.handlePromoHubCardEvent(updateIncomeEvent);
-      expect(bloc.recentUpdate, 'income');
-    });
-
-    test('verify phone number after sending UpdatePhoneEvent func',
+    test('verify phone number after sending UpdateFormEvent func',
             () async {
           bloc.promoHubCardViewModelPipe.receive.listen((event) {
             expect(event.phone, phone);
+            expect(event.income, income);
           });
-          bloc.promoHubCardEventsPipe.send(UpdatePhoneEvent('0000000000'));
+          bloc.promoHubCardEventsPipe.send(UpdateFormEvent('100', '3103103311'));
         });
   });
 

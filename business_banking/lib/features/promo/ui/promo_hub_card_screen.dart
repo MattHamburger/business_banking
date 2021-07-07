@@ -9,10 +9,7 @@ class PromoHubCardScreen extends Screen {
   final PromoHubCardViewModel viewModel;
   final PromoHubCardPresenterActions actions;
 
-  PromoHubCardScreen({
-    required this.viewModel,
-    required this.actions
-  });
+  PromoHubCardScreen({required this.viewModel, required this.actions});
 
   final _incomeTextEditingController = TextEditingController();
   final _phoneTextEditingController = TextEditingController();
@@ -21,11 +18,10 @@ class PromoHubCardScreen extends Screen {
   Widget build(BuildContext context) {
     _incomeTextEditingController.text = viewModel.income;
     _phoneTextEditingController.text = viewModel.phone;
-    _incomeTextEditingController.selection = TextSelection
-        .fromPosition(TextPosition(offset: _incomeTextEditingController.text.length));
-    _phoneTextEditingController.selection = TextSelection
-        .fromPosition(TextPosition(offset: _phoneTextEditingController.text.length));
-
+    _incomeTextEditingController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _incomeTextEditingController.text.length));
+    _phoneTextEditingController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _phoneTextEditingController.text.length));
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -49,8 +45,7 @@ class PromoHubCardScreen extends Screen {
                           flex: 3,
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
-                            child: Text(
-                                'Offers crafted just for you!',
+                            child: Text('Offers crafted just for you!',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18)),
                           )),
@@ -75,25 +70,29 @@ class PromoHubCardScreen extends Screen {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                         ],
-                      onChanged: (value) {
-                        actions.onUpdateInput(value, _phoneTextEditingController.text);
-                      }
-                    ),
+                        onChanged: (value) {
+                          actions.onUpdateInput(
+                              value, _phoneTextEditingController.text);
+                        }),
                   ),
                   SizedBox(
                     child: customTextField(
-                      hintText: 'Phone',
-                      key: Key('phone_key'),
-                      controller: _phoneTextEditingController,
+                        hintText: 'Phone (***) *** ****',
+                        key: Key('phone_key'),
+                        controller: _phoneTextEditingController,
                         inputStatus: viewModel.phoneFieldStatus,
-                      textInputAction: TextInputAction.done,
-                      icon: Icon(Icons.phone_android),
-                        inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
+                        textInputAction: TextInputAction.done,
+                        icon: Icon(Icons.phone_android),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp('[0-9]'),
+                          ),
+                        ],
                         onChanged: (value) {
-                          actions.onUpdateInput(_incomeTextEditingController.text, value);
-                        }
-                      ),
-                    ),
+                          actions.onUpdateInput(
+                              _incomeTextEditingController.text, value);
+                        }),
+                  ),
                   SizedBox(
                     height: 50,
                     width: double.infinity,
@@ -111,8 +110,7 @@ class PromoHubCardScreen extends Screen {
                               borderRadius: BorderRadius.circular(15)),
                           side: BorderSide(width: 2, color: Colors.green)),
                       onPressed: () {
-                        actions.onGetOffersTap(
-                            context,
+                        actions.onGetOffersTap(context,
                             phone: _phoneTextEditingController.text,
                             income: _incomeTextEditingController.text);
                       },
@@ -165,17 +163,17 @@ class PromoHubCardScreen extends Screen {
   }
 
   Widget checkInputStatus(
-      String? inputStatus,
-      ) {
+    String? inputStatus,
+  ) {
     if (inputStatus!.isNotEmpty) {
       return Padding(
           padding: EdgeInsets.only(left: 15, bottom: 10),
           child: Row(children: [
             Expanded(
                 child: Text(
-                  inputStatus,
-                  style: TextStyle(color: Colors.red, fontSize: 12),
-                )),
+              inputStatus,
+              style: TextStyle(color: Colors.red, fontSize: 12),
+            )),
           ]));
     } else {
       return Container();

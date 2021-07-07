@@ -28,11 +28,10 @@ void main() {
         'Verification of viewModel field updates',
             () async {
           useCase.execute();
-          useCase.updateIncome('888');
-          expect(promoViewModel.income, '888');
+          useCase.updateInput('123', '111221122');
+          expect(promoViewModel.income, '123');
           print(promoViewModel.incomeFieldStatus);
           expect(promoViewModel.incomeFieldStatus, '');
-          useCase.updatePhone('111221122');
           print(promoViewModel.incomeFieldStatus);
           expect(promoViewModel.phone, '111221122');
           expect(promoViewModel.phoneFieldStatus, '');
@@ -42,13 +41,12 @@ void main() {
         'Verification of non empty (invalid input) validation status',
             () async {
           useCase.execute();
-          useCase.updateIncome('aab');
+          useCase.updateInput('aab', 'abc');
           expect(promoViewModel.income, 'aab');
-          expect(promoViewModel.incomeFieldStatus, 'Please provide income');
-          useCase.updatePhone('abc');
+          expect(promoViewModel.incomeFieldStatus, 'Enter correct numbers');
           print(promoViewModel.incomeFieldStatus);
           expect(promoViewModel.phone, 'abc');
-          expect(promoViewModel.phoneFieldStatus, 'Please provide phone number');
+          expect(promoViewModel.phoneFieldStatus, 'Enter correct phone number');
         });
 
     test(

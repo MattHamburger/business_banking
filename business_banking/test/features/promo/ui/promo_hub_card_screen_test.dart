@@ -36,8 +36,8 @@ void main() {
         income: 'fail',
         phone: 'fail',
         icon: 'url',
-        incomeFieldStatus: 'Please provide income',
-        phoneFieldStatus: 'Please provide phone number',
+        incomeFieldStatus: 'Enter correct numbers',
+        phoneFieldStatus: 'Enter correct phone number',
         serviceResponseStatus: PromoServiceResponseStatus.failed);
 
     testWidgetSucceed = MaterialApp(
@@ -68,19 +68,6 @@ void main() {
    await tester.pumpAndSettle();
   }
 
-  void verifyPresenterActions() {
-    verify(mockPromoHubCardPresenterActions.onUpdatePhone(any))
-        .called(1);
-    verify(mockPromoHubCardPresenterActions.onUpdateIncome(any))
-        .called(1);
-    verify(mockPromoHubCardPresenterActions
-        .onGetOffersTap(any,
-        phone: anyNamed('phone'),
-        income: anyNamed('income')))
-        .called(1);
-  }
-
-
   group('PromoHubCardScreen tests',(){
 
     testWidgets('PromoHubCardScreen built and found', (tester) async {
@@ -96,7 +83,7 @@ void main() {
       expect(find.text('Offers crafted just for you!'), findsOneWidget);
       expect(find.text('Get Offers'), findsOneWidget);
       expect(find.text('Yearly income'), findsOneWidget);
-      expect(find.text('Phone'), findsOneWidget);
+      expect(find.text('Phone (***) *** ****'), findsOneWidget);
     });
 
     testWidgets('User input is being displayed',(tester) async {
@@ -117,9 +104,8 @@ void main() {
 
     testWidgets('Validation messages displayed',(tester) async {
       await pumpGetOffersButton(tester, testWidgetFailed);
-      verifyPresenterActions();
-      expect(find.text('Please provide phone number'), findsOneWidget);
-      expect(find.text('Please provide income'), findsOneWidget);
+      expect(find.text('Enter correct numbers'), findsOneWidget);
+      expect(find.text('Enter correct phone number'), findsOneWidget);
     });
   });
 }

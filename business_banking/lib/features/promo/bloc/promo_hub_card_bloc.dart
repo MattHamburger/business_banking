@@ -8,7 +8,6 @@ class PromoBloc extends Bloc {
   final promoHubCardViewModelPipe = Pipe<PromoHubCardViewModel>();
   final promoHubCardEventsPipe = Pipe<PromoHubCardEvent>(canSendDuplicateData: true);
   late PromoHubCardUseCase _useCase;
-  var recentUpdate = '';
 
   PromoBloc({PromoHubCardService? promoService,
     PromoHubCardUseCase? useCase,
