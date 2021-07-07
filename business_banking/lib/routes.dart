@@ -4,7 +4,7 @@ import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_form_entry/new_online_registration_widget.dart';
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_success_screen/new_online_registration_success_widget.dart';
-import 'package:business_banking/features/promo/ui/promo_catalog/promo_catalog_screen.dart';
+import 'package:business_banking/features/promo/ui/promo_catalog/promo_catalog_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'features/credit_card/ui/payment_request/credit_card_payment_request_widget.dart';
@@ -63,7 +63,7 @@ abstract class BusinessBankingRouter {
         return DepositCheckConfirmWidget();
 
       case promoCatalogRoute:
-        return PromoCatalogScreen();
+        return PromoCatalogWidget();
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();

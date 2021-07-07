@@ -1,3 +1,4 @@
+import 'package:business_banking/features/promo/bloc/promo_hub_card_service_adapter.dart';
 import 'package:business_banking/features/promo/model/promo_enums.dart';
 import 'package:business_banking/features/promo/model/promo_entity.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
@@ -18,8 +19,16 @@ class PromoHubCardUseCase extends UseCase {
         .create<PromoEntity>(PromoEntity(), _notifySubscribers);
 
     PromoEntity promoEntity = ExampleLocator().repository.get(_scope);
-
     _notifySubscribers(promoEntity);
+  }
+
+  void submit() async {
+      await ExampleLocator()
+          .repository
+          .runServiceAdapter(_scope, PromoHubCardServiceAdapter());
+      PromoEntity entity = ExampleLocator()
+      .repository.get<PromoEntity>(_scope);
+      _notifySubscribers(entity);
   }
 
   void _notifySubscribers(entity) {
@@ -34,6 +43,7 @@ class PromoHubCardUseCase extends UseCase {
     entity = entity ?? ExampleLocator().repository.get(_scope);
     if (entity.hasErrors()) {
       return PromoHubCardViewModel(
+        promotions: entity.promotions,
           icon: entity.icon,
           income: entity.income,
           incomeFieldStatus:
@@ -44,6 +54,7 @@ class PromoHubCardUseCase extends UseCase {
           serviceResponseStatus: PromoServiceResponseStatus.failed);
     } else {
       return PromoHubCardViewModel(
+          promotions: entity.promotions,
           icon: entity.icon,
           income: entity.income,
           incomeFieldStatus:

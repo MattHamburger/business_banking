@@ -8,6 +8,7 @@ class PromoHubCardViewModel extends ViewModel {
   final String phoneFieldStatus;
   final String icon;
   final serviceResponseStatus;
+  final promotions;
 
   PromoHubCardViewModel(
       {required this.income,
@@ -15,9 +16,10 @@ class PromoHubCardViewModel extends ViewModel {
         required this.phone,
         required this.phoneFieldStatus,
         required this.icon,
+        required this.promotions,
         this.serviceResponseStatus = PromoServiceResponseStatus.unknown
       });
 
   @override
-  List<Object> get props => [income, phone, icon];
+  List<Object> get props => [income, phone, icon, promotions];
 }

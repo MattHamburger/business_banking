@@ -1,9 +1,12 @@
+import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
 class PromoCatalogScreen extends Screen {
 
-  PromoCatalogScreen();
+  final PromoHubCardViewModel viewModel;
+
+  PromoCatalogScreen({required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +46,37 @@ class PromoCatalogScreen extends Screen {
                         ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: 20,
+                          itemCount: viewModel.promotions.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Card(
-                              child: ListTile(
-                                leading: Icon(Icons.ac_unit),
-                                title: Text('Money For Free!'),
-                                subtitle: Text('Only tomorrow!'),
-                              ),
+                              child: Container(
+                                height: 300,
+                                child: Padding(
+                                  padding:  EdgeInsets.all(15.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(15.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 50,
+                                                child: Image.network(viewModel.promotions[index].icon)),
+                                            Text(viewModel.promotions[index].title,
+                                            style: TextStyle(fontSize: 18))
+                                          ],
+                                        ),
+                                      ),
+                                      Text(viewModel.promotions[index].subtitle),
+                                      Text(viewModel.promotions[index].features)
+                                    ],
+                                  ),
+                                ),
+                              )
                             );
                           },
                         ),

@@ -13,7 +13,7 @@ class PromoHubCardPresenterActions {
       {
         required String phone,
         required String income,
-      }) {
+      }) async {
 
     Map<String, String> formValidated = bloc.validateForm(income, phone);
 
@@ -24,8 +24,13 @@ class PromoHubCardPresenterActions {
           'Please correct entries');
       return;
     } else {
+      await onSubmitForm();
       navigateToCatalogRoute(context);
     }
+  }
+
+  onSubmitForm(){
+    bloc.onSubmitForm();
   }
 
   void navigateToCatalogRoute(BuildContext context) {

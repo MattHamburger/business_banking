@@ -25,7 +25,8 @@ class PromoEntity extends Entity {
 
   @override
   merge(
-      {errors,
+      {
+        errors,
         String? income,
         String? phone,
         String? icon,

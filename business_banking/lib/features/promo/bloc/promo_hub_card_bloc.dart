@@ -24,6 +24,10 @@ class PromoBloc extends Bloc {
     });
   }
 
+  void onSubmitForm(){
+    _useCase.submit();
+  }
+
   void handlePromoHubCardEvent(PromoHubCardEvent event) {
     if (event is UpdateFormEvent) {
       _useCase.updateInput(event.income, event.phone);

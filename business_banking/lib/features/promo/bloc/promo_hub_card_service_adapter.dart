@@ -13,19 +13,12 @@ class PromoHubCardServiceAdapter extends ServiceAdapter<
       : super(PromoHubCardService());
 
   @override
-  PromoEntity createEntity(PromoEntity initialEntity, PromoResponseModel responseModel) {
-    return initialEntity.merge(
-      errors: <EntityFailure>[],
+  PromoEntity createEntity(
+      PromoEntity promoEntity,
+      PromoResponseModel responseModel) {
+    return promoEntity.merge(
       promotions: responseModel.promotions,
     ) as PromoEntity;
   }
-
-  @override
-  PromoRequestModel createRequest(
-      PromoEntity entity) {
-    return PromoRequestModel(
-        phone: entity.phone,
-        income: entity.phone
-    );
-  }
 }
+
