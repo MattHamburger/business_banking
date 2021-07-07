@@ -75,38 +75,6 @@ class PromoHubCardUseCase extends UseCase {
     phoneState: validationMessages['phone']));
   }
 
-  // updateIncome(String income) {
-  //   final PromoEntity entity =
-  //       ExampleLocator().repository.get<PromoEntity>(_scope);
-  //   final updatedEntity = entity.merge(income: income);
-  //   ExampleLocator()
-  //       .repository
-  //       .update<PromoEntity>(_scope, updatedEntity as PromoEntity);
-  //   String validationStatus = validateIncomeFieldInput(income);
-  //   if (validationStatus.isNotEmpty) {
-  //     _viewModelCallback(buildViewModel(
-  //         incomeState: validationStatus));
-  //   } else {
-  //     _viewModelCallback(buildViewModel(entity: entity));
-  //   }
-  // }
-  //
-  // updatePhone(String phone) {
-  //   final PromoEntity entity =
-  //       ExampleLocator().repository.get<PromoEntity>(_scope);
-  //   final updatedEntity = entity.merge(phone: phone);
-  //   ExampleLocator()
-  //       .repository
-  //       .update<PromoEntity>(_scope, updatedEntity as PromoEntity);
-  //   String validationStatus = validatePhoneFieldInput(phone);
-  //   if (validationStatus.isNotEmpty) {
-  //     _viewModelCallback(buildViewModel(
-  //         phoneState: validationStatus));
-  //   } else {
-  //     _viewModelCallback(buildViewModel(entity: entity));
-  //   }
-  // }
-
   Map<String, String> validateForm(String income, String phone) {
     Map <String, String>validationMessages = {
       'income' : validateIncome(income) ? '' : 'Enter correct numbers',
