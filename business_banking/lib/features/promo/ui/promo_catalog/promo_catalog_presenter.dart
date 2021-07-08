@@ -2,6 +2,7 @@ import 'package:business_banking/features/promo/bloc/promo_hub_card_bloc.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/features/promo/ui/promo_catalog/promo_catalog_screen.dart';
 import 'package:clean_framework/clean_framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class PromoCatalogPresenter
@@ -13,6 +14,22 @@ extends Presenter<PromoBloc, PromoHubCardViewModel, PromoCatalogScreen> {
       PromoBloc bloc,
       PromoHubCardViewModel viewModel) {
     return PromoCatalogScreen(viewModel: viewModel);
+  }
+
+  @override
+  Widget buildLoadingScreen (BuildContext context){
+    return Center(
+      child: CircularProgressIndicator(
+        backgroundColor: Colors.green,
+      )
+    );
+  }
+
+  @override
+  Widget buildErrorScreen (BuildContext context, Object? error) {
+    return Center(
+      child: Text('Something went wrong, please try again'),
+    );
   }
 
   @override

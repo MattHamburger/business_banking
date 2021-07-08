@@ -16,11 +16,13 @@ class PromoCatalogScreen extends Screen {
         title: Text('Checking Account Promotions'),
       ),
       backgroundColor: Colors.grey[300],
-      body: SingleChildScrollView(
-        child: Card(
-          child: Stack(
-            children: [
-              Container(
+      body: Card(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
                 padding: const EdgeInsets.symmetric(
                     vertical: 18.0, horizontal: 20.0),
                 child: Center(
@@ -28,7 +30,9 @@ class PromoCatalogScreen extends Screen {
                       'https://www.huntington.com/-/media/hcom/BackgroundImages/white-green-hex-outlines.jpg'),
                 ),
               ),
-              Column(
+            ),
+            SingleChildScrollView(
+              child: Column(
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -37,9 +41,12 @@ class PromoCatalogScreen extends Screen {
                         child:
                             Text('Promotions for you', style: TextStyle(fontSize: 24))),
                   ),
-                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: Divider(),
+                  ),
                   Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height * 0.8,
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: ListView(
                       children: <Widget>[
@@ -84,9 +91,9 @@ class PromoCatalogScreen extends Screen {
                     ),
                   ),
                 ],
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
