@@ -30,7 +30,9 @@ void main() {
         icon: 'url',
         incomeFieldStatus: '',
         phoneFieldStatus: '',
-        serviceResponseStatus: PromoServiceResponseStatus.succeed);
+        serviceResponseStatus: PromoServiceResponseStatus.succeed,
+        promotions: []
+    );
 
     viewModelFailed = PromoHubCardViewModel(
         income: 'fail',
@@ -38,7 +40,9 @@ void main() {
         icon: 'url',
         incomeFieldStatus: 'Enter correct numbers',
         phoneFieldStatus: 'Enter correct phone number',
-        serviceResponseStatus: PromoServiceResponseStatus.failed);
+        serviceResponseStatus: PromoServiceResponseStatus.failed,
+        promotions: []
+    );
 
     testWidgetSucceed = MaterialApp(
       home: PromoHubCardScreen(

@@ -61,14 +61,14 @@ void main() {
       phoneFieldStatus: 'Enter valid phone number.',
       incomeFieldStatus: 'Enter valid income value.',
       icon: '',
-      serviceResponseStatus: PromoServiceResponseStatus.failed);
+      serviceResponseStatus: PromoServiceResponseStatus.failed, promotions: []);
 
   testWidgets('Error dialog shown on response failure', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: OnTapButton(
         id: 'errorDialog',
         onTap: (context) {
-          presenter.buildScreen(context, PromoBloc(), promoHubCardViewModel);
+          presenter.buildScreen(context, PromoBlocMock(), promoHubCardViewModel);
         },
       ),
       navigatorObservers: [mockObserver],
@@ -95,13 +95,13 @@ void main() {
     await tester.tap(find.byType(ElevatedButton));
     await tester.pumpAndSettle();
     expect(find.text('Incorrect input'), findsOneWidget);
-    expect(find.text('Correct your info'), findsOneWidget);
+    expect(find.text('Please correct entries'), findsOneWidget);
     expect(find.text('OK'), findsOneWidget);
     await tester.tap(find.text('OK'));
     await tester.pumpAndSettle();
     verify(mockObserver.didPop(any, any));
     expect(find.text('Incorrect input'), findsNothing);
-    expect(find.text('Correct your info'), findsNothing);
+    expect(find.text('Please correct entries'), findsNothing);
     expect(find.text('OK'), findsNothing);
   });
 

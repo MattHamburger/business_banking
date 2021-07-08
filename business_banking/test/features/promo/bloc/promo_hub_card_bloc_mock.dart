@@ -12,13 +12,18 @@ class PromoBlocMock extends Mock implements PromoBloc {
   final promoHubCardEventsPipe =
   Pipe<PromoHubCardEvent>(canSendDuplicateData: true);
 
+  @override
+  Map<String, String> validateForm(String income, String phone) {
+    return {'income': 'Enter correct numbers', 'phone':'Enter correct phone'};
+  }
+
   PromoHubCardViewModel promoHubCardViewModel =
       PromoHubCardViewModel(
           income: '100',
           incomeFieldStatus: '',
           phone: '3103103311',
           phoneFieldStatus: '',
-          icon: ''
+          icon: '', promotions: []
       );
 
   PromoBlocMock() {
