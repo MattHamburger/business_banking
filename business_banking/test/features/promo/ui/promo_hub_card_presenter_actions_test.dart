@@ -1,10 +1,10 @@
 // @dart=2.9
 
-import 'package:business_banking/features/promo/bloc/promo_hub_card_bloc.dart';
 import 'package:business_banking/features/promo/model/promo_enums.dart';
 import 'package:business_banking/features/promo/model/promo_hub_card_view_model.dart';
 import 'package:business_banking/features/promo/ui/promo_hub_card_presenter.dart';
 import 'package:business_banking/features/promo/ui/promo_hub_card_presenter_actions.dart';
+import 'package:business_banking/routes.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,11 +17,23 @@ Element get navElement => find.byType(Navigator).evaluate().first;
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
-class OnTapButton extends StatelessWidget {
+class MockPresenterActions extends Mock
+    implements PromoHubCardPresenterActions {
+  @override
+  void onGetOffersTap(
+    BuildContext context, {
+    String phone,
+    String income,
+  })  {
+    CFRouterScope.of(context).push(BusinessBankingRouter.promoCatalogRoute);
+  }
+}
+
+class ButtonTestWidget extends StatelessWidget {
   final String id;
   final void Function(BuildContext) onTap;
 
-  const OnTapButton({Key key, this.id, this.onTap}) : super(key: key);
+  const ButtonTestWidget({Key key, this.id, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +54,7 @@ class OnTapButton extends StatelessWidget {
 void main() {
   PromoBlocMock blocMock;
   PromoHubCardPresenterActions actions;
+  MockPresenterActions mockActions;
   PromoHubCardPresenter presenter;
   final mockObserver = MockNavigatorObserver();
 
@@ -49,26 +62,30 @@ void main() {
     blocMock = PromoBlocMock();
     actions = PromoHubCardPresenterActions(blocMock);
     presenter = PromoHubCardPresenter();
+    mockActions = MockPresenterActions();
   });
 
   tearDown(() {
     blocMock = null;
   });
 
-  PromoHubCardViewModel promoHubCardViewModel = PromoHubCardViewModel(
-      income: '',
-      phone: '',
-      phoneFieldStatus: 'Enter valid phone number.',
-      incomeFieldStatus: 'Enter valid income value.',
-      icon: '',
-      serviceResponseStatus: PromoServiceResponseStatus.failed, promotions: []);
+  PromoHubCardViewModel promoHubCardViewModelInvalidInput =
+      PromoHubCardViewModel(
+          income: '',
+          phone: '',
+          phoneFieldStatus: 'Enter valid phone number.',
+          incomeFieldStatus: 'Enter valid income value.',
+          icon: '',
+          serviceResponseStatus: PromoServiceResponseStatus.failed,
+          promotions: []);
 
   testWidgets('Error dialog shown on response failure', (tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: OnTapButton(
+      home: ButtonTestWidget(
         id: 'errorDialog',
         onTap: (context) {
-          presenter.buildScreen(context, PromoBlocMock(), promoHubCardViewModel);
+          presenter.buildScreen(
+              context, PromoBlocMock(), promoHubCardViewModelInvalidInput);
         },
       ),
       navigatorObservers: [mockObserver],
@@ -82,9 +99,8 @@ void main() {
 
   testWidgets('Verify error dialog when user input is Invalid',
       (WidgetTester tester) async {
-
     await tester.pumpWidget(MaterialApp(
-      home: OnTapButton(
+      home: ButtonTestWidget(
         id: 'errorDialog',
         onTap: (context) {
           actions.onGetOffersTap(context, phone: '', income: '');
@@ -107,7 +123,6 @@ void main() {
 
   testWidgets('Verify navigation to promo catalog screen',
       (WidgetTester tester) async {
-
     Widget buildWidget(
         {String initialRoute = '/',
         CFRouteGenerator generator,
@@ -126,9 +141,9 @@ void main() {
     await tester.pumpWidget(buildWidget(generator: (name) {
       switch (name) {
         case '/':
-          return OnTapButton(
+          return ButtonTestWidget(
             id: 'PromoCatalogScreen',
-            onTap: (context) => actions.onGetOffersTap(
+            onTap: (context) => mockActions.onGetOffersTap(
               context,
               phone: '3103103300',
               income: '100000',

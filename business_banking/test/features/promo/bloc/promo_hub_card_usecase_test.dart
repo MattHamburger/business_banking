@@ -19,8 +19,14 @@ void main() {
   });
 
   group('PromoUseCase',(){
+    test('Verify pipe viewModel output', () async {
+      useCase.execute();
+      expect(promoViewModel, isNotNull);
+    });
+
     test('Verify pipe value output', () async {
       useCase.execute();
+      useCase.submit();
       expect(promoViewModel, isNotNull);
     });
 

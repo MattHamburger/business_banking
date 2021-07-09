@@ -26,13 +26,6 @@ extends Presenter<PromoBloc, PromoHubCardViewModel, PromoCatalogScreen> {
   }
 
   @override
-  Widget buildErrorScreen (BuildContext context, Object? error) {
-    return Center(
-      child: Text('Something went wrong, please try again'),
-    );
-  }
-
-  @override
   Stream<PromoHubCardViewModel> getViewModelStream(PromoBloc bloc) {
    return bloc.promoHubCardViewModelPipe.receive;
   }

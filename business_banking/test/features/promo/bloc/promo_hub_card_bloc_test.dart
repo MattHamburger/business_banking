@@ -40,6 +40,7 @@ void main() {
         incomeFieldStatus: '',
         phone: '3103103030',
       serviceResponseStatus: PromoServiceResponseStatus.succeed,
+      promotions: [],
     );
 
     test('promoViewModelPipe recieves viewModel',(){
@@ -47,6 +48,16 @@ void main() {
       bloc.promoHubCardViewModelPipe.receive.listen((model) {
         verify(mockUseCase.execute()).called(1);
       });
+    });
+
+    test('PromoBloc onSubmitForm calls usecase',(){
+      bloc.onSubmitForm();
+      verify(mockUseCase.submit()).called(1);
+    });
+
+    test('PromoBloc validateForm calls usecase',(){
+      bloc.validateForm(income, phone);
+      verify(mockUseCase.validateForm(income, phone)).called(1);
     });
 
     test('verify handler is called on receipt of event',(){
@@ -57,7 +68,7 @@ void main() {
               .called(1);
         }
       });
-      bloc.handlePromoHubCardEvent(UpdateFormEvent(income, phone));
+      bloc.handlePromoHubCardEvent(updateFormEvent);
     });
 
     test('verify phone number after sending UpdateFormEvent func',
@@ -66,8 +77,10 @@ void main() {
             expect(event.phone, phone);
             expect(event.income, income);
           });
-          bloc.promoHubCardEventsPipe.send(UpdateFormEvent('100', '3103103311'));
-        });
+          bloc.promoHubCardEventsPipe.send(
+              UpdateFormEvent('100', '3103103311')
+          );
+    });
   });
 
 }
