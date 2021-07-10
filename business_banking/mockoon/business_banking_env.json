@@ -1,243 +1,16 @@
 {
-    "source": "mockoon:1.13.0",
+    "source": "mockoon:1.14.1",
     "data": [
         {
             "type": "environment",
             "item": {
                 "uuid": "",
-                "lastMigration": 13,
-                "name": "Demo API",
-                "endpointPrefix": "",
-                "latency": 0,
-                "port": 30,
-                "routes": [
-                    {
-                        "uuid": "",
-                        "documentation": "Use multiple responses with rules",
-                        "method": "post",
-                        "endpoint": "content/:param1",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Default response. Served if route param 'param1' is not present.\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Default response",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            },
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Content XYZ. Served if route param 'param1' equals 'xyz'. (See in 'Rules' tab)\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Content XYZ",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [
-                                    {
-                                        "target": "params",
-                                        "modifier": "param1",
-                                        "value": "xyz",
-                                        "isRegex": false
-                                    }
-                                ],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            },
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Rules example\": \"Content not found. Served if route param 'param1' is not equal to 'xyz'. (See in 'Rules' tab)\"\n}\n",
-                                "latency": 0,
-                                "statusCode": 404,
-                                "label": "Content not found",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [
-                                    {
-                                        "target": "params",
-                                        "modifier": "param1",
-                                        "value": "^(?!.*xyz).*$",
-                                        "isRegex": true
-                                    }
-                                ],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Generate random body (JSON, text, CSV, etc) with templating",
-                        "method": "get",
-                        "endpoint": "users",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "{\n  \"Templating example\": \"For more information about templating, click the blue 'i' above this editor\",\n  \"users\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"userId\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n        \"firstname\": \"{{ faker 'name.firstName' }}\",\n        \"lastname\": \"{{ faker 'name.lastName' }}\",\n        \"friends\": [\n          {{# repeat (faker 'random.number' 5) }}\n            {\n              \"id\": \"{{ faker 'random.uuid' }}\"\n            }\n          {{/ repeat }}\n        ]\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Creates 10 random users, or the amount specified in the 'total' query param",
-                                "headers": [
-                                    {
-                                        "key": "",
-                                        "value": ""
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Serve a file dynamically depending on the path param 'pageName'.",
-                        "method": "get",
-                        "endpoint": "file/:pageName",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "Templating is also supported in file path",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/html"
-                                    }
-                                ],
-                                "filePath": "./page{{urlParam 'pageName'}}.html",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Path supports various patterns",
-                        "method": "put",
-                        "endpoint": "path/with/pattern(s)?/*",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "The current path will match the following routes: \nhttp://localhost:3000/path/with/pattern/\nhttp://localhost:3000/path/with/patterns/\nhttp://localhost:3000/path/with/patterns/anything-else\n\nLearn more about Mockoon's routing: https://mockoon.com/docs/latest/routing",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/plain"
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    },
-                    {
-                        "uuid": "",
-                        "documentation": "Can Mockoon forward or record entering requests?",
-                        "method": "get",
-                        "endpoint": "forward-and-record",
-                        "responses": [
-                            {
-                                "uuid": "",
-                                "body": "Mockoon can also act as a proxy and forward all entering requests that are not caught by declared routes. \nYou can activate this option in the environment settings ('cog' icon in the upper right corner). \nTo learn more: https://mockoon.com/docs/latest/proxy-mode\n\nAs always, all entering requests, and responses from the proxied server will be recorded ('clock' icon in the upper right corner).\nTo learn more: https://mockoon.com/docs/latest/requests-logging",
-                                "latency": 0,
-                                "statusCode": 200,
-                                "label": "",
-                                "headers": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "text/plain"
-                                    }
-                                ],
-                                "filePath": "",
-                                "sendFileAsBody": false,
-                                "rules": [],
-                                "rulesOperator": "OR",
-                                "disableTemplating": false
-                            }
-                        ],
-                        "enabled": true,
-                        "randomResponse": false
-                    }
-                ],
-                "proxyMode": false,
-                "proxyHost": "",
-                "https": false,
-                "cors": true,
-                "headers": [
-                    {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                    }
-                ],
-                "proxyReqHeaders": [
-                    {
-                        "key": "",
-                        "value": ""
-                    }
-                ],
-                "proxyResHeaders": [
-                    {
-                        "key": "",
-                        "value": ""
-                    }
-                ]
-            }
-        },
-        {
-            "type": "environment",
-            "item": {
-                "uuid": "",
-                "lastMigration": 13,
-                "name": "Business Banking Env",
+                "lastMigration": 15,
+                "name": "Promo: Business Banking Env",
                 "endpointPrefix": "",
                 "latency": 0,
                 "port": 3001,
                 "routes": [
-
-
                     {
                         "uuid": "",
                         "documentation": "Gets info for CashAccounts screen",
@@ -264,7 +37,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -292,7 +66,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -345,7 +120,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -373,7 +149,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -401,7 +178,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -429,7 +207,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -475,7 +254,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -503,7 +283,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -531,7 +312,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -554,7 +336,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -577,7 +360,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -600,7 +384,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -623,7 +408,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -646,7 +432,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -674,7 +461,8 @@
                             }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
                         "uuid": "",
@@ -683,57 +471,81 @@
                         "endpoint": "create-new-account",
                         "responses": [
                             {
-                            "uuid": "",
-                            "body": "{\n \"accountNumberGenerated\" : \"123456789\"\n}",
-                            "latency": 0,
-                            "statusCode": 200,
-                            "label": "",
-                            "headers": [
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/json"
-                                }
-                            ],
-                            "filePath": "",
-                            "sendFileAsBody": false,
-                            "rules": [],
-                            "rulesOperator": "OR",
-                            "disableTemplating": false
-                        }
-
+                                "uuid": "",
+                                "body": "{\n \"accountNumberGenerated\" : \"123456789\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
                         ],
                         "enabled": true,
-                        "randomResponse": false
+                        "randomResponse": false,
+                        "sequentialResponse": false
                     },
                     {
-                    "uuid": "",
-                    "documentation": "",
-                    "method": "post",
-                    "endpoint": "create-new-account",
-                    "responses": [
-                        {
-                            "uuid": "",
-                            "body": "{\n \"accountNumberGenerated\" : \"\"\n}",
-                            "latency": 0,
-                            "statusCode": 400,
-                            "label": "",
-                            "headers": [
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application/json"
-                                }
-                            ],
-                            "filePath": "",
-                            "sendFileAsBody": false,
-                            "rules": [],
-                            "rulesOperator": "OR",
-                            "disableTemplating": false
-                        }
-                    ],
-                    "enabled": true,
-                    "randomResponse": false
-                }
-
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "create-new-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n \"accountNumberGenerated\" : \"\"\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "promo",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"promotions\": [\n    {\n      \"id\": \"001\",\n      \"title\": \"Asterisk-Free Checking®\",\n      \"subtitle\": \"A checking account, free from minimum balances.\",\n      \"features\": \"Free to open and free to maintain.\\nNo minimum balance requirement.\\nExtra money when you need it with Standby Cash℠ †\\nNo overdraft fee $50 Safety Zone℠ and 24-Hour Grace®##\\nGet paid up to two days early with Early Pay††\",\n      \"icon\": \"https://www.huntington.com/-/media/Images/checking/Asterisk_free_checking_95x144.png?rev=483f2ab8aa2b46f0987d253d834e900b\"\n    },\n    {\n      \"id\": \"002\",\n      \"title\": \"Huntington 5 Checking®\",\n      \"subtitle\": \"Upgrade to an interest-bearing checking account.\",\n      \"features\": \"Five fee-free, non-Huntington ATM withdraws per statement¶\\nCredit score monitoring at no added cost^\\nNo overdraft fee $50 Safety Zone℠and 24-Hour Grace®##\\nExtra money when you need it with Standby Cash℠†\\nGet paid up to two days early with Early Pay†† \",\n      \"icon\": \"https://www.huntington.com/-/media/Images/checking/Asterisk_free_checking_95x144.png?rev=483f2ab8aa2b46f0987d253d834e900b\"\n    },\n    {\n      \"id\": \"003\",\n      \"title\": \"Huntington 25 Checking®\",\n      \"subtitle\": \"Most rewarding checking account.\",\n      \"features\": \"Competitive savings and money market ratesҰ\\nCredit score and identity monitoring at no added cost^\\nUnlimited non-Huntington ATM withdrawals¶\",\n      \"icon\": \"https://www.huntington.com/-/media/Images/checking/Asterisk_free_checking_95x144.png?rev=483f2ab8aa2b46f0987d253d834e900b\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
                 ],
                 "proxyMode": false,
                 "proxyHost": "",
@@ -756,7 +568,8 @@
                         "key": "",
                         "value": ""
                     }
-                ]
+                ],
+                "proxyRemovePrefix": false
             }
         }
     ]

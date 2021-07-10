@@ -24,6 +24,7 @@ dependencies:
 
   ### https://pub.dev/packages/printing/versions/4.1.0
   printing: ^4.1.0
+  network_image_mock: ^2.0.1
 
 dev_dependencies:
   test:
@@ -32,6 +33,10 @@ dev_dependencies:
   mockito: 5.0.10
   integration_test:
     sdk: flutter
+
+dependency_overrides:
+  convert: ^3.0.1
+  crypto: ^3.0.1
 
 flutter:
   uses-material-design: true

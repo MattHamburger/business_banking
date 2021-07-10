@@ -1,0 +1,1 @@
+enum PromoServiceResponseStatus { succeed, failed, unknown }
