@@ -15,12 +15,17 @@ class CashbackFormPresenter
   CashbackFormScreen buildScreen(BuildContext context, CashbackBloc bloc,
       CashbackFormViewModel viewModel) {
     return CashbackFormScreen(
-      doInit: false,
-      viewModel: viewModel);
+      viewModel: viewModel,
+      onCityFieldChange: (newValue) => onCityFieldChange(bloc, newValue),
+    );
   }
 
   @override
   Stream<CashbackFormViewModel> getViewModelStream(CashbackBloc bloc) {
     return bloc.cashbackFormViewModelPipe.receive;
+  }
+
+  void onCityFieldChange(CashbackBloc bloc, String newValue) {
+    bloc.onCityChangePipe.send(newValue);
   }
 }
