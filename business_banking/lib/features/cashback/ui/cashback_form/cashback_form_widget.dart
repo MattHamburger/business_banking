@@ -10,14 +10,14 @@ import 'package:business_banking/features/cashback/bloc/cashback_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:clean_framework/clean_framework.dart';
 
-import 'cashback_presenter.dart';
+import 'cashback_form_presenter.dart';
 
-class CashbackWidget extends StatelessWidget {
+class CashbackFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CashbackBloc>(
       create: (_) => CashbackBloc(),
-      child: CashbackPresenter(),
+      child: CashbackFormPresenter(),
     );
   }
 }
