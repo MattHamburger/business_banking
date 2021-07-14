@@ -6,7 +6,7 @@
 // * Presenter: Syncs the bloc with the screen, handling the view
 // * Screen: Displays the view model data
 
-import 'package:business_banking/features/cashback/bloc/cashback_bloc.dart';
+import 'package:business_banking/features/cashback/bloc/cashback/cashback_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:clean_framework/clean_framework.dart';
 
