@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="35e05d76-7342-461d-a61a-e81b3bb02483" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/business_banking.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/assets/images/under.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/bloc/cashback_block.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackHub/cashback_actions.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackHub/cashback_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackHub/cashback_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackHub/cashback_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackScreen/cashback_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackScreen/cashback_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/cashback/ui/cashbackScreen/cashback_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/hub/ui/hub_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/hub/ui/hub_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/routes.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vKCBl2PpZmkwlmkMY3miICkMAF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\magdy\business_banking\business_banking\assets\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/business_banking/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter.main.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="35e05d76-7342-461d-a61a-e81b3bb02483" name="Default Changelist" comment="" />
+      <created>1626301260049</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626301260049</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding cashback card and navigation to cashback screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="adding cashback card and navigation to cashback screen." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1626343055872">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626343055872" />
+    <state x="614" y="104" key="CommitChangelistDialog2" timestamp="1626357446103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1626357446103" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1626355924260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626355924260" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1626355924259">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626355924259" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1626355924259">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626355924259" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1626355924260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626355924260" />
+    <state x="540" y="263" key="IDE.errors.dialog" timestamp="1626349455012">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="263" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626349455012" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1626301360989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1626301360989" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1626353979788">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626353979788" />
+  </component>
+</project>
