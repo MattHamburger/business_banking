@@ -1,36 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:business_banking/features/cashback/bloc/cashback/cashback_bloc.dart';
+import 'package:business_banking/features/cashback/model/cashback_viewmodel.dart';
+import 'package:business_banking/features/cashback/ui/cashback/cashback_screen.dart';
+import 'package:clean_framework/clean_framework.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-class CashbackPresenter extends StatelessWidget {
+class CashbackPresenter
+    extends Presenter<CashbackBloc, CashbackViewModel, CashbackScreen> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(64.0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text('Balance'),
-            Text(
-              NumberFormat.simpleCurrency().format(0.00),
-              style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w200),
-            ),
-            const SizedBox(height: 40.0),
-            TextField(
-              decoration: InputDecoration(labelText: "Enter cash back amount"),
-            ),
-            const SizedBox(height: 40.0),
-            MaterialButton(
-              onPressed: () {},
-              child: Text("Cashback"),
-              color: Colors.green,
-              textColor: Colors.white,
-            )
-          ],
-        ),
-      ),
-    ));
+  CashbackScreen buildScreen(
+      BuildContext context, CashbackBloc bloc, CashbackViewModel viewModel) {
+    return CashbackScreen(viewModel);
+  }
+
+  @override
+  Stream<CashbackViewModel> getViewModelStream(CashbackBloc bloc) {
+   return bloc.cashbackViewModelPipe.receive;
   }
 }
