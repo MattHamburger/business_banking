@@ -1,5 +1,6 @@
 import 'package:business_banking/features/cashback/bloc/cashback/cashback_bloc.dart';
 import 'package:business_banking/features/cashback/model/cashback_viewmodel.dart';
+import 'package:business_banking/features/cashback/ui/cashback/cashback_event.dart';
 import 'package:business_banking/features/cashback/ui/cashback/cashback_screen.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,7 +23,7 @@ class CashbackPresenter
   }
 
   void onCashbackRequest(CashbackBloc bloc) {
-    bloc.cashbackRequestPipe.send("fjod");
+    bloc.cashbackRequestPipe.send(CashBackRequestEvent());
   }
 
   onCashbackAmountChanged(CashbackBloc bloc, amount) {
