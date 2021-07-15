@@ -1,25 +1,12 @@
-import 'package:business_banking/features/cashback/ui/cashback_hub_actions.dart';
+import 'package:business_banking/features/contact_pay/ui/hub_card/contact_pay_hub_actions.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class CashbackHubScreen extends Screen {
-  final CashbackHubActions actions;
+class ContactPayHubScreen extends Screen {
+  final ContactPayHubActions actions;
 
-  CashbackHubScreen({required this.actions});
-
-  @override
-  Widget build(BuildContext context) {
-    return CashbackHubCard(
-      actions: this.actions,
-    );
-  }
-}
-
-class CashbackHubCard extends StatelessWidget {
-  final CashbackHubActions actions;
-
-  CashbackHubCard({required this.actions});
+  ContactPayHubScreen({required this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +14,7 @@ class CashbackHubCard extends StatelessWidget {
       height: 125,
       padding: EdgeInsets.all(5.0),
       child: Card(
-        key: Key('cashBackCard'),
+        //key: Key('contactPayCard'),
         color: Colors.white,
         shadowColor: Colors.grey[500],
         elevation: 3.0,
@@ -43,8 +30,7 @@ class CashbackHubCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'Cash Back',
-                          key: Key('cashBackCardName'),
+                          'Send Money',
                           style: TextStyle(
                               fontSize: 18.0, fontWeight: FontWeight.w500),
                           overflow: TextOverflow.ellipsis,
@@ -61,7 +47,7 @@ class CashbackHubCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'You are not eligible for cash back.',
+                        'Quickly send money to contacts.',
                         style: TextStyle(color: Colors.black54, fontSize: 18.0),
                       )
                     ],
@@ -70,7 +56,7 @@ class CashbackHubCard extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () => {actions.navigateToCashbackScreen(context)},
+          onTap: () => {actions.navigateToContactPayScreen(context)},
         ),
       ),
     );
