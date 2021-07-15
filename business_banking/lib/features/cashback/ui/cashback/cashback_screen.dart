@@ -6,8 +6,14 @@ import 'package:intl/intl.dart';
 
 class CashbackScreen extends Screen {
   final CashbackViewModel cashbackViewModel;
+  final VoidCallback onCashbackRequest;
+  final ValueChanged onCashbackAmountChange;
 
-  CashbackScreen(this.cashbackViewModel);
+  CashbackScreen({
+    required this.cashbackViewModel,
+    required this.onCashbackAmountChange,
+    required this.onCashbackRequest,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +34,22 @@ class CashbackScreen extends Screen {
               TextField(
                 decoration:
                     InputDecoration(labelText: "Enter cash back amount"),
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                ],
+                // inputFormatters: [
+                //   FilteringTextInputFormatter.digitsOnly,
+                // ],
                 keyboardType: TextInputType.number,
+                onChanged: onCashbackAmountChange,
               ),
               const SizedBox(height: 40.0),
               MaterialButton(
-                onPressed: cashbackViewModel.busy ? null : () {},
+                onPressed: cashbackViewModel.busy ? null : onCashbackRequest,
                 child: cashbackViewModel.busy
                     ? CircularProgressIndicator()
                     : Text("Cashback"),
                 color: Colors.green,
                 disabledColor: Colors.green.withAlpha(100),
                 textColor: Colors.white,
+                padding: const EdgeInsets.all(8.0),
               )
             ],
           ),

@@ -9,11 +9,23 @@ class CashbackPresenter
   @override
   CashbackScreen buildScreen(
       BuildContext context, CashbackBloc bloc, CashbackViewModel viewModel) {
-    return CashbackScreen(viewModel);
+    return CashbackScreen(
+      cashbackViewModel: viewModel,
+      onCashbackAmountChange: (amount) => onCashbackAmountChanged(bloc, amount),
+      onCashbackRequest: () => onCashbackRequest(bloc),
+    );
   }
 
   @override
   Stream<CashbackViewModel> getViewModelStream(CashbackBloc bloc) {
-   return bloc.cashbackViewModelPipe.receive;
+    return bloc.cashbackViewModelPipe.receive;
+  }
+
+  void onCashbackRequest(CashbackBloc bloc) {
+    bloc.cashbackRequestPipe.send("fjod");
+  }
+
+  onCashbackAmountChanged(CashbackBloc bloc, amount) {
+    bloc.cashbackAmountChangePipe.send(int.tryParse(amount)??0.00);
   }
 }

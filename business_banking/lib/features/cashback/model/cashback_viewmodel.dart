@@ -6,5 +6,5 @@ class CashbackViewModel extends ViewModel {
 
   CashbackViewModel({required this.balance, this.busy = false});
 
-  List<Object?> get props => [balance];
+  List<Object?> get props => [balance,busy];
 }

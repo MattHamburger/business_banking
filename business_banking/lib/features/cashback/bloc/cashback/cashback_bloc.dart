@@ -4,7 +4,7 @@ import 'package:clean_framework/clean_framework.dart';
 class CashbackBloc extends Bloc {
   Pipe<CashbackViewModel> cashbackViewModelPipe = Pipe();
   Pipe<num> cashbackAmountChangePipe = Pipe();
-  EventPipe cashbackRequestPipe = EventPipe();
+  Pipe<String> cashbackRequestPipe = Pipe(canSendDuplicateData: true);
   CashbackViewModel cashbackViewModel = CashbackViewModel(balance: 0.00);
   //maybe we will keep this in entity later
   num requestAmount = 0.00;
@@ -24,7 +24,7 @@ class CashbackBloc extends Bloc {
     cashbackViewModel = CashbackViewModel(balance: 0.00, busy: true);
     cashbackViewModelPipe.send(cashbackViewModel);
     await Future.delayed(Duration(seconds: 2));
-    cashbackViewModel = CashbackViewModel(balance: requestAmount, busy: true);
+    cashbackViewModel = CashbackViewModel(balance: requestAmount, busy: false);
     cashbackViewModelPipe.send(cashbackViewModel);
   }
 
