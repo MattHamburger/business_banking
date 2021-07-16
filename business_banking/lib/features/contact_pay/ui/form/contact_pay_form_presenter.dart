@@ -1,5 +1,6 @@
 import 'package:business_banking/features/contact_pay/bloc/contact_pay_bloc.dart';
-import 'package:business_banking/features/contact_pay/model/contact_pay_form_view_model.dart';
+import 'package:business_banking/features/contact_pay/bloc/contact_pay_event.dart';
+import 'package:business_banking/features/contact_pay/model/form/contact_pay_form_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,13 @@ class ContactPayFormPresenter extends Presenter<ContactPayBloc,
       ContactPayFormViewModel viewModel) {
     return ContactPayFormScreen(
         viewModel: viewModel,
-        onCityFieldChange: (newValue) => onCityFieldChange(bloc, newValue));
+        //onCityFieldChange: (newValue) => onCityFieldChange(bloc, newValue));
+        onPayAmountChanged: (newValue) =>
+            onPayAmountValueChanged(bloc, newValue),
+        onContactEmailChanged: (newValue) =>
+            onContactEmailValueChanged(bloc, newValue),
+        onSendMoneyButtonPressed: (context) =>
+            onEventSendButtonClicked(bloc, context));
   }
 
   @override
@@ -21,7 +28,20 @@ class ContactPayFormPresenter extends Presenter<ContactPayBloc,
     return bloc.contactPayFormViewModelPipe.receive;
   }
 
-  void onCityFieldChange(ContactPayBloc bloc, String newValue) {
-    bloc.onCityChangePipe.send(newValue);
+  void onPayAmountValueChanged(ContactPayBloc bloc, String newPayValue) {
+    double? realAmount = double.tryParse(newPayValue);
+
+    if (newPayValue.isNotEmpty && (realAmount != null && realAmount > 0)) {
+      bloc.onPayAmountChangedPipe.send(realAmount);
+    }
+  }
+
+  void onContactEmailValueChanged(
+      ContactPayBloc bloc, String newContactEmailValue) {
+    bloc.onContactEmailChangedPipe.send(newContactEmailValue);
+  }
+
+  void onEventSendButtonClicked(ContactPayBloc bloc, BuildContext context) {
+    bloc.onContactPayFormEventPipe.send(PressSendMoneyButtonEvent(context));
   }
 }

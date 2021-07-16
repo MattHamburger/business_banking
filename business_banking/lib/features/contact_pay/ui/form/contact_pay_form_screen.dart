@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:business_banking/features/contact_pay/model/contact_pay_form_view_model.dart';
+import 'package:business_banking/features/contact_pay/model/form/contact_pay_form_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,11 +8,17 @@ import 'package:flutter/src/widgets/framework.dart';
 class ContactPayFormScreen extends Screen {
   final ContactPayFormViewModel viewModel;
 
-  final ValueChanged<String> onCityFieldChange;
+  final ValueChanged<String> onPayAmountChanged;
+  final ValueChanged<String> onContactEmailChanged;
+  final Function onSendMoneyButtonPressed;
 
   ContactPayFormScreen(
-      {required this.viewModel, required this.onCityFieldChange});
+      {required this.viewModel,
+      required this.onPayAmountChanged,
+      required this.onContactEmailChanged,
+      required this.onSendMoneyButtonPressed});
 
+  // I based the structure of this on deposit_check_screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +44,16 @@ class ContactPayFormScreen extends Screen {
                     alignment: Alignment.centerLeft,
                     child: Row(
                       children: [
-                        Image.asset('assets/images/bank-check.png', scale: 10),
+                        Image.asset('assets/images/send_money_icon.png',
+                            scale: 4),
                         SizedBox(
                           width: 25,
                         ),
                         Text(
-                          'Send Money to Contacts',
+                          'Send Money to Contacts' +
+                              viewModel.paymentAmount.toString() +
+                              ', ' +
+                              viewModel.contactEmail,
                           style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w500,
@@ -63,6 +73,7 @@ class ContactPayFormScreen extends Screen {
                         labelText: 'Amount'),
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
+                    onChanged: (payAmount) => onPayAmountChanged(payAmount),
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(
                           RegExp(r'^(\d+)?\.?\d{0,2}')),
@@ -78,18 +89,22 @@ class ContactPayFormScreen extends Screen {
                         suffixStyle: TextStyle(color: Colors.orangeAccent),
                         labelText: 'Contact Email'),
                     keyboardType: TextInputType.emailAddress,
+                    onChanged: (email) => onContactEmailChanged(email),
                   ),
                   SizedBox(
                     width: 350.0,
                     height: 40.0,
                     child: OutlinedButton(
-                      onPressed: () => {},
+                      onPressed: () => {onSendMoneyButtonPressed(context)},
                       style: OutlinedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        'Send Money',
-                        style: TextStyle(color: Colors.lightGreen),
+                        'Send',
+                        style: TextStyle(
+                            color: Colors.lightGreen,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
