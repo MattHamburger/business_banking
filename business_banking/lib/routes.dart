@@ -30,6 +30,7 @@ abstract class BusinessBankingRouter {
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
   static const String NewSuccessScreen = '/NewSuccessScreen';
+  static const String fixedDepositScreen = '/fixedDepositScreen';
 
   static Widget generate(String name) {
     switch (name) {
