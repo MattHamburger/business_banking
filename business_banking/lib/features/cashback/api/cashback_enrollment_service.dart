@@ -1,3 +1,4 @@
+import 'package:business_banking/locator.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_defaults.dart';
 
@@ -5,9 +6,9 @@ class CashbackEnrollmentService extends EitherService<
     CashbackEnrollmentRequestModel, CashbackEnrollmentResponseModel> {
   CashbackEnrollmentService()
       : super(
-            method: RestMethod.get,
-            restApi: SimpleRestApi(),
-            path: 'login-history');
+            method: RestMethod.post,
+            restApi: ExampleLocator().simpleApi,
+            path: 'cashback-enrollment');
 
   @override
   CashbackEnrollmentResponseModel parseResponse(
@@ -18,12 +19,14 @@ class CashbackEnrollmentService extends EitherService<
 
 class CashbackEnrollmentResponseModel extends JsonResponseModel {
   final String confirmationId;
+  final int errorCode;
 
   CashbackEnrollmentResponseModel.fromJson(Map<String, dynamic> json)
-      : confirmationId = json['confirmationId'];
+      : confirmationId = json['confirmationId'] ?? '',
+        errorCode = json['errorCode'] ?? 0;
 
   @override
-  List<Object?> get props => [confirmationId];
+  List<Object?> get props => [confirmationId, errorCode];
 }
 
 // {
