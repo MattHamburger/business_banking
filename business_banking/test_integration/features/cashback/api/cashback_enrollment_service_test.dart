@@ -1,16 +1,8 @@
 import 'package:business_banking/features/cashback/api/cashback_enrollment_service.dart';
-import 'package:business_banking/locator.dart';
-import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import '../../../test_mocks.dart';
 
 void main() {
   test('CashbackEnrollmentService service success', () async {
-    testRestAPISetup(type: RestResponseType.success, content: '''{
-      "confirmationId": "12345"
-    }''');
-
     final service = CashbackEnrollmentService();
 
     final requestData = CashbackEnrollmentRequestModel(
@@ -29,8 +21,6 @@ void main() {
 
   test('CashbackEnrollmentService service bad request, no request data',
       () async {
-    testRestAPISetup();
-
     final service = CashbackEnrollmentService();
 
     final eitherResponse = await service.request();
@@ -40,9 +30,6 @@ void main() {
 
   test('CashbackEnrollmentService service failure due to user is not eligible',
       () async {
-    testRestAPISetup(type: RestResponseType.success, content: '''{
-      "errorCode": 300
-    }''');
     final service = CashbackEnrollmentService();
 
     final requestData = CashbackEnrollmentRequestModel(
