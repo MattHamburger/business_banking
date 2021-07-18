@@ -38,7 +38,9 @@ class ContactPayFormPresenter extends Presenter<ContactPayBloc,
 
   void onContactEmailValueChanged(
       ContactPayBloc bloc, String newContactEmailValue) {
-    bloc.onContactEmailChangedPipe.send(newContactEmailValue);
+    if (newContactEmailValue.isNotEmpty) {
+      bloc.onContactEmailChangedPipe.send(newContactEmailValue);
+    }
   }
 
   void onEventSendButtonClicked(ContactPayBloc bloc, BuildContext context) {
