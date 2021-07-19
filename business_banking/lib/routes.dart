@@ -1,5 +1,5 @@
 import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart';
-import 'package:business_banking/features/cashback/ui/cashbackScreen/cashback_widget.dart';
+import 'package:business_banking/features/referal/ui/referalScreen/referal_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card_details/credit_card_details_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
@@ -7,7 +7,6 @@ import 'package:business_banking/features/new_online_registration_form/ui/new_on
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_success_screen/new_online_registration_success_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'features/cashback/ui/cashbackHub/cashback_widget.dart';
 import 'features/credit_card/ui/payment_request/credit_card_payment_request_widget.dart';
 import 'features/credit_card/ui/payment_response/credit_card_payment_response_widget.dart';
 import 'features/deposit_check/ui/2nd_data_entry/deposit_check_widget.dart';
@@ -64,7 +63,7 @@ abstract class BusinessBankingRouter {
         return DepositCheckConfirmWidget();
 
       case cashBackDetailsRoute:
-        return CashBackWidgett();
+        return referalWidget();
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();

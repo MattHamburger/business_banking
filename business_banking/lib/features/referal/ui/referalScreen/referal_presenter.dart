@@ -1,0 +1,34 @@
+import 'package:business_banking/features/referal/bloc/referal_bloc.dart';
+import 'package:business_banking/features/referal/bloc/referal_event.dart';
+import 'package:business_banking/features/referal/model/referal_view_model.dart';
+import 'package:clean_framework/clean_framework.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'referal_screen.dart';
+
+class referalPresenter
+    extends Presenter<referalBloc, ReferalViewModel, referalScreen> {
+  @override
+  referalScreen buildScreen(
+      BuildContext context, referalBloc bloc, ReferalViewModel viewModel) {
+    return referalScreen(
+      viewModel: viewModel,
+      onAddAmount: (context) => onAddAmount(bloc, context),
+    );
+  }
+
+  void onNameFieldChange(referalBloc bloc, String newValue) {
+    bloc.onEmailChangePipe.send(newValue);
+  }
+
+  @override
+  Stream<ReferalViewModel> getViewModelStream(referalBloc bloc) {
+    // TODO: implement getViewModelStream
+    return bloc.referalViewModelPipe.receive;
+  }
+
+  onAddAmount(referalBloc bloc, BuildContext context) {
+    bloc.onContactReferelEventPipe.send(ReferalButtonEvent(context));
+  }
+}

@@ -1,25 +1,25 @@
-import 'package:business_banking/features/cashback/ui/cashbackHub/cashback_actions.dart';
+import 'package:business_banking/features/referal/ui/referalHub/referal_hub_actions.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class CashbackHubScreen extends Screen {
-  final CashBackActions actions;
+class referalHubScreen extends Screen {
+  final ReferalActions actions;
 
-  CashbackHubScreen({required this.actions});
+  referalHubScreen({required this.actions});
 
   @override
   Widget build(BuildContext context) {
-    return CashbackHubCard(
+    return referalHubCard(
       actions: this.actions,
     );
   }
 }
 
-class CashbackHubCard extends StatelessWidget {
-  final CashBackActions actions;
+class referalHubCard extends StatelessWidget {
+  final ReferalActions actions;
 
-  CashbackHubCard({required this.actions});
+  referalHubCard({required this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CashbackHubCard extends StatelessWidget {
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            child: Center(child: Text('Cash Back')),
+            child: Center(child: Text('Refer a fried for a bonus')),
           ),
           onTap: () => {actions.navigateToCreditCardDetails(context)},
         ),
