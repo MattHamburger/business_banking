@@ -5,9 +5,14 @@ import 'package:flutter/material.dart';
 
 class referalScreen extends Screen {
   final ReferalViewModel viewModel;
+  final ValueChanged<String> onEmailChanged;
+
   final Function onAddAmount;
 
-  referalScreen({required this.viewModel, required this.onAddAmount});
+  referalScreen(
+      {required this.viewModel,
+      required this.onAddAmount,
+      required this.onEmailChanged});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +31,7 @@ class referalScreen extends Screen {
                   child: Column(
                     children: <Widget>[
                       Text("Amount to be gained"),
-                      Text("0.0\$"),
+                      Text(viewModel.amount.toString()),
                     ],
                   ),
                 ),
@@ -72,6 +77,7 @@ class referalScreen extends Screen {
                       suffixStyle: TextStyle(color: Colors.orangeAccent),
                       labelText: 'Contact Email'),
                   keyboardType: TextInputType.emailAddress,
+                  onChanged: (email) => onEmailChanged(email),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),

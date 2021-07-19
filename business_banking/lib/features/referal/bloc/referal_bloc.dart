@@ -7,21 +7,20 @@ class referalBloc extends Bloc {
   Pipe<ReferalViewModel> referalViewModelPipe = Pipe();
   Pipe<String> onEmailChangePipe = Pipe(canSendDuplicateData: false);
   Pipe<double> onAmountChangePipe = Pipe();
-  Pipe<ReferalEvent> onContactReferelEventPipe =
+  Pipe<ReferalEvent> onContactReferalEventPipe =
       Pipe(canSendDuplicateData: true);
   late ReferalUseCase referalUseCase;
 
   referalBloc() {
     referalViewModelPipe.whenListenedDo(() {
       referalUseCase.getCurrentState();
-      onAmountChangePipe.receive.listen(_onAmountValueChangedPipeListener);
-      onEmailChangePipe.receive.listen(_onEmailValueChangedPipeListener);
-      onContactReferelEventPipe.receive
-          .listen(_onContactPayFormEventPipeListener);
-      referalUseCase =
-          ReferalUseCase((ViewModel) => referalViewModelPipe.send(ViewModel));
     });
-
+    onAmountChangePipe.receive.listen(_onAmountValueChangedPipeListener);
+    onEmailChangePipe.receive.listen(_onEmailValueChangedPipeListener);
+    onContactReferalEventPipe.receive
+        .listen(_onContactPayFormEventPipeListener);
+    referalUseCase =
+        ReferalUseCase((ViewModel) => referalViewModelPipe.send(ViewModel));
     // onEmailChangePipe.receive.listen(_onNameChangePipeListener);
     // onAmountChangePipe.receive.listen();
   }

@@ -14,6 +14,7 @@ class referalPresenter
       BuildContext context, referalBloc bloc, ReferalViewModel viewModel) {
     return referalScreen(
       viewModel: viewModel,
+      onEmailChanged: (newValue) => onEmailValueChanged(bloc, newValue),
       onAddAmount: (context) => onAddAmount(bloc, context),
     );
   }
@@ -29,6 +30,10 @@ class referalPresenter
   }
 
   onAddAmount(referalBloc bloc, BuildContext context) {
-    bloc.onContactReferelEventPipe.send(ReferalButtonEvent(context));
+    bloc.onContactReferalEventPipe.send(ReferalButtonEvent(context));
+  }
+
+  void onEmailValueChanged(referalBloc bloc, String email) {
+    bloc.onEmailChangePipe.send(email);
   }
 }
