@@ -14,7 +14,7 @@ void main() {
   runApp(
     CFRouterScope(
       routeGenerator: BusinessBankingRouter.generate,
-      initialRoute: BusinessBankingRouter.initialRoute,
+      initialRoute: BusinessBankingRouter.updateUserProfileScreen,
       builder: (context) => MaterialApp.router(
         routeInformationParser: CFRouteInformationParser(),
         routerDelegate: CFRouterDelegate(context),
