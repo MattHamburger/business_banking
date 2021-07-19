@@ -7,7 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  clean_framework: ^0.4.1
+  clean_framework: ^0.4.2
   cupertino_icons: ^1.0.2
   auto_size_text: ^3.0.0-nullsafety.0
   url_launcher: ^6.0.3
@@ -26,12 +26,14 @@ dependencies:
   printing: ^4.1.0
 
 dev_dependencies:
-  test:
-  flutter_test:
-    sdk: flutter
-  mockito: 5.0.10
   integration_test:
     sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test:
+  mockito: 5.0.10
 
 flutter:
   uses-material-design: true

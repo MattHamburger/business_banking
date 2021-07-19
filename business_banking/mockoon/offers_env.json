@@ -1,0 +1,547 @@
+{
+    "source": "mockoon:1.14.1",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 15,
+                "name": "Business Banking Env",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 3001,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Gets info for CashAccounts screen",
+                        "method": "get",
+                        "endpoint": "cash_accounts",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"type\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "disableTemplating": false,
+                                "rulesOperator": "OR"
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets info for AccountDetail screen",
+                        "method": "get",
+                        "endpoint": "account-details",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"name\": \"Employee Checking\",\n  \"lastFour\": \"6542\",\n  \"accountType\": \"Employee Checking\",\n  \"routingNum\": 746395735,\n  \"balance\": 3545.54,\n  \"begBalance\": 3674.43,\n  \"penTrans\": -128.89,\n  \"depHolds\": 0.00\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "disableTemplating": false,
+                                "rulesOperator": "OR"
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "promos/:cid",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \n  \"imageUrl\":\"https://via.placeholder.com/300\",\n  \"externalUrl\": \"https://www.huntington.com/\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "cid",
+                                        "value": "123",
+                                        "isRegex": false
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets name for Customer screen",
+                        "method": "get",
+                        "endpoint": "customer",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"honorific\": \"Mr.\",\n  \"firstName\": \"Joe\",\n  \"lastName\": \"A\",\n  \"accountType\": \"private\",\n  \"nickName\": \"\",\n  \"address\": \"1234 ABCD Rd, City, State 00000\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets accounts from for transfer funds",
+                        "method": "get",
+                        "endpoint": "transfer-accounts-from",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"fromAccounts\": [\"1111111111\", \"2222222222\", \"3333333333\" ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Gets accounts to for transfer funds",
+                        "method": "post",
+                        "endpoint": "transfer-accounts-to",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"toAccounts\": [\"4444444444\", \"5555555555\", \"6666666666\" ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Sends a transfer and gets confirmation",
+                        "method": "post",
+                        "endpoint": "transfer-send",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"123456789\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"confirmation\" : \"Bad Request\"\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "cash-accounts",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"type\": \"Employee Checking\", \n  \"lastFour\": \"6542\",\n  \"balance\": 3545.54\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "investment-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"accountBalance\" : 166996.5,\n  \"totalGainValue\" : -6557.0,\n  \"totalGainPercent\" : -36.07\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "investment-details-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n     \"accountBalance\" : 166996.50,\n  \"totalGainValue\" : -6557.00,\n  \"totalGainPercent\" : -26.07,\n  \"investments\" : [\n    {\n      \"symbol\" : \"CRSP\",\n      \"dayGainValue\" : 76.00,\n      \"dayGainPercent\" : 0.33,\n      \"price\" : 114.00,\n      \"marketValue\" : 22800.00,\n      \"count\" : 200\n    },\n        {\n      \"symbol\" : \"TXG\",\n      \"dayGainValue\" : -4347.00,\n      \"dayGainPercent\" : -9.31,\n      \"price\" : 114.00,\n      \"marketValue\" : 42303.00,\n      \"count\" : 300\n    },\n        {\n      \"symbol\" : \"JMIA\",\n      \"dayGainValue\" : -1050.00,\n      \"dayGainPercent\" : -9.38,\n      \"price\" : 34.00,\n      \"marketValue\" : 10200.00,\n      \"count\" : 300\n    },\n        {\n      \"symbol\" : \"BABA\",\n      \"dayGainValue\" : -360.00,\n      \"dayGainPercent\" : -3.08,\n      \"price\" : 226.69,\n      \"marketValue\" : 11334.5,\n      \"count\" : 50\n    },\n        {\n      \"symbol\" : \"FCEL\",\n      \"dayGainValue\" : -172.00,\n      \"dayGainPercent\" : -3.3,\n      \"price\" : 12.8,\n      \"marketValue\" : 5120.00,\n      \"count\" : 400\n    },\n        {\n      \"symbol\" : \"AAPL\",\n      \"dayGainValue\" : -253.00,\n      \"dayGainPercent\" : -5.2,\n      \"price\" : 116.84,\n      \"marketValue\" : 5842.00,\n      \"count\" : 50\n    },\n        {\n      \"symbol\" : \"TSLA\",\n      \"dayGainValue\" : -699.00,\n      \"dayGainPercent\" : -5.84,\n      \"price\" : 567.00,\n      \"marketValue\" : 11340.00,\n      \"count\" : 20\n    },\n        {\n      \"symbol\" : \"PLUG\",\n      \"dayGainValue\" : -476.00 ,\n      \"dayGainPercent\" : -3.03,\n      \"price\" : 38.9,\n      \"marketValue\" : 15560.00,\n      \"count\" : 400\n    },\n        {\n      \"symbol\" : \"NNDM\",\n      \"dayGainValue\" : 680.00,\n      \"dayGainPercent\" : 4.47,\n      \"price\" : 8.13,\n      \"marketValue\" : 16260.00,\n      \"count\" : 2000\n    },\n        {\n      \"symbol\" : \"COTY\",\n      \"dayGainValue\" : 120.00,\n      \"dayGainPercent\" : 0.51,\n      \"price\" : 7.85,\n      \"marketValue\" : 23550.00,\n      \"count\" : 3000\n    },\n        {\n      \"symbol\" : \"SPCE\",\n      \"dayGainValue\" : -76.00,\n      \"dayGainPercent\" : 2.78,\n      \"price\" : 26.87,\n      \"marketValue\" : 2687.00,\n      \"count\" : 100\n    }\n    \n    ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "quickpay",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"name\" : \"Sam Doe\",\n  \"email\" : \"Sam.Doe@gmail.com\",\n  \"imageUrl\" : \"\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "request_money",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"name\" : \"Sam Doe\",\n  \"email\" : \"Sam.Doe@gmail.com\",\n  \"imageUrl\" : \"\",\n  \"amount\": 0.0,\n  \"memo\":\"\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "transactions",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"accountInfo\": {\n    \"accountCategory\": \"LOANACCOUNT\",\n    \"accountNumber\": \"1234567890126917\",\n    \"availableBalance\": 481.84,\n    \"accountNickname\": \"HNB Credit Card (6917)\"\n  },\n  \"postedTransactions\": [\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"LYFT RIDE\",\n      \"debitAmount\": 18.0,\n      \"category\": \"Ground Transportation\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"UBER TRIP\",\n      \"debitAmount\": 28.0,\n      \"category\": \"Ground Transportation\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"WALMART.COM\",\n      \"debitAmount\": 45.0,\n      \"category\": \"Wholesale Clubs\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"UBER EATS\",\n      \"debitAmount\": 12.0,\n      \"category\": \"Eating Out\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"SUNRISE MINI MART\",\n      \"debitAmount\": 11.0,\n      \"category\": \"Wholesale Clubs\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"ALDI 65084\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Groceries\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"INOX 3D 65084\",\n      \"debitAmount\": 55.0,\n      \"category\": \"Entertainment\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"ALDI 65084\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Groceries\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"BUFFALO FRESH 65084\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Groceries\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"RITE AID\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Health and Fitness\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"CVS HEALTH\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Health and Fitness\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"ALDI 65084\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Groceries\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"CHANGE POINT LAUNDRY\",\n      \"debitAmount\": 5.0,\n      \"category\": \"Others\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"INTERNET PAYMENT\",\n      \"debitAmount\": 25.0,\n      \"category\": \"Others\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    },\n    {\n      \"transactionDate\": \"04/13/2021 00:00:00\",\n      \"description\": \"US POSTAL SERVICE\",\n      \"debitAmount\": 12.0,\n      \"category\": \"Others\",\n      \"cardNumber\": \"xxxx-xxxx-xxxx-6917\"\n    }\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "account-info",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"accountNumber\": \"1234567890126917\",\n    \"availableBalance\": 481.84,\n    \"depositLimit\": 4500.00,\n    \"accountNickname\": \"Checking Account (...6917)\"\n  \n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "deposit-check",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"status\" : \"Successful\",\n  \"didSucceed\" : true,\n  \"referenceNumber\" : \"123456789\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "create-new-account",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n \"accountNumberGenerated\" : \"123456789\"\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "offers",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"offers\": [\n    \"orci dapibus ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas\",\n    \"tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed lectus vestibulum\",\n    \"amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros in cursus turpis massa tincidunt dui\",\n    \"quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in\",\n    \"risus viverra adipiscing at in tellus integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque sit amet porttitor eget dolor morbi non arcu risus\"\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyRemovePrefix": false
+            }
+        }
+    ]
+}
