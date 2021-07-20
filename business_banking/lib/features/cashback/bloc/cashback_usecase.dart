@@ -1,25 +1,47 @@
 import 'package:business_banking/features/cashback/model/cashback_entity.dart';
 import 'package:business_banking/features/cashback/model/cashback_form_view_model.dart';
+import 'package:business_banking/locator.dart';
 import 'package:clean_framework/clean_framework.dart';
+import 'package:clean_framework/clean_framework_defaults.dart';
 
 class CashbackUsecase extends UseCase {
-  late CashbackEntity entity;
+  //late CashbackEntity entity;
 
   late final ViewModelCallback<CashbackFormViewModel> _viewModelCallBack;
 
   CashbackUsecase(ViewModelCallback<CashbackFormViewModel> viewModelCallBack) {
     _viewModelCallBack = viewModelCallBack;
-    entity = CashbackEntity();
+
+    ExampleLocator().repository.create<CashbackEntity>(
+        CashbackEntity(), _notifySubscribers,
+        deleteIfExists: true);
   }
 
-  void getCurrentState() => _viewModelCallBack(_buildViewModel());
+  void getCurrentState() {
+    final RepositoryScope<Entity>? scope =
+        ExampleLocator().repository.containsScope<CashbackEntity>();
+    // TODO What if the scope is null?
+
+    final entity = ExampleLocator().repository.get<CashbackEntity>(scope!);
+    _notifySubscribers(entity);
+  }
+
+  void _notifySubscribers(entity) {
+    _viewModelCallBack(_buildViewModel(entity));
+  }
 
   void onCityUpdate(String newCityValue) {
-    entity = CashbackEntity(city: newCityValue);
-    _viewModelCallBack(_buildViewModel());
+    final RepositoryScope<Entity>? scope =
+        ExampleLocator().repository.containsScope<CashbackEntity>();
+    // TODO What if the scope is null?
+
+    final entity = ExampleLocator().repository.get<CashbackEntity>(scope!);
+    final newEntity = entity.merge(city: newCityValue);
+    ExampleLocator().repository.update(scope, newEntity);
+    _notifySubscribers(newEntity);
   }
 
-  CashbackFormViewModel _buildViewModel() {
+  CashbackFormViewModel _buildViewModel(CashbackEntity entity) {
     return CashbackFormViewModel(
       entity.city,
       entity.address,

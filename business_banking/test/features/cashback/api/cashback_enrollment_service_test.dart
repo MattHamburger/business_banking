@@ -23,7 +23,10 @@ void main() {
 
     expect(eitherResponse.isRight, isTrue);
 
-    expect(eitherResponse.fold((_) {}, (m) => m),
+    expect(
+        eitherResponse.fold((_) {
+          // do something with the error;
+        }, (m) => m),
         CashbackEnrollmentResponseModel.fromJson({"confirmationId": "12345"}));
   });
 
