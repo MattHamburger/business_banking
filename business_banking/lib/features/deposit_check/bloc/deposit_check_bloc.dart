@@ -39,10 +39,11 @@ class DepositCheckBloc extends Bloc {
     depositCheckConfirmEventPipe.dispose();
   }
 
-  DepositCheckBloc(
-      {DepositCheckCardUseCase? depositCheckCardUseCase,
-      DepositCheckUseCase? depositCheckUseCase,
-      DepositCheckConfirmUseCase? depositCheckConfirmUseCase}) {
+  DepositCheckBloc({
+    DepositCheckCardUseCase? depositCheckCardUseCase,
+    DepositCheckUseCase? depositCheckUseCase,
+    DepositCheckConfirmUseCase? depositCheckConfirmUseCase,
+  }) {
     _depositCheckCardUseCase = depositCheckCardUseCase ??
         DepositCheckCardUseCase(depositCheckCardViewModelPipe.send);
     depositCheckCardViewModelPipe

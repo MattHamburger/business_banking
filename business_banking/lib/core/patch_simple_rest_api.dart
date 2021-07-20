@@ -15,7 +15,7 @@ class PatchSimpleRestApi extends RestApi {
   HttpClient? _httpClient;
   late IOClient _ioClient;
 
-  PatchSimpleRestApi({this.baseUrl = 'http://127.0.0.1:8080/service/'}) {
+  PatchSimpleRestApi({this.baseUrl = 'https://api.robinhood.com'}) {
     _httpClient = new HttpClient()
       //@TODO should we remove this? Not sure if its safe for release
       ..badCertificateCallback =
@@ -90,10 +90,14 @@ class PatchSimpleRestApi extends RestApi {
       }
     }
 
+    print(uri);
     try {
       switch (method) {
         case RestMethod.get:
-          response = await _ioClient.get(uri);
+          response = await _ioClient.get(uri, headers: {
+            'Authorization':
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MjYyOTg5NTEsInRva2VuIjoieEdqUXZQY0E5WUg1ZGI3SFhKbm5wcEpydTVhbWpVIiwidXNlcl9pZCI6ImE5MzU0ZGQ3LTY4YmItNDMwNy04NDhiLWZjNDgyODMyMmI3YSIsImRldmljZV9oYXNoIjoiMDZhYjZmMWM3NGZmYTRhNzdjMmUxMWMyODUwZjBjMjAiLCJzY29wZSI6IndlYl9saW1pdGVkIiwiZGN0IjoxNTkyMjcyMjA2LCJzZXJ2aWNlX3JlY29yZHMiOlt7ImhhbHRlZCI6ZmFsc2UsInNlcnZpY2UiOiJicm9rZWJhY2tfdXMiLCJzaGFyZF9pZCI6Mywic3RhdGUiOiJhdmFpbGFibGUifV0sInVzZXJfb3JpZ2luIjoiVVMiLCJvcHRpb25zIjp0cnVlLCJsZXZlbDJfYWNjZXNzIjpmYWxzZX0.ApQ_cf6LTO_zRfbZK6YKH6b6sL0Yn_1U6hu_7YEUaYFbKpRDsk_RzIqXMnTyX6C-r-naKd94pCitnbueN07RJEEZ-lrXN8Miaw841X1CrV_3qPhzH8KQAoGbZZMsdTFrv1vesc3x5FKG1r7tpew_rXY-EA1XvarXLHUVxFMN8d3WGC32EOsedwuBp-28GoxvBfrTLbBvNESDfrUsfTyM7ZcBVgxJMDqY_erScwtWz-ySYdyy5GwQ4qGblXpU5fqZwGEaJkA6aEFjGDDlimpkFvYeXkkdNJfd91ewNeYkY8iep47umLbg5HdSomFRrmpKSCels7BFBPUmCfy3VLwaJQ'
+          });
           break;
         case RestMethod.post:
           response = await _ioClient.post(uri, body: requestJSON);
@@ -110,6 +114,7 @@ class PatchSimpleRestApi extends RestApi {
         case null:
           break;
       }
+      print(response.body);
 
       return RestResponse<String>(
         type: getResponseTypeFromCode(response.statusCode),

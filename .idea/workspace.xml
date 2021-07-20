@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feat" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c3828670-3c99-43e2-aeee-5aee4a3ef5a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/api/investments_json_response_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/api/investments_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/api/investments_service_request_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_bloc.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_card/investments_usecase.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_details/investments_details_event.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_details/investments_details_service_adapter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_details/investments_details_use_case.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/model/investments_details/investments_details_entity.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/model/investments_details/investments_details_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/model/investments_entity.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/model/investments_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/model/quote.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_card/investments_feature_actions.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_card/investments_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_card/investments_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_card/investments_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_details/investments_details_presenter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_details/investments_details_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_details/investments_details_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/core/patch_simple_rest_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/core/patch_simple_rest_api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/deposit_check/bloc/deposit_check_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/deposit_check/bloc/deposit_check_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/hub/ui/hub_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/hub/ui/hub_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/locator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/locator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/pubspec.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1uehFBucOKbRdAlgHDhzZTcOJ9D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_details" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_details" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments/model/investments_details" />
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments/bloc" />
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments/bloc/investments_card/" />
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments/ui/investments_card/" />
+      <recent name="$PROJECT_DIR$/business_banking/lib/features/investments" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/business_banking/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3828670-3c99-43e2-aeee-5aee4a3ef5a4" name="Default Changelist" comment="" />
+      <created>1625031855754</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625031855754</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="673" y="-914" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625215772359">
+      <screen x="-745" y="-1440" width="3440" height="1440" />
+    </state>
+    <state x="673" y="-914" key="#com.intellij.fileTypes.FileTypeChooser/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625215772359" />
+    <state x="712" y="-927" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1625200951716">
+      <screen x="-745" y="-1440" width="3440" height="1440" />
+    </state>
+    <state x="712" y="-927" key="#com.intellij.ide.util.TreeFileChooserDialog/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625200951716" />
+    <state width="615" height="363" key="DebuggerActiveHint" timestamp="1625710494568">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="574" height="466" key="DebuggerActiveHint/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625222284400" />
+    <state width="615" height="363" key="DebuggerActiveHint/0.0.1792.1120@0.0.1792.1120" timestamp="1625710494568" />
+    <state width="705" height="442" key="Diff.GoToChangePopup" timestamp="1625699346805">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="705" height="442" key="Diff.GoToChangePopup/0.0.1792.1120@0.0.1792.1120" timestamp="1625699346805" />
+    <state x="726" y="100" width="966" height="920" key="DiffContextDialog" timestamp="1625699436424">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="726" y="100" width="966" height="920" key="DiffContextDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1625699436424" />
+    <state width="1750" height="505" key="GridCell.Tab.0.bottom" timestamp="1625893393216">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="416" key="GridCell.Tab.0.bottom/-745.-1415.3440.1415/0.25.1792.1095@-745.-1415.3440.1415" timestamp="1625164565941" />
+    <state width="2468" height="583" key="GridCell.Tab.0.bottom/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625527709835" />
+    <state width="1750" height="505" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1625893393216" />
+    <state width="1260" height="583" key="GridCell.Tab.0.bottom/0.25.1792.1095@0.0.1792.1120" timestamp="1625542746223" />
+    <state width="1274" height="493" key="GridCell.Tab.0.bottom/0.25.1792.1095@0.25.1792.1095" timestamp="1625701240183" />
+    <state width="1750" height="505" key="GridCell.Tab.0.center" timestamp="1625893393216">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="416" key="GridCell.Tab.0.center/-745.-1415.3440.1415/0.25.1792.1095@-745.-1415.3440.1415" timestamp="1625164565940" />
+    <state width="2468" height="583" key="GridCell.Tab.0.center/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625527709834" />
+    <state width="1750" height="505" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1625893393216" />
+    <state width="1260" height="583" key="GridCell.Tab.0.center/0.25.1792.1095@0.0.1792.1120" timestamp="1625542746222" />
+    <state width="1274" height="493" key="GridCell.Tab.0.center/0.25.1792.1095@0.25.1792.1095" timestamp="1625701240178" />
+    <state width="1750" height="505" key="GridCell.Tab.0.left" timestamp="1625893393215">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="416" key="GridCell.Tab.0.left/-745.-1415.3440.1415/0.25.1792.1095@-745.-1415.3440.1415" timestamp="1625164565940" />
+    <state width="2468" height="583" key="GridCell.Tab.0.left/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625527709832" />
+    <state width="1750" height="505" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1625893393215" />
+    <state width="1260" height="583" key="GridCell.Tab.0.left/0.25.1792.1095@0.0.1792.1120" timestamp="1625542746222" />
+    <state width="1274" height="493" key="GridCell.Tab.0.left/0.25.1792.1095@0.25.1792.1095" timestamp="1625701240177" />
+    <state width="1750" height="505" key="GridCell.Tab.0.right" timestamp="1625893393216">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="416" key="GridCell.Tab.0.right/-745.-1415.3440.1415/0.25.1792.1095@-745.-1415.3440.1415" timestamp="1625164565941" />
+    <state width="2468" height="583" key="GridCell.Tab.0.right/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625527709834" />
+    <state width="1750" height="505" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1625893393216" />
+    <state width="1260" height="583" key="GridCell.Tab.0.right/0.25.1792.1095@0.0.1792.1120" timestamp="1625542746222" />
+    <state width="1274" height="493" key="GridCell.Tab.0.right/0.25.1792.1095@0.25.1792.1095" timestamp="1625701240182" />
+    <state x="640" y="277" key="SettingsEditor" timestamp="1625550964196">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="484" y="-1084" key="SettingsEditor/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625200797997" />
+    <state x="640" y="277" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1625550964196" />
+    <state x="726" y="100" width="966" height="920" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1625699436425">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="726" y="100" width="966" height="920" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1625699436425" />
+    <state x="726" y="100" width="966" height="920" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1625697357944">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="726" y="100" width="966" height="920" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1625697357944" />
+    <state x="876" y="274" width="683" height="572" key="find.popup" timestamp="1625711037791">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="936" y="-1088" width="765" height="735" key="find.popup/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625221239008" />
+    <state x="876" y="274" width="683" height="572" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1625711037791" />
+    <state x="1139" y="-1109" width="670" height="676" key="search.everywhere.popup" timestamp="1625527665015">
+      <screen x="-745" y="-1440" width="3440" height="1440" />
+    </state>
+    <state x="1139" y="-1109" width="670" height="676" key="search.everywhere.popup/-745.-1440.3440.1440/0.0.1792.1120@-745.-1440.3440.1440" timestamp="1625527665015" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/features/investments/ui/first_card/budget_screen.dart</url>
+          <line>41</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/business_banking/lib/core/patch_simple_rest_api.dart</url>
+          <line>116</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/business_banking/lib/features/credit_card/ui/credit_card_details/credit_card_details_screen.dart</url>
+          <line>22</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint suspend="THREAD" type="dart-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
