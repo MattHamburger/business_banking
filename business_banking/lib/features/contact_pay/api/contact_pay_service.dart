@@ -19,12 +19,14 @@ class ContactPayService
 
 class ContactPayResponseModel extends JsonResponseModel {
   final String confirmationId;
+  final int errorCode;
 
   ContactPayResponseModel.fromJson(Map<String, dynamic> json)
-      : confirmationId = json['confirmationId'];
+      : confirmationId = json['confirmationId'] ?? '',
+        errorCode = json['errorCode'] ?? 1;
 
   @override
-  List<Object?> get props => [confirmationId];
+  List<Object?> get props => [confirmationId, errorCode];
 }
 
 // {
@@ -33,19 +35,19 @@ class ContactPayResponseModel extends JsonResponseModel {
 // }
 
 class ContactPayRequestModel extends JsonRequestModel {
-  final String paymentAmount;
-  final String paymentContactEmail;
+  final double paymentAmount;
+  final String contactEmail;
 
   ContactPayRequestModel({
     required this.paymentAmount,
-    required this.paymentContactEmail,
+    required this.contactEmail,
   });
 
   @override
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'paymentAmount': paymentAmount,
-      'contactEmail': paymentContactEmail,
+      'contactEmail': contactEmail,
     };
   }
 }

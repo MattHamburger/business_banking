@@ -6,6 +6,12 @@ import 'package:business_banking/features/contact_pay/model/confirmation/contact
 import 'package:business_banking/features/contact_pay/model/form/contact_pay_form_view_model.dart';
 import 'package:clean_framework/clean_framework.dart';
 
+/* TODO for Monday:
+ * Finish API tests
+ * Add error handling (Entity, api, viewmodel, ui etc.)
+ * Make feature look nicer
+ */
+
 class ContactPayBloc extends Bloc {
   Pipe<ContactPayFormViewModel> contactPayFormViewModelPipe = Pipe();
   Pipe<ContactPayConfirmationViewModel> contactPayConfirmationViewModelPipe =

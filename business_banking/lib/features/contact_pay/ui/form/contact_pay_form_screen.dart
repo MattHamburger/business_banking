@@ -50,10 +50,7 @@ class ContactPayFormScreen extends Screen {
                           width: 25,
                         ),
                         Text(
-                          'Send Money to Contacts', //+
-                          //viewModel.paymentAmount.toString() +
-                          //', ' +
-                          //viewModel.contactEmail,
+                          'Send Money to Contacts',
                           style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w500,

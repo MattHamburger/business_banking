@@ -1,6 +1,7 @@
 import 'package:business_banking/features/contact_pay/bloc/contact_pay_event.dart';
 import 'package:business_banking/features/contact_pay/model/confirmation/contact_pay_confirmation_view_model.dart';
 import 'package:business_banking/features/contact_pay/model/contact_pay_entity.dart';
+import 'package:business_banking/features/deposit_check/model/enums.dart';
 import 'package:business_banking/locator.dart';
 import 'package:business_banking/routes.dart';
 import 'package:clean_framework/clean_framework.dart';
@@ -42,7 +43,16 @@ class ContactPayConfirmationUseCase extends UseCase {
 
   ContactPayConfirmationViewModel _buildViewModel(
       ContactPayEntity updateEntity) {
-    return ContactPayConfirmationViewModel(
-        confirmationId: updateEntity.confirmationId);
+    if (updateEntity.errorCode == 0) {
+      return ContactPayConfirmationViewModel(
+          confirmationId: updateEntity.confirmationId,
+          errorCode: updateEntity.errorCode,
+          serviceResponseStatus: ServiceResponseStatus.succeed);
+    } else {
+      return ContactPayConfirmationViewModel(
+          confirmationId: updateEntity.confirmationId,
+          errorCode: updateEntity.errorCode,
+          serviceResponseStatus: ServiceResponseStatus.failed);
+    }
   }
 }

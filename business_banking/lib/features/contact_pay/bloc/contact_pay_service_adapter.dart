@@ -9,13 +9,14 @@ class ContactPayServiceAdapter extends ServiceAdapter<ContactPayEntity,
   @override
   ContactPayEntity createEntity(
       ContactPayEntity initialEntity, ContactPayResponseModel responseModel) {
-    return initialEntity.merge(confirmationId: responseModel.confirmationId);
+    return initialEntity.merge(
+        confirmationId: responseModel.confirmationId,
+        errorCode: responseModel.errorCode);
   }
 
   @override
   ContactPayRequestModel createRequest(ContactPayEntity entity) {
     return ContactPayRequestModel(
-        paymentAmount: entity.paymentAmount.toString(),
-        paymentContactEmail: entity.contactEmail);
+        paymentAmount: entity.paymentAmount, contactEmail: entity.contactEmail);
   }
 }

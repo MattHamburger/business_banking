@@ -27,11 +27,10 @@ class ExampleLocator implements Locator {
   UrlLauncher? urlLauncher = UrlLauncher();
 
   PatchSimpleRestApi api = PatchSimpleRestApi(
-      baseUrl: 'http://192.168.1.100:3002/'); // Points to Mockoon instance
+      baseUrl: 'http://127.0.0.1:3002/'); // Points to Mockoon instance
   // baseUrl: 'http://192.168.0.11:3001/'); //Points to Mockoon instance
 
-  SimpleRestApi simpleApi =
-      SimpleRestApi(baseUrl: 'http://192.168.1.100:3002/');
+  RestApi simpleApi = SimpleRestApi(baseUrl: 'http://127.0.0.1:3002/');
 
   Repository repository = Repository();
 

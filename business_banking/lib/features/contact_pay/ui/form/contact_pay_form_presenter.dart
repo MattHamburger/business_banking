@@ -14,7 +14,6 @@ class ContactPayFormPresenter extends Presenter<ContactPayBloc,
       ContactPayFormViewModel viewModel) {
     return ContactPayFormScreen(
         viewModel: viewModel,
-        //onCityFieldChange: (newValue) => onCityFieldChange(bloc, newValue));
         onPayAmountChanged: (newValue) =>
             onPayAmountValueChanged(bloc, newValue),
         onContactEmailChanged: (newValue) =>

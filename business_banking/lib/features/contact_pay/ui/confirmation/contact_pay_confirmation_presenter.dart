@@ -9,6 +9,8 @@ import 'contact_pay_confirmation_screen.dart';
 
 class ContactPayConfirmationPresenter extends Presenter<ContactPayBloc,
     ContactPayConfirmationViewModel, ContactPayConfirmationScreen> {
+  // Mock the Bloc for presenter testing - it is the only thing that
+  // the presenter has no internal control over
   @override
   ContactPayConfirmationScreen buildScreen(BuildContext context,
       ContactPayBloc bloc, ContactPayConfirmationViewModel viewModel) {

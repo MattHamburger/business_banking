@@ -74,6 +74,8 @@ class ContactPayFormUseCase extends UseCase {
           new ContactPayEntity(), _notifyRepositorySubscribers);
     }
 
+    // What if scope is null? My answer is to recreate it
+
     final ContactPayEntity entity =
         ExampleLocator().repository.get<ContactPayEntity>(_scope!);
 
@@ -83,6 +85,8 @@ class ContactPayFormUseCase extends UseCase {
     _viewModelCallBack(_buildViewModel(newEntity));
   }
 
+  // When testing, you must mock the service - because of this method
+  // Get used to working out what components of classes that need to be mocked
   Future<void> _submitSendMoneyRequest() async {
     if (_scope == null) {
       _scope = ExampleLocator().repository.create<ContactPayEntity>(
