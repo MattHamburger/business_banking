@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ReferalViewModel extends ViewModel {
   final String email;
-  final double amount;
+  double amount;
 
   ReferalViewModel({required this.email, required this.amount});
 

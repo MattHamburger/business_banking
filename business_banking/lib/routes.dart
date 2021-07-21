@@ -63,7 +63,7 @@ abstract class BusinessBankingRouter {
         return DepositCheckConfirmWidget();
 
       case cashBackDetailsRoute:
-        return referalWidget();
+        return ReferalWidget();
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();

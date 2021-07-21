@@ -20,13 +20,19 @@ class referalBloc extends Bloc {
     onContactReferalEventPipe.receive
         .listen(_onContactPayFormEventPipeListener);
     referalUseCase =
-        ReferalUseCase((ViewModel) => referalViewModelPipe.send(ViewModel));
+        ReferalUseCase((viewModel) => referalViewModelPipe.send(viewModel));
+    ;
     // onEmailChangePipe.receive.listen(_onNameChangePipeListener);
     // onAmountChangePipe.receive.listen();
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    referalViewModelPipe.dispose();
+    onEmailChangePipe.dispose();
+    onAmountChangePipe.dispose();
+    onContactReferalEventPipe.dispose();
+  }
 
   void _onAmountValueChangedPipeListener(double amount) {
     referalUseCase.newAmount(amount);
@@ -37,8 +43,6 @@ class referalBloc extends Bloc {
   }
 
   void _onContactPayFormEventPipeListener(ReferalEvent event) {
-    if (event is ReferalButtonEvent) {
-      referalUseCase.addAmount(event);
-    }
+    referalUseCase.addAmount();
   }
 }

@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 
 import 'referal_screen.dart';
 
-class referalPresenter
-    extends Presenter<referalBloc, ReferalViewModel, referalScreen> {
+class ReferalPresenter
+    extends Presenter<referalBloc, ReferalViewModel, ReferalScreen> {
   @override
-  referalScreen buildScreen(
+  ReferalScreen buildScreen(
       BuildContext context, referalBloc bloc, ReferalViewModel viewModel) {
-    return referalScreen(
+    return ReferalScreen(
       viewModel: viewModel,
       onEmailChanged: (newValue) => onEmailValueChanged(bloc, newValue),
       onAddAmount: (context) => onAddAmount(bloc, context),

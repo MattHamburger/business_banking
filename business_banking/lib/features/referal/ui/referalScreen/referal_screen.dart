@@ -3,13 +3,13 @@ import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class referalScreen extends Screen {
+class ReferalScreen extends Screen {
   final ReferalViewModel viewModel;
   final ValueChanged<String> onEmailChanged;
 
   final Function onAddAmount;
 
-  referalScreen(
+  ReferalScreen(
       {required this.viewModel,
       required this.onAddAmount,
       required this.onEmailChanged});
@@ -31,7 +31,7 @@ class referalScreen extends Screen {
                   child: Column(
                     children: <Widget>[
                       Text("Amount to be gained"),
-                      Text(viewModel.amount.toString()),
+                      Text(viewModel.amount.toString() + "\$"),
                     ],
                   ),
                 ),

@@ -1,10 +1,11 @@
 import 'package:clean_framework/clean_framework.dart';
 
 class ReferalEntity extends Entity {
-  late final double amountToBeGained;
+  double amountToBeGained;
   final String referalEmail;
 
   ReferalEntity({
+    List<EntityFailure> errors = const [],
     this.amountToBeGained = 0,
     this.referalEmail = "",
   });

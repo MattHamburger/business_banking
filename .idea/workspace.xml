@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35e05d76-7342-461d-a61a-e81b3bb02483" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/business_banking/android/settings_aar.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/api/referal_request_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/api/referal_response_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/api/referal_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/test/features/referal/api/referal_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_banking/test/test_mocks.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/core/patch_simple_rest_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/core/patch_simple_rest_api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/bloc/referal_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/bloc/referal_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/bloc/referal_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/bloc/referal_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/model/referal_view_entity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/model/referal_view_entity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/model/referal_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/model/referal_view_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_presenter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/features/referal/ui/referalScreen/referal_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/locator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/locator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_banking/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/business_banking/lib/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626656365284</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Referal card, usecase and block not finished yet.">
+      <created>1626694389829</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1626694389830</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -96,30 +117,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="Referal card, usecase and block not finished yet." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1626694253373">
+    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1626871937912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626694253373" />
-    <state x="614" y="104" key="CommitChangelistDialog2" timestamp="1626656364268">
+    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626871937912" />
+    <state x="614" y="104" key="CommitChangelistDialog2" timestamp="1626694388903">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1626656364268" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1626657268519">
+    <state x="614" y="104" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1626694388903" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1626872124511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626657268519" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1626657268518">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626872124511" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1626872124510">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626657268518" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1626657268518">
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626872124510" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1626872124510">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626657268518" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1626657268519">
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626872124510" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1626872124511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626657268519" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626872124511" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1626657262790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -128,10 +149,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1626301360989" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1626656440079">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1626694426294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1626656440079" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1626694426294" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1626825364025">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626825364025" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1626353979788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
