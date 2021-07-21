@@ -13,6 +13,19 @@ class CashbackFormViewModel extends ViewModel {
   List<Object?> get props => [city, address, cashbackOption];
 }
 
+class CashbackConfirmationViewModel extends CashbackFormViewModel {
+  final String address;
+  final String city;
+  final CashbackOption cashbackOption;
+  final String confirmationId;
+
+  List<Object?> get props => [city, address, cashbackOption, confirmationId];
+
+  CashbackConfirmationViewModel(
+      this.address, this.city, this.cashbackOption, this.confirmationId)
+      : super(address, city, cashbackOption);
+}
+
 // class Model
 
 // CashbackFormViewModel a = CashbackFormViewModel('Houston')
