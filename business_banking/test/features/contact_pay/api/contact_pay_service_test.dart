@@ -43,7 +43,7 @@ void main() {
     final service = ContactPayService();
 
     final requestData = ContactPayRequestModel(
-        paymentAmount: 438.65, contactEmail: "mandude@guy.com");
+        paymentAmount: 438.65, contactEmail: "johndoe@guy.com");
 
     final eitherResponse = await service.request(requestModel: requestData);
 
