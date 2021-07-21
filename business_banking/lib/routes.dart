@@ -5,6 +5,7 @@ import 'package:business_banking/features/login/ui/login_feature_widget.dart';
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_form_entry/new_online_registration_widget.dart';
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_success_screen/new_online_registration_success_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:business_banking/features/profile/update_user_profile/ui/update_user_profile_form_entry/update_user_profile_widget.dart';
 
 import 'features/credit_card/ui/payment_request/credit_card_payment_request_widget.dart';
 import 'features/credit_card/ui/payment_response/credit_card_payment_response_widget.dart';
@@ -30,11 +31,13 @@ abstract class BusinessBankingRouter {
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
   static const String NewSuccessScreen = '/NewSuccessScreen';
+  static const String updateUserProfileScreen = '/updateUserProfileScreen';
 
   static Widget generate(String name) {
     switch (name) {
       case initialRoute:
-        return LoginFeatureWidget();
+        // return LoginFeatureWidget();
+        return UpdateUserProfileWidget();
 
       case hubRoute:
         return HubScreen();
@@ -62,6 +65,9 @@ abstract class BusinessBankingRouter {
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();
+
+      case updateUserProfileScreen:
+        return UpdateUserProfileWidget();
       default:
         return const PageNotFound();
     }
