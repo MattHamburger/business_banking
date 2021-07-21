@@ -1,4 +1,5 @@
 import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart';
+import 'package:business_banking/features/referal/ui/referalScreen/referal_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card_details/credit_card_details_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
@@ -23,6 +24,7 @@ abstract class BusinessBankingRouter {
   static const String viewBudgetChartRoute = '/viewBudgetChartRoute';
   static const String investmentDetailRoute = '/investmentDetail';
   static const String creditCardDetailsRoute = '/creditCardDetails';
+  static const String cashBackDetailsRoute = '/cashBackDetails';
   static const String creditCardPaymentRequestRoute =
       '/creditCardPaymentRequest';
   static const String creditCardPaymentResponseRoute =
@@ -59,6 +61,9 @@ abstract class BusinessBankingRouter {
 
       case depositCheckConfirmRoute:
         return DepositCheckConfirmWidget();
+
+      case cashBackDetailsRoute:
+        return ReferalWidget();
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();
