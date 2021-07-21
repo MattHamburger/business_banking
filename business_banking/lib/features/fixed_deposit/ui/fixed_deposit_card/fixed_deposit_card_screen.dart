@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../../routes.dart';
 
 class FixedDepositCardScreen extends Screen {
+  final VoidCallback onFixedDepositTapped;
+
+  FixedDepositCardScreen({required this.onFixedDepositTapped});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,8 +23,7 @@ class FixedDepositCardScreen extends Screen {
             ],
           ),
         ),
-        onTap: () => CFRouterScope.of(context)
-            .popUntil(BusinessBankingRouter.creditCardDetailsRoute),
+        onTap: onFixedDepositTapped,
       ),
     );
   }
