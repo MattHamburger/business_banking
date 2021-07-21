@@ -2,10 +2,7 @@ import 'package:business_banking/locator.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_defaults.dart';
 
-// Simple locator override to mock API responses for Unit Tests
-
-// Default constructor is a bad request with no content
-void testRestAPISetup(
+void setupMockRestAPI(
     {RestResponseType type = RestResponseType.badRequest,
     String content = ''}) {
   ExampleLocator().simpleApi = TestRestApiMock(type, content);

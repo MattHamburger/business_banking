@@ -6,7 +6,7 @@ import '../../../test_mocks.dart';
 
 void main() {
   test('ContactPayService service success', () async {
-    testRestAPISetup(type: RestResponseType.success, content: '''{
+    setupMockRestAPI(type: RestResponseType.success, content: '''{
       "confirmationId": "1"
     }''');
 
@@ -23,7 +23,7 @@ void main() {
   });
 
   test('ContactPayService service bad request, no request data', () async {
-    testRestAPISetup();
+    setupMockRestAPI();
 
     final service = ContactPayService();
 
@@ -37,7 +37,7 @@ void main() {
 
   test('ContactPayService service failure due to recipient not existing',
       () async {
-    testRestAPISetup(type: RestResponseType.success, content: '''{
+    setupMockRestAPI(type: RestResponseType.success, content: '''{
       "errorCode": 200
     }''');
     final service = ContactPayService();
