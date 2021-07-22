@@ -7,6 +7,7 @@ class FixedDepositRequestEntity extends Entity {
   final String emailAddress;
   final String nomineeName;
   final String remarks;
+  final bool success;
 
   FixedDepositRequestEntity({
     List<EntityFailure> errors = const [],
@@ -16,11 +17,19 @@ class FixedDepositRequestEntity extends Entity {
     this.emailAddress = "",
     this.nomineeName = "",
     this.remarks = "",
+    this.success = false,
   });
 
   @override
-  List<Object?> get props =>
-      [depositAmount, tenure, interestRate, emailAddress, nomineeName, remarks];
+  List<Object?> get props => [
+        depositAmount,
+        tenure,
+        interestRate,
+        emailAddress,
+        nomineeName,
+        remarks,
+        success
+      ];
 
   @override
   FixedDepositRequestEntity merge({
@@ -31,14 +40,17 @@ class FixedDepositRequestEntity extends Entity {
     String? emailAddress,
     String? nomineeName,
     String? remarks,
+    bool? success,
   }) {
     return FixedDepositRequestEntity(
-        errors: errors ?? this.errors,
-        depositAmount: depositAmount ?? this.depositAmount,
-        tenure: tenure ?? this.tenure,
-        interestRate: interestRate ?? this.interestRate,
-        emailAddress: emailAddress ?? this.emailAddress,
-        nomineeName: nomineeName ?? this.nomineeName,
-        remarks: remarks ?? this.remarks);
+      errors: errors ?? this.errors,
+      depositAmount: depositAmount ?? this.depositAmount,
+      tenure: tenure ?? this.tenure,
+      interestRate: interestRate ?? this.interestRate,
+      emailAddress: emailAddress ?? this.emailAddress,
+      nomineeName: nomineeName ?? this.nomineeName,
+      remarks: remarks ?? this.remarks,
+      success: success ?? this.success,
+    );
   }
 }

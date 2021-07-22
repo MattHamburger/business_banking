@@ -4,13 +4,15 @@ import 'package:clean_framework/clean_framework.dart';
 import 'fixed_deposit_request_usecase.dart';
 
 class FixedDepositBloc extends Bloc {
-  final fixedDepositRequestViewModelPipe = Pipe<FixedDepositRequestViewModel>();
+  final fixedDepositRequestViewModelPipe =
+      Pipe<FixedDepositRequestViewModel>(canSendDuplicateData: true);
   Pipe<num> onDepositAmountChangePipe = Pipe();
   Pipe<int> onTenureChangePipe = Pipe();
   Pipe<double> onInterestRateChangePipe = Pipe();
   Pipe<String> onEmailAddressChangePipe = Pipe();
   Pipe<String> onNomineeNameChangePipe = Pipe();
   Pipe<String> onRemarksChangePipe = Pipe();
+  EventPipe onSubmit = EventPipe();
   late FixedDepositRequestUseCase _fixedDepositRequestUseCase;
 
   FixedDepositBloc() {
@@ -18,7 +20,9 @@ class FixedDepositBloc extends Bloc {
       _fixedDepositRequestUseCase.create();
     });
     _fixedDepositRequestUseCase = FixedDepositRequestUseCase(
-      (viewmodel) => fixedDepositRequestViewModelPipe.send(viewmodel),
+      (viewmodel) {
+        return fixedDepositRequestViewModelPipe.send(viewmodel);
+      },
     );
     onDepositAmountChangePipe.receive
         .listen(_onDepositAmountChangePipeListener);
@@ -27,6 +31,7 @@ class FixedDepositBloc extends Bloc {
     onEmailAddressChangePipe.receive.listen(_onEmailAddressChangePipeListener);
     onNomineeNameChangePipe.receive.listen(_onNomineeNameChangePipeListener);
     onRemarksChangePipe.receive.listen(_onRemarksChangePipeListener);
+    onSubmit.listen(_onSubmitListener);
   }
 
   @override
@@ -38,6 +43,7 @@ class FixedDepositBloc extends Bloc {
     onEmailAddressChangePipe.dispose();
     onNomineeNameChangePipe.dispose();
     onRemarksChangePipe.dispose();
+    onSubmit.dispose();
   }
 
   void _onDepositAmountChangePipeListener(num depositAmount) {
@@ -62,5 +68,9 @@ class FixedDepositBloc extends Bloc {
 
   void _onRemarksChangePipeListener(String remarks) {
     _fixedDepositRequestUseCase.onRemarksUpdate(remarks);
+  }
+
+  void _onSubmitListener() {
+    _fixedDepositRequestUseCase.onSubmit();
   }
 }

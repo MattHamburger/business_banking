@@ -9,12 +9,13 @@ class FixedDepositRequestService extends EitherService<
   FixedDepositRequestService()
       : super(
             method: RestMethod.post,
-            restApi: ExampleLocator().api,
+            restApi: ExampleLocator().simpleApi,
             path: 'fixed-deposit');
 
   @override
   FixedDepositRequestResponseModel parseResponse(
       Map<String, dynamic> jsonResponse) {
+    print(jsonResponse);
     return FixedDepositRequestResponseModel.fromJson(jsonResponse);
   }
 }

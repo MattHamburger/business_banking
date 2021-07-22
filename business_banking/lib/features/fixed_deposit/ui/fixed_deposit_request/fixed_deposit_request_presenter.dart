@@ -9,12 +9,27 @@ class FixedDepositRequestPresenter extends Presenter<FixedDepositBloc,
   @override
   FixedDepositRequestScreen buildScreen(BuildContext context,
       FixedDepositBloc bloc, FixedDepositRequestViewModel viewModel) {
-    return FixedDepositRequestScreen();
+    print("got callbacke");
+    if (!viewModel.isValidData) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter all the fields'),
+        ),
+      );
+    }
+    return FixedDepositRequestScreen(
+      onSubmit: () => handleSubmit(bloc),
+      viewModel: viewModel,
+    );
   }
 
   @override
   Stream<FixedDepositRequestViewModel> getViewModelStream(
       FixedDepositBloc bloc) {
     return bloc.fixedDepositRequestViewModelPipe.receive;
+  }
+
+  void handleSubmit(FixedDepositBloc bloc) {
+    bloc.onSubmit.launch();
   }
 }

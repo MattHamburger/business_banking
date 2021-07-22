@@ -1,3 +1,4 @@
+import 'package:business_banking/features/fixed_deposit/bloc/fixed_deposit_request_service_adapter.dart';
 import 'package:business_banking/features/fixed_deposit/model/fixed_deposit_request_entity.dart';
 import 'package:business_banking/features/fixed_deposit/model/fixed_deposit_request_viewmodel.dart';
 import 'package:business_banking/locator.dart';
@@ -7,14 +8,13 @@ import 'package:clean_framework/clean_framework_defaults.dart';
 class FixedDepositRequestUseCase extends UseCase {
   late final ViewModelCallback<FixedDepositRequestViewModel> _viewModelCallback;
 
-  FixedDepositRequestUseCase(
-      ViewModelCallback<FixedDepositRequestViewModel> viewModelCallback) {
+  FixedDepositRequestUseCase(ViewModelCallback<FixedDepositRequestViewModel> viewModelCallback) {
     _viewModelCallback = viewModelCallback;
   }
 
   Future<void> create() async {
     var _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     if (_scope == null) {
       final entity = FixedDepositRequestEntity();
       _scope = ExampleLocator().repository.create<FixedDepositRequestEntity>(
@@ -32,22 +32,21 @@ class FixedDepositRequestUseCase extends UseCase {
 
   void getCurrentState() {
     final RepositoryScope<Entity>? scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(scope!);
     _notifySubscribers(entity);
   }
 
-  FixedDepositRequestViewModel _buildViewModel(
-      FixedDepositRequestEntity entity) {
+  FixedDepositRequestViewModel _buildViewModel(FixedDepositRequestEntity entity) {
     return FixedDepositRequestViewModel(isBusy: false);
   }
 
   void onDepositAmountUpdate(num depositAmount) {
     final RepositoryScope<Entity>? _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
     final updatedEntity = entity.merge(depositAmount: depositAmount);
     ExampleLocator()
         .repository
@@ -56,9 +55,9 @@ class FixedDepositRequestUseCase extends UseCase {
 
   void onTenureUpdate(int tenure) {
     final RepositoryScope<Entity>? _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
     final updatedEntity = entity.merge(tenure: tenure);
     ExampleLocator()
         .repository
@@ -67,9 +66,9 @@ class FixedDepositRequestUseCase extends UseCase {
 
   void onInterestRateUpdate(double interestRate) {
     final RepositoryScope<Entity>? _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
     final updatedEntity = entity.merge(interestRate: interestRate);
     ExampleLocator()
         .repository
@@ -78,9 +77,9 @@ class FixedDepositRequestUseCase extends UseCase {
 
   void onEmailAddressUpdate(String emailAddress) {
     final RepositoryScope<Entity>? _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
     final updatedEntity = entity.merge(emailAddress: emailAddress);
     ExampleLocator()
         .repository
@@ -89,9 +88,9 @@ class FixedDepositRequestUseCase extends UseCase {
 
   void onNomineeNameUpdate(String nomineeName) {
     final RepositoryScope<Entity>? _scope =
-        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
-        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
     final updatedEntity = entity.merge(nomineeName: nomineeName);
     ExampleLocator()
         .repository
@@ -99,6 +98,7 @@ class FixedDepositRequestUseCase extends UseCase {
   }
 
   void onRemarksUpdate(String remarks) {
+    print("remarks is being updated");
     final RepositoryScope<Entity>? _scope =
         ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
     final entity =
@@ -107,5 +107,27 @@ class FixedDepositRequestUseCase extends UseCase {
     ExampleLocator()
         .repository
         .update<FixedDepositRequestEntity>(_scope!, updatedEntity);
+  }
+
+  void onSubmit() async {
+    final RepositoryScope<Entity>? _scope =
+        ExampleLocator().repository.containsScope<FixedDepositRequestEntity>();
+    final entity =
+        ExampleLocator().repository.get<FixedDepositRequestEntity>(_scope!);
+    if (entity.emailAddress == '' ||
+        entity.remarks == '' ||
+        entity.depositAmount == 0.00 ||
+        entity.interestRate == 0.00 ||
+        entity.tenure == 0) {
+      _viewModelCallback(FixedDepositRequestViewModel(isValidData: false));
+    } else {
+      _viewModelCallback(
+          FixedDepositRequestViewModel(isValidData: true, isBusy: true));
+      await ExampleLocator()
+          .repository
+          .runServiceAdapter(_scope!, FixedDepositRequestServiceAdapter());
+      _viewModelCallback(
+          FixedDepositRequestViewModel(isValidData: true, isBusy: false));
+    }
   }
 }

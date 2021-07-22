@@ -44,7 +44,7 @@ void main() {
 
   test('FixedDepositRequestService service failure due to invalid data',
       () async {
-    testRestAPISetup(type: RestResponseType.badRequest, content: '''{
+    testRestAPISetup(type: RestResponseType.success, content: '''{
     "success":false,
       "errorCode": 403
     }''');
@@ -61,7 +61,7 @@ void main() {
 
     final eitherResponse = await service.request(requestModel: requestData);
 
-    expect(eitherResponse.isLeft, isTrue);
+    expect(eitherResponse.isRight, isTrue);
 
     expect(
         eitherResponse.fold((_) {}, (m) => m),

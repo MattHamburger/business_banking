@@ -75,4 +75,25 @@ void main() {
     FixedDepositRequestEntity entity = ExampleLocator().repository.get(_scope);
     expect(entity.remarks, "placeholder");
   });
+
+  test('FixedDepositRequestUseCase onSubmit on valid data', () async {
+    FixedDepositRequestViewModel _viewModel;
+    useCase = FixedDepositRequestUseCase((viewModel) {
+      _viewModel = viewModel;
+      return true;
+    });
+    useCase.onSubmit();
+    expect(_viewModel.isValidData, isTrue);
+  });
+
+  test('FixedDepositRequestUseCase onSubmit on remarks empty', () async {
+    FixedDepositRequestViewModel _viewModel;
+    useCase = FixedDepositRequestUseCase((viewModel) {
+      _viewModel = viewModel;
+      return true;
+    });
+    useCase.onRemarksUpdate('');
+    useCase.onSubmit();
+    expect(_viewModel.isValidData, isFalse);
+  });
 }
