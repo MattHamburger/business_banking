@@ -1,4 +1,5 @@
 import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart';
+import 'package:business_banking/features/cashback/ui/cashback_form/cashback_form_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card_details/credit_card_details_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
@@ -30,6 +31,7 @@ abstract class BusinessBankingRouter {
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
   static const String NewSuccessScreen = '/NewSuccessScreen';
+  static const String cashbackRoute = '/cashback';
 
   static Widget generate(String name) {
     switch (name) {
@@ -62,6 +64,10 @@ abstract class BusinessBankingRouter {
 
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();
+
+      case cashbackRoute:
+        return CashbackFormWidget();
+
       default:
         return const PageNotFound();
     }

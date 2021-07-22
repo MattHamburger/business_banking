@@ -1,4 +1,5 @@
 import 'package:business_banking/features/budget/ui/first_card/budget_widget.dart';
+import 'package:business_banking/features/cashback/ui/cashback_hub_widget/cashback_hub_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card/credit_card_widget.dart';
 import 'package:business_banking/features/deposit_check/ui/1st_hub_card/deposit_check_card_widget.dart';
 import 'package:clean_framework/clean_framework.dart';
@@ -33,6 +34,7 @@ class HubScreen extends Screen {
             CreditCardWidget(),
             BudgetWidget(),
             DepositCheckCardWidget(),
+            CashbackHubWidget()
           ],
         ),
       ),
