@@ -1,4 +1,5 @@
 import 'package:business_banking/features/budget/ui/chart/view_chart_widget.dart';
+import 'package:business_banking/features/contact_pay/ui/confirmation/contact_pay_confirmation_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card_details/credit_card_details_widget.dart';
 import 'package:business_banking/features/hub/ui/hub_screen.dart';
 import 'package:business_banking/features/login/ui/login_feature_widget.dart';
@@ -6,6 +7,8 @@ import 'package:business_banking/features/new_online_registration_form/ui/new_on
 import 'package:business_banking/features/new_online_registration_form/ui/new_online_registration_success_screen/new_online_registration_success_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'features/contact_pay/ui/form/contact_pay_form_widget.dart';
+import 'features/contact_pay/ui/confirmation/contact_pay_confirmation_widget.dart';
 import 'features/credit_card/ui/payment_request/credit_card_payment_request_widget.dart';
 import 'features/credit_card/ui/payment_response/credit_card_payment_response_widget.dart';
 import 'features/deposit_check/ui/2nd_data_entry/deposit_check_widget.dart';
@@ -30,6 +33,9 @@ abstract class BusinessBankingRouter {
   static const String depositCheckRoute = '/depositCheck';
   static const String depositCheckConfirmRoute = '/depositCheckConfirm';
   static const String NewSuccessScreen = '/NewSuccessScreen';
+  static const String contactPayMainScreenRoute = '/contactPayMainScreen';
+  static const String contactPayConfirmationScreenRoute =
+      '/contactPayConfirmationScreen';
 
   static Widget generate(String name) {
     switch (name) {
@@ -60,8 +66,15 @@ abstract class BusinessBankingRouter {
       case depositCheckConfirmRoute:
         return DepositCheckConfirmWidget();
 
+      case contactPayMainScreenRoute:
+        return ContactPayFormWidget();
+
+      case contactPayConfirmationScreenRoute:
+        return ContactPayConfirmationWidget();
+
       case NewSuccessScreen:
         return NewOnlineRegistrationRequestSuccessWidget();
+
       default:
         return const PageNotFound();
     }
