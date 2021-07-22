@@ -5,24 +5,38 @@ import 'package:clean_framework/clean_framework.dart';
 class CashbackBloc extends Bloc {
   Pipe<CashbackFormViewModel> cashbackFormViewModelPipe = Pipe();
   Pipe<String> onCityChangePipe = Pipe();
+  EventPipe onFormSubmitEvent = EventPipe();
 
-  late CashbackUsecase cashbackUsecase;
+  late CashbackUsecase _cashbackUsecase;
 
-  CashbackBloc() {
+  CashbackBloc({CashbackUsecase? cashbackUsecase}) {
+    _cashbackUsecase = cashbackUsecase ??
+        CashbackUsecase((viewModel) {
+          print(viewModel);
+          cashbackFormViewModelPipe.send(viewModel);
+          return true;
+        });
+
     cashbackFormViewModelPipe.whenListenedDo(() {
-      cashbackUsecase.getCurrentState();
+      _cashbackUsecase.getCurrentState();
     });
 
     onCityChangePipe.receive.listen(_onCityChangePipeListener);
-
-    cashbackUsecase = CashbackUsecase(
-        (viewModel) => cashbackFormViewModelPipe.send(viewModel));
-  }
-
-  void _onCityChangePipeListener(String city) {
-    cashbackUsecase.onCityUpdate(city);
+    onFormSubmitEvent.listen(_onFormSubmitEventListener);
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    cashbackFormViewModelPipe.dispose();
+    onCityChangePipe.dispose();
+    onFormSubmitEvent.dispose();
+  }
+
+  void _onCityChangePipeListener(String city) {
+    _cashbackUsecase.onCityUpdate(city);
+  }
+
+  void _onFormSubmitEventListener() {
+    _cashbackUsecase.submitCashbackForm();
+  }
 }
