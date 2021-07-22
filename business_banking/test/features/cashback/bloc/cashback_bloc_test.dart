@@ -8,49 +8,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 void main() {
-  // test('CashbackBloc viewModel manual old way', () {
-  //   final useCaseMock = CashbackUsecaseMock();
-  //   final bloc = CashbackBloc(cashbackUsecase: useCaseMock);
-  //   CashbackFormViewModel currentViewModel =
-  //       CashbackFormViewModel('', '', CashbackOption.frequentMiles);
-
-  //   bloc.cashbackFormViewModelPipe.receive.listen((viewModel) {
-  //     print('callback');
-  //     currentViewModel = viewModel;
-  //   });
-
-  //   Future.delayed(Duration(milliseconds: 100));
-
-  //   expect(useCaseMock.viewModel,
-  //       CashbackFormViewModel('test', 'test', CashbackOption.frequentMiles));
-  //   // expect(currentViewModel,
-  //   //     CashbackFormViewModel('test', 'test', CashbackOption.frequentMiles));
-  // });
-
-  test('CashbackBloc viewModel with tester and no mock', () async {
-    final bloc = CashbackBloc();
-
-    await ViewModelPipeTester.forPipe(bloc.cashbackFormViewModelPipe)
-        .whenBeingListenedTo()
-        .thenExpectA(
-            CashbackFormViewModel('', '', CashbackOption.frequentMiles));
-  });
-
-  test('CashbackBloc onCityChangePipe with tester and no mock', () async {
-    final bloc = CashbackBloc();
+  test('CashbackBloc initial model', () async {
+    final useCase = CashbackUsecaseMock();
+    final bloc = CashbackBloc(cashbackUsecase: useCase);
+    useCase.viewModelPipe = bloc.cashbackFormViewModelPipe;
 
     final tester = ViewModelPipeTester.forPipe(bloc.cashbackFormViewModelPipe);
 
-    await tester.whenBeingListenedTo().thenExpectAnyModel();
+    await tester.whenBeingListenedTo().thenExpectA(
+        CashbackFormViewModel('test', 'test', CashbackOption.frequentMiles));
 
-    await tester
-        .whenDoing(() => bloc.onCityChangePipe.send('London'))
-        .thenExpectA(
-            CashbackFormViewModel('London', '', CashbackOption.frequentMiles));
+    // await tester
+    //     .whenDoing(() => bloc.onCityChangePipe.send('New York'))
+    //     .thenExpectA(CashbackFormViewModel(
+    //         'New York', '', CashbackOption.frequentMiles));
+
+    // await tester.whenDoing(() => bloc.onFormSubmitEvent.launch()).thenExpectA(
+    //     CashbackConfirmationViewModel(
+    //         'New York', '', CashbackOption.frequentMiles, '12345'));
   });
 
-  test('CashbackBloc onFormSubmitEvent with tester and no mock', () async {
-    final bloc = CashbackBloc();
+  test('CashbackBloc onCityUpdate ', () async {
+    final useCase = CashbackUsecaseMock();
+    final bloc = CashbackBloc(cashbackUsecase: useCase);
+    useCase.viewModelPipe = bloc.cashbackFormViewModelPipe;
 
     final tester = ViewModelPipeTester.forPipe(bloc.cashbackFormViewModelPipe);
 
@@ -60,19 +41,41 @@ void main() {
         .whenDoing(() => bloc.onCityChangePipe.send('New York'))
         .thenExpectA(CashbackFormViewModel(
             'New York', '', CashbackOption.frequentMiles));
+  });
+
+  test('CashbackBloc submit ', () async {
+    final useCase = CashbackUsecaseMock();
+    final bloc = CashbackBloc(cashbackUsecase: useCase);
+    useCase.viewModelPipe = bloc.cashbackFormViewModelPipe;
+
+    final tester = ViewModelPipeTester.forPipe(bloc.cashbackFormViewModelPipe);
 
     await tester.whenDoing(() => bloc.onFormSubmitEvent.launch()).thenExpectA(
         CashbackConfirmationViewModel(
-            'New York', '', CashbackOption.frequentMiles, '12345'));
+            '', '', CashbackOption.storesDiscount, 'fake1234'));
   });
 }
 
-// class CashbackUsecaseMock extends Mock implements CashbackUsecase {
-//   late final ViewModelCallback<CashbackFormViewModel> viewModelCallBack;
+class CashbackUsecaseMock extends Mock implements CashbackUsecase {
+  late Pipe _viewModelPipe;
 
-//   @override
-//   void getCurrentState() {
-//     viewModelCallBack(
-//         CashbackFormViewModel('test', 'test', CashbackOption.frequentMiles));
-//   }
-// }
+  set viewModelPipe(Pipe viewModelPipe) => _viewModelPipe = viewModelPipe;
+
+  @override
+  void getCurrentState() {
+    _viewModelPipe.send(
+        CashbackFormViewModel('test', 'test', CashbackOption.frequentMiles));
+  }
+
+  @override
+  void onCityUpdate(String newCityValue) {
+    _viewModelPipe.send(
+        CashbackFormViewModel(newCityValue, '', CashbackOption.frequentMiles));
+  }
+
+  @override
+  void submitCashbackForm() async {
+    _viewModelPipe.send(CashbackConfirmationViewModel(
+        '', '', CashbackOption.storesDiscount, 'fake1234'));
+  }
+}
