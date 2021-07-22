@@ -1,8 +1,12 @@
 import 'package:business_banking/features/budget/ui/first_card/budget_widget.dart';
 import 'package:business_banking/features/credit_card/ui/credit_card/credit_card_widget.dart';
 import 'package:business_banking/features/deposit_check/ui/1st_hub_card/deposit_check_card_widget.dart';
+import 'package:business_banking/features/fixed_deposit/ui/fixed_deposit_card/fixed_deposit_card_screen.dart';
+import 'package:business_banking/features/fixed_deposit/ui/fixed_deposit_card/fixed_deposit_card_widget.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
+
+import '../../../routes.dart';
 
 class HubScreen extends Screen {
   HubScreen();
@@ -33,6 +37,10 @@ class HubScreen extends Screen {
             CreditCardWidget(),
             BudgetWidget(),
             DepositCheckCardWidget(),
+            FixedDepositCardScreen(
+              onFixedDepositTapped: () => CFRouterScope.of(context)
+                  .push(BusinessBankingRouter.fixedDepositScreenRoute),
+            ),
           ],
         ),
       ),
